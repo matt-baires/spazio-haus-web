@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import "@fontsource/cinzel/600.css";
 import "@fontsource-variable/instrument-sans";
 import "./globals.css";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+  openGraph: { siteName: site.nombre, locale: "es_AR", type: "website" },
   title: {
     default: "Spazio Haus · Estudio de mobiliario a medida",
     template: "%s | Spazio Haus",
