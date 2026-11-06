@@ -3,18 +3,101 @@
 @import "@heroui/styles";
 
 /*
- * Los colores (background, foreground, accent, surface, muted, border…)
- * vienen de los tokens de HeroUI. Para personalizar la marca, sobrescribir
- * sus variables acá, por ejemplo:
- *   :root { --accent: oklch(...); }
- * El modo oscuro se activa con la clase "dark" en <html>.
+ * Spazio Haus · tokens del design system aplicados a HeroUI.
+ * Fuente: design system "Spazio Haus" (tokens.json, versión 1).
+ * Fondos claros; el negro y el dorado quedan para el sello, el texto y filetes finos.
  */
+:root {
+  /* Paleta de marca */
+  --sh-blanco: #ffffff;
+  --sh-marfil: #f4f1eb;
+  --sh-piedra: #d9d3c8;
+  --sh-dorado-mate: #b8955a; /* solo filetes de 1 px y el sello; nunca texto chico */
+  --sh-negro: #141414;
+  --sh-crema: #f2ede4;
+  --sh-texto-secundario: #625d55;
+
+  /* Mapeo a las variables de HeroUI */
+  --background: var(--sh-blanco);
+  --foreground: var(--sh-negro);
+  --surface: var(--sh-marfil);
+  --surface-foreground: var(--sh-negro);
+  --surface-secondary: var(--sh-marfil);
+  --surface-tertiary: var(--sh-piedra);
+  --overlay: var(--sh-blanco);
+  --muted: var(--sh-texto-secundario);
+  --default: var(--sh-marfil);
+  --default-foreground: var(--sh-negro);
+  --accent: var(--sh-negro);
+  --accent-foreground: var(--sh-crema);
+  --border: var(--sh-piedra);
+  --separator: var(--sh-piedra);
+  --focus: var(--sh-dorado-mate);
+  --link: var(--sh-negro);
+  --field-background: var(--sh-blanco);
+  --field-border: var(--sh-piedra);
+  --field-border-width: 1px;
+
+  /* Marca plana: sin sombras en superficies */
+  --surface-shadow: none;
+  --field-shadow: none;
+
+  /* Radios: botones y campos 4 px, tarjetas 8 px, fotos a escuadra */
+  --radius: 0.25rem;
+  --field-radius: 4px;
+}
 
 @theme inline {
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Cinzel", Georgia, serif;
+  --font-sans: "Instrument Sans Variable", "Instrument Sans", system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-marfil: var(--sh-marfil);
+  --color-piedra: var(--sh-piedra);
+  --color-dorado: var(--sh-dorado-mate);
+  --color-crema: var(--sh-crema);
+}
+
+/* Formas de marca sobre los componentes de HeroUI */
+.button {
+  border-radius: 4px;
+}
+.card {
+  border-radius: 8px;
+}
+.chip {
+  border-radius: 4px;
 }
 
 body {
   font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 26px;
+}
+
+/* Estilos tipográficos del design system */
+@utility titulo-grande {
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+@utility titulo {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+@utility cuerpo-chico {
+  font-size: 14px;
+  line-height: 21px;
+}
+@utility etiqueta {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
