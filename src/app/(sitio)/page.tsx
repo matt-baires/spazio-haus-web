@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { Card, buttonVariants } from "@heroui/react";
-import { CtaCotizar, FotoPendiente, ObraCard } from "@/components/ui";
-import { obras } from "@/content/obras";
-import { servicios } from "@/content/servicios";
-import { faq } from "@/content/faq";
+import { CtaCotizar, FotoObra, ObraCard } from "@/components/ui";
+import { getObras, getPreguntas, getServicios } from "@/lib/datos";
 import { site } from "@/lib/site";
 
 const pasos = [
@@ -12,17 +10,18 @@ const pasos = [
   { paso: "03", titulo: "Detalle", texto: "Cuidamos cada canto, herraje y terminación." },
 ];
 
-export default function Home() {
-  const destacadas = obras.filter((o) => o.destacada).slice(0, 3);
+export default async function Home() {
+  const [obras, servicios, preguntas] = await Promise.all([getObras(), getServicios(), getPreguntas()]);
+  const destacadas = (obras.some((o) => o.destacada) ? obras.filter((o) => o.destacada) : obras).slice(0, 3);
+  const portada = destacadas.find((o) => o.fotos.length > 0)?.fotos[0] ?? null;
+  const faqHome = (preguntas.some((p) => p.enHome) ? preguntas.filter((p) => p.enHome) : preguntas).slice(0, 3);
 
   return (
     <>
       <section className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-20 pt-14 sm:pt-20 lg:grid-cols-[1.1fr_1fr]">
         <div className="flex flex-col gap-6">
           <p className="etiqueta text-muted">{site.descriptor}</p>
-          <h1 className="titulo-grande text-[36px] leading-[44px] sm:text-[48px] sm:leading-[56px]">
-            {site.tagline}
-          </h1>
+          <h1 className="titulo-grande text-[36px] leading-[44px] sm:text-[48px] sm:leading-[56px]">{site.tagline}</h1>
           <p className="max-w-xl text-muted">
             Lo diseñamos con vos. Lo fabricamos en nuestro taller de Caseros, desde {site.desde}.
           </p>
@@ -35,7 +34,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <FotoPendiente etiqueta="Foto de obra destacada" proporcion="aspect-[5/4]" />
+        <FotoObra foto={portada} etiqueta="Foto de obra destacada" proporcion="aspect-[5/4]" prioridad sizes="(min-width: 1024px) 45vw, 100vw" />
       </section>
 
       <section className="bg-marfil">
@@ -61,19 +60,21 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
-        <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
-          <h2 className="titulo">Obras</h2>
-          <Link href="/obras" className="cuerpo-chico underline underline-offset-4">
-            Ver todas
-          </Link>
-        </div>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {destacadas.map((o) => (
-            <ObraCard key={o.slug} obra={o} />
-          ))}
-        </div>
-      </section>
+      {destacadas.length > 0 && (
+        <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+            <h2 className="titulo">Obras</h2>
+            <Link href="/obras" className="cuerpo-chico underline underline-offset-4">
+              Ver todas
+            </Link>
+          </div>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {destacadas.map((o) => (
+              <ObraCard key={o.slug} obra={o} />
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="bg-marfil">
         <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
@@ -96,27 +97,28 @@ export default function Home() {
           <p className="etiqueta text-muted">Para profesionales</p>
           <h2 className="titulo">Arquitectos e interioristas</h2>
           <p className="text-muted">
-            Fabricamos tu diseño respetando el plano, los materiales y los plazos. Un solo interlocutor de punta a
-            punta.
+            Fabricamos tu diseño respetando el plano, los materiales y los plazos. Un solo interlocutor de punta a punta.
           </p>
           <Link href="/profesionales" className={buttonVariants({ variant: "outline" })}>
             Trabajemos juntos
           </Link>
         </div>
-        <div className="flex flex-col gap-5">
-          <h2 className="titulo">Preguntas frecuentes</h2>
-          <dl className="flex flex-col divide-y divide-border border-y border-border">
-            {faq.slice(0, 3).map((f) => (
-              <div key={f.pregunta} className="py-4">
-                <dt className="font-semibold">{f.pregunta}</dt>
-                <dd className="cuerpo-chico mt-1 text-muted">{f.respuesta}</dd>
-              </div>
-            ))}
-          </dl>
-          <Link href="/preguntas-frecuentes" className="cuerpo-chico underline underline-offset-4">
-            Más preguntas
-          </Link>
-        </div>
+        {faqHome.length > 0 && (
+          <div className="flex flex-col gap-5">
+            <h2 className="titulo">Preguntas frecuentes</h2>
+            <dl className="flex flex-col divide-y divide-border border-y border-border">
+              {faqHome.map((f) => (
+                <div key={f.pregunta} className="py-4">
+                  <dt className="font-semibold">{f.pregunta}</dt>
+                  <dd className="cuerpo-chico mt-1 text-muted">{f.respuesta}</dd>
+                </div>
+              ))}
+            </dl>
+            <Link href="/preguntas-frecuentes" className="cuerpo-chico underline underline-offset-4">
+              Más preguntas
+            </Link>
+          </div>
+        )}
       </section>
 
       <CtaCotizar />

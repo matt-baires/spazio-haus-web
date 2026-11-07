@@ -2,16 +2,17 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { CotizarForm } from "@/components/cotizar-form";
 import { Encabezado } from "@/components/ui";
-import { servicios } from "@/content/servicios";
-import { site, whatsappUrl } from "@/lib/site";
+import { getServicios, getSitio } from "@/lib/datos";
+import { whatsappUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Cotizá tu proyecto",
   description: "Contanos qué necesitás, con medidas aproximadas y fotos. Te respondemos con el diseño y el presupuesto.",
 };
 
-export default function CotizarPage() {
-  const wa = whatsappUrl("Hola, quiero cotizar un mueble a medida.");
+export default async function CotizarPage() {
+  const [servicios, sitio] = await Promise.all([getServicios(), getSitio()]);
+  const wa = whatsappUrl(sitio.whatsapp, "Hola, quiero cotizar un mueble a medida.");
   const tipos = servicios.map((s) => ({ id: s.slug, nombre: s.nombre }));
 
   return (
@@ -27,13 +28,8 @@ export default function CotizarPage() {
         </ol>
         <p className="cuerpo-chico text-muted">
           ¿Preferís escribir?{" "}
-          <a
-            href={wa ?? site.instagram.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline underline-offset-4"
-          >
-            {wa ? "WhatsApp" : `Instagram ${site.instagram.usuario}`}
+          <a href={wa ?? sitio.instagram.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
+            {wa ? "WhatsApp" : `Instagram ${sitio.instagram.usuario}`}
           </a>
         </p>
       </div>

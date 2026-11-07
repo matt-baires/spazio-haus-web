@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { LogoHorizontal } from "@/components/logo-horizontal";
-import { direccionCompleta, mapsUrl, navegacion, site } from "@/lib/site";
+import { getSitio } from "@/lib/datos";
+import { direccionTexto, mapsUrl, navegacion, site } from "@/lib/site";
 
-export function SiteFooter() {
+export async function SiteFooter() {
+  const s = await getSitio();
   return (
     <footer className="border-t border-border bg-background">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-14 sm:grid-cols-3">
@@ -28,12 +30,17 @@ export function SiteFooter() {
 
         <div className="flex flex-col gap-2">
           <span className="etiqueta mb-2 text-muted">Taller</span>
-          <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="cuerpo-chico text-muted hover:text-foreground">
-            {direccionCompleta}
+          <a href={mapsUrl(s.direccion)} target="_blank" rel="noopener noreferrer" className="cuerpo-chico text-muted hover:text-foreground">
+            {direccionTexto(s.direccion)}
           </a>
-          <a href={site.instagram.url} target="_blank" rel="noopener noreferrer" className="cuerpo-chico text-muted hover:text-foreground">
-            Instagram {site.instagram.usuario}
+          <a href={s.instagram.url} target="_blank" rel="noopener noreferrer" className="cuerpo-chico text-muted hover:text-foreground">
+            Instagram {s.instagram.usuario}
           </a>
+          {s.email && (
+            <a href={`mailto:${s.email}`} className="cuerpo-chico text-muted hover:text-foreground">
+              {s.email}
+            </a>
+          )}
           <Link href="/cotizar" className="cuerpo-chico text-foreground underline underline-offset-4">
             Cotizá tu proyecto
           </Link>

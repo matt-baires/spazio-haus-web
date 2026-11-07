@@ -2,56 +2,76 @@
 
 Sitio de Spazio Haus, estudio de mobiliario a medida con taller propio en Caseros. Desarrollo propio, desplegado en Vercel.
 
-**Producción:** https://spazio-haus-web.vercel.app
+- **Sitio:** https://spazio-haus-web.vercel.app
+- **Panel de contenidos:** https://spazio-haus-web.vercel.app/admin
 
 ## Stack
 
 - React 19 sobre Next.js 16 (App Router, Cache Components)
-- [HeroUI v3](https://heroui.com) (React Aria + Tailwind CSS v4), sin Provider
-- Tailwind CSS v4 y TypeScript
-- Vercel Blob (privado) para guardar consultas y adjuntos
+- [Payload CMS 3](https://payloadcms.com) dentro del mismo proyecto: panel en `/admin`, API en `/api`
+- Base de datos Postgres en [Neon](https://neon.tech) (plan gratuito, conectada desde el Marketplace de Vercel)
+- Vercel Blob privado para imágenes del CMS y adjuntos de las cotizaciones
+- [HeroUI v3](https://heroui.com) + Tailwind CSS v4 para el sitio público, con los tokens del design system de Spazio Haus en `src/app/globals.css`
 
-Los tokens del design system de Spazio Haus (paleta, Cinzel + Instrument Sans, radios) están en `src/app/globals.css` y se aplican sobre las variables de HeroUI.
+## Panel de contenidos (`/admin`)
+
+| Sección | Qué se carga |
+| --- | --- |
+| Consultas | Pedidos de cotización del sitio: estado, notas internas y adjuntos (los adjuntos se abren desde cada consulta) |
+| Obras | Obras terminadas con fotos, foto de detalle, tipo, ambiente, zona y materiales. Tienen borrador y publicación |
+| Servicios | Cocinas, racks, vanitorys, respaldos, muebles a medida |
+| Materiales | Muestrario: grupos (melaminas, laqueados, maderas) y sus muestras |
+| Preguntas frecuentes | Preguntas y respuestas; "Mostrar en la home" elige las de la portada |
+| Blog | Artículos con editor de texto. Tienen borrador y publicación |
+| Imágenes | Biblioteca de fotos (con texto alternativo obligatorio) |
+| Configuración → Datos del sitio | WhatsApp, email, Instagram, dirección del taller y el aviso de "contenido de ejemplo" |
+| Configuración → Usuarios | Administradores y editores |
+
+El primer ingreso a `/admin` pide crear el usuario administrador.
+
+Cada cambio guardado en el panel se refleja en el sitio en la siguiente visita (caché por etiquetas en `src/lib/datos.ts`, invalidada desde `src/payload/revalidar.ts`).
 
 ## Desarrollo local
 
 ```bash
 npm install
+# .env con DATABASE_URL (un Postgres local) y PAYLOAD_SECRET
+npm run payload -- migrate   # crea las tablas
+npm run seed                 # carga el contenido de ejemplo si está vacío
 npm run dev
 ```
 
-Para probar el formulario y la bandeja en local, traer las variables de Vercel (`vercel env pull`) o definir `BLOB_READ_WRITE_TOKEN` y `ADMIN_PASSWORD` en `.env.local`.
+## Scripts
+
+| Script | Qué hace |
+| --- | --- |
+| `npm run build` | Migra la base, carga el contenido de ejemplo en colecciones vacías y compila Next.js (lo que corre Vercel) |
+| `npm run payload -- migrate:create nombre` | Genera una migración después de cambiar colecciones en `src/payload/` |
+| `npm run generate:types` / `generate:importmap` | Regenera tipos e import map de Payload |
+| `npm run seed` | Carga inicial desde `src/content/` (no pisa lo existente) |
 
 ## Estructura
 
-| Ruta | Qué es |
+| Carpeta | Qué hay |
 | --- | --- |
-| `/` | Home |
-| `/obras`, `/obras/[slug]` | Galería filtrable y ficha de obra |
-| `/servicios`, `/servicios/[slug]` | Cocinas, racks, vanitorys, respaldos, muebles a medida |
-| `/cotizar` | Formulario de cotización con adjuntos (acepta `?tipo=`, `?ref=`, `?perfil=profesional`) |
-| `/nosotros`, `/profesionales`, `/preguntas-frecuentes`, `/contacto`, `/blog` | Páginas institucionales |
-| `/legales/terminos`, `/legales/privacidad` | Borradores legales |
-| `/admin` | Bandeja de consultas (usuario `admin`, contraseña en `ADMIN_PASSWORD`) |
-| `/api/cotizar` | Recibe el formulario y guarda en Vercel Blob |
-
-## Contenido
-
-El contenido vive en archivos tipados, con la misma forma que tendrá en un CMS:
-
-- `src/lib/site.ts`: datos del negocio. **Completar** `whatsapp`, `email` y `url` (dominio). Poner `contenidoDeEjemplo: false` cuando no quede contenido de ejemplo.
-- `src/content/obras.ts`: obras. **Todas son de ejemplo** (`ejemplo: true`); reemplazar por obras reales.
-- `src/content/servicios.ts`, `src/content/faq.ts`, `src/content/blog.ts`: textos de ejemplo para validar con el cliente.
-
-Las fotos todavía son espacios reservados (`FotoPendiente`). Al tener fotos reales, guardarlas en `public/obras/` y reemplazar el componente por `next/image`.
+| `src/app/(sitio)` | Sitio público |
+| `src/app/(payload)` | Panel y API de Payload (archivos generados) |
+| `src/app/api/cotizar` | Recibe el formulario y crea la consulta |
+| `src/app/api/adjunto` | Sirve adjuntos privados solo con sesión en el panel |
+| `src/payload/` | Colecciones, datos del sitio, acceso, almacenamiento y carga inicial |
+| `src/migrations/` | Migraciones de la base |
+| `src/content/` | Contenido de ejemplo usado solo por la carga inicial |
 
 ## Variables de entorno (Vercel)
 
 | Variable | Para qué |
 | --- | --- |
-| `BLOB_READ_WRITE_TOKEN` | Store `spazio-haus-consultas` (privado, región gru1). La crea Vercel al conectar el store. |
-| `ADMIN_PASSWORD` | Contraseña de `/admin`. Se ve y se cambia en Vercel → Settings → Environment Variables. |
+| `SPAZIOH_DATABASE_URL` (y demás `SPAZIOH_*`) | Conexión a Neon, creadas por la integración |
+| `PAYLOAD_SECRET` | Clave de Payload para firmar sesiones |
+| `BLOB_READ_WRITE_TOKEN` | Store privado `spazio-haus-consultas` (imágenes y adjuntos) |
 
-## Despliegue
+## Pendiente
 
-Cada push a `main` publica en producción; cada rama genera una URL de vista previa.
+- Completar en el panel: WhatsApp, email y obras reales con fotos; luego destildar "contenido de ejemplo"
+- Dominio propio (`src/lib/site.ts → url`)
+- Emails automáticos por cada consulta (requiere proveedor de email)

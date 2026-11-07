@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { buttonVariants } from "@heroui/react";
 import { ObraCard } from "@/components/ui";
-import type { Obra } from "@/content/obras";
+import type { Obra } from "@/lib/datos";
 
 export function GaleriaObras({ obras, tipos }: { obras: Obra[]; tipos: { slug: string; nombre: string }[] }) {
   const [filtro, setFiltro] = useState<string>("todas");

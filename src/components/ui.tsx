@@ -1,21 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Chip, buttonVariants } from "@heroui/react";
 import type { ReactNode } from "react";
-import type { Obra } from "@/content/obras";
-import { getServicio } from "@/content/servicios";
-import { site } from "@/lib/site";
-
-/** Aviso fijo mientras el sitio tenga contenido de ejemplo. */
-export function AvisoEjemplo() {
-  if (!site.contenidoDeEjemplo) return null;
-  return (
-    <div className="bg-foreground text-crema">
-      <p className="cuerpo-chico mx-auto w-full max-w-6xl px-6 py-2">
-        Sitio en construcción. Las obras y algunos textos son de ejemplo hasta cargar el contenido real.
-      </p>
-    </div>
-  );
-}
+import type { Foto, Obra } from "@/lib/datos";
 
 export function EtiquetaEjemplo() {
   return (
@@ -26,18 +13,31 @@ export function EtiquetaEjemplo() {
 }
 
 /**
- * Espacio reservado para fotos de obra. Las fotos van siempre a escuadra
- * (radius-none) y el sello nunca va encima del mueble.
+ * Foto de obra a escuadra (radius-none). Si todavía no hay foto,
+ * muestra un espacio reservado con un dibujo de línea.
  */
-export function FotoPendiente({
+export function FotoObra({
+  foto,
   etiqueta = "Foto de obra pendiente",
   proporcion = "aspect-[4/3]",
+  sizes = "(min-width: 1024px) 33vw, 100vw",
+  prioridad = false,
   className = "",
 }: {
+  foto?: Foto | null;
   etiqueta?: string;
   proporcion?: string;
+  sizes?: string;
+  prioridad?: boolean;
   className?: string;
 }) {
+  if (foto) {
+    return (
+      <div className={`relative ${proporcion} w-full overflow-hidden bg-marfil ${className}`}>
+        <Image src={foto.url} alt={foto.alt} fill sizes={sizes} priority={prioridad} className="object-cover" />
+      </div>
+    );
+  }
   return (
     <div
       role="img"
@@ -78,11 +78,10 @@ export function Encabezado({
 }
 
 export function ObraCard({ obra }: { obra: Obra }) {
-  const servicio = getServicio(obra.tipo);
   return (
     <Link href={`/obras/${obra.slug}`} className="group flex flex-col gap-3">
       <div className="relative">
-        <FotoPendiente etiqueta={servicio?.nombre ?? "Obra"} />
+        <FotoObra foto={obra.fotos[0]} etiqueta={obra.tipoNombre || "Obra"} />
         {obra.ejemplo && (
           <span className="absolute right-3 top-3">
             <EtiquetaEjemplo />

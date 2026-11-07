@@ -2,32 +2,29 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { buttonVariants } from "@heroui/react";
-import { CtaCotizar, FotoPendiente, ObraCard } from "@/components/ui";
-import { obrasPorTipo, type Obra } from "@/content/obras";
-import { getServicio, servicios } from "@/content/servicios";
-import { site, whatsappUrl } from "@/lib/site";
+import { CtaCotizar, FotoObra, ObraCard } from "@/components/ui";
+import { getObras, getServicio, getServicios, getSitio } from "@/lib/datos";
+import { whatsappUrl } from "@/lib/site";
 
-export function generateStaticParams() {
-  return servicios.map((s) => ({ slug: s.slug }));
+export async function generateStaticParams() {
+  const servicios = await getServicios();
+  return servicios.length > 0 ? servicios.map((s) => ({ slug: s.slug })) : [{ slug: "_" }];
 }
 
 export async function generateMetadata(props: PageProps<"/servicios/[slug]">): Promise<Metadata> {
   const { slug } = await props.params;
-  const s = getServicio(slug);
+  const s = await getServicio(slug);
   if (!s) return {};
-  return {
-    title: `${s.nombre} a medida en ${site.direccion.localidad}`,
-    description: `${s.resumen} ${s.intro}`,
-  };
+  return { title: `${s.nombre} a medida en Caseros`, description: `${s.resumen} ${s.intro}` };
 }
 
 export default async function ServicioPage(props: PageProps<"/servicios/[slug]">) {
   const { slug } = await props.params;
-  const s = getServicio(slug);
+  const [s, obras, sitio] = await Promise.all([getServicio(slug), getObras(), getSitio()]);
   if (!s) notFound();
 
-  const obrasDelTipo = obrasPorTipo(s.slug as Obra["tipo"]);
-  const wa = whatsappUrl(`Hola, quiero consultar por ${s.nombre.toLowerCase()} a medida.`);
+  const obrasDelTipo = obras.filter((o) => o.tipo === s.slug);
+  const wa = whatsappUrl(sitio.whatsapp, `Hola, quiero consultar por ${s.nombre.toLowerCase()} a medida.`);
 
   return (
     <>
@@ -47,21 +44,23 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
             )}
           </div>
         </div>
-        <FotoPendiente etiqueta={`Foto de ${s.nombre.toLowerCase()}`} proporcion="aspect-[5/4]" />
+        <FotoObra foto={s.imagen} etiqueta={`Foto de ${s.nombre.toLowerCase()}`} proporcion="aspect-[5/4]" prioridad sizes="(min-width: 1024px) 50vw, 100vw" />
       </section>
 
       <section className="bg-marfil">
         <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 py-16 sm:grid-cols-2">
-          <div>
-            <h2 className="titulo mb-6">Qué resolvemos</h2>
-            <ul className="flex flex-col divide-y divide-border border-y border-border">
-              {s.queResolvemos.map((item) => (
-                <li key={item} className="py-3">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+          {s.queResolvemos.length > 0 && (
+            <div>
+              <h2 className="titulo mb-6">Qué resolvemos</h2>
+              <ul className="flex flex-col divide-y divide-border border-y border-border">
+                {s.queResolvemos.map((item) => (
+                  <li key={item} className="py-3">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           <div>
             <h2 className="titulo mb-6">Materiales</h2>
             <ul className="flex flex-wrap gap-2">

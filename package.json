@@ -3,21 +3,35 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "build": "cross-env NODE_OPTIONS=--no-deprecation npm run payload -- migrate && npm run seed && cross-env NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" next build",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "lint": "eslint",
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "seed": "cross-env NODE_OPTIONS=--no-deprecation payload run src/payload/seed.ts",
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types"
   },
   "dependencies": {
     "@fontsource-variable/instrument-sans": "^5.3.0",
     "@fontsource/cinzel": "^5.3.0",
     "@heroui/react": "^3.2.7",
     "@heroui/styles": "^3.2.7",
+    "@payloadcms/db-postgres": "^3.93.0",
+    "@payloadcms/next": "^3.93.0",
+    "@payloadcms/plugin-cloud-storage": "^3.93.0",
+    "@payloadcms/richtext-lexical": "^3.93.0",
+    "@payloadcms/translations": "^3.93.0",
+    "@payloadcms/ui": "^3.93.0",
     "@vercel/blob": "^2.8.2",
+    "cross-env": "^10.1.0",
+    "graphql": "^16.15.0",
     "next": "16.4.5",
+    "payload": "^3.93.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "server-only": "^0.0.1",
+    "sharp": "^0.35.5",
     "tailwind-variants": "^4.0.1"
   },
   "devDependencies": {
@@ -29,5 +43,6 @@
     "eslint-config-next": "16.4.5",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "type": "module"
 }

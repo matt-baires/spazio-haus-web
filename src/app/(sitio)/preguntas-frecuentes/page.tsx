@@ -1,24 +1,25 @@
 import type { Metadata } from "next";
 import { Accordion } from "@heroui/react";
 import { CtaCotizar, Encabezado } from "@/components/ui";
-import { faq } from "@/content/faq";
+import { getPreguntas } from "@/lib/datos";
 
 export const metadata: Metadata = {
   title: "Preguntas frecuentes",
   description: "Presupuestos, medidas, plazos y materiales de los muebles a medida de Spazio Haus.",
 };
 
-const faqLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faq.map((f) => ({
-    "@type": "Question",
-    name: f.pregunta,
-    acceptedAnswer: { "@type": "Answer", text: f.respuesta },
-  })),
-};
+export default async function FaqPage() {
+  const faq = await getPreguntas();
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({
+      "@type": "Question",
+      name: f.pregunta,
+      acceptedAnswer: { "@type": "Answer", text: f.respuesta },
+    })),
+  };
 
-export default function FaqPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />

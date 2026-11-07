@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { buttonVariants } from "@heroui/react";
-import { Encabezado, FotoPendiente } from "@/components/ui";
+import { Encabezado, FotoObra } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Profesionales",
@@ -22,7 +22,7 @@ export default function ProfesionalesPage() {
         <Encabezado etiqueta="Para arquitectos e interioristas" titulo="Tu diseño, fabricado en nuestro taller">
           <p>Trabajamos con estudios y profesionales independientes que necesitan un taller confiable.</p>
         </Encabezado>
-        <FotoPendiente etiqueta="Foto de obra para profesionales" proporcion="aspect-[4/3]" />
+        <FotoObra etiqueta="Foto de obra para profesionales" proporcion="aspect-[4/3]" />
       </section>
 
       <section className="bg-marfil">

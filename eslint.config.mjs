@@ -7,6 +7,9 @@ const eslintConfig = defineConfig([
   ...nextTs,
   // Override default ignores of eslint-config-next.
   globalIgnores([
+    "src/migrations/**",
+    "src/payload-types.ts",
+    "src/app/(payload)/**",
     // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",

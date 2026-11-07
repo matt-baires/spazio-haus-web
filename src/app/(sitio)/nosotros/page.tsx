@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { CtaCotizar, Encabezado, FotoPendiente } from "@/components/ui";
+import { CtaCotizar, Encabezado, FotoObra } from "@/components/ui";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Nosotros",
-  description: `${site.descriptor} con taller propio en ${site.direccion.localidad} desde ${site.desde}.`,
+  description: `${site.descriptor} con taller propio en Caseros desde ${site.desde}.`,
 };
 
 const pilares = [
@@ -35,7 +35,7 @@ export default function NosotrosPage() {
             quieren un mueble pensado al milímetro y no uno de catálogo.
           </p>
         </Encabezado>
-        <FotoPendiente etiqueta="Foto del taller" proporcion="aspect-[4/3]" />
+        <FotoObra etiqueta="Foto del taller" proporcion="aspect-[4/3]" />
       </section>
 
       <section className="bg-marfil">
@@ -77,7 +77,7 @@ export default function NosotrosPage() {
             </li>
           </ol>
         </div>
-        <FotoPendiente etiqueta="Foto de detalle: cantos y herrajes" proporcion="aspect-[4/3]" />
+        <FotoObra etiqueta="Foto de detalle: cantos y herrajes" proporcion="aspect-[4/3]" />
       </section>
 
       <CtaCotizar />

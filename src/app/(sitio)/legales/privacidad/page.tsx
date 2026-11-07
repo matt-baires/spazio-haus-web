@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Encabezado } from "@/components/ui";
-import { direccionCompleta, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "Política de privacidad", robots: { index: false } };
 
@@ -26,7 +26,7 @@ export default function PrivacidadPage() {
           <h2 className="text-lg font-semibold">Tus derechos</h2>
           <p>
             Podés pedir acceso, rectificación o eliminación de tus datos en cualquier momento, escribiéndonos o en nuestro
-            taller de {direccionCompleta}, según la Ley 25.326 de Protección de Datos Personales.
+            taller de Caseros, según la Ley 25.326 de Protección de Datos Personales.
           </p>
         </section>
       </div>

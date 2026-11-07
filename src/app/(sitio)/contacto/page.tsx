@@ -2,19 +2,20 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { buttonVariants } from "@heroui/react";
 import { Encabezado } from "@/components/ui";
-import { direccionCompleta, mapsUrl, site, whatsappUrl } from "@/lib/site";
+import { getSitio } from "@/lib/datos";
+import { direccionTexto, mapsUrl, whatsappUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contacto",
-  description: `Taller en ${direccionCompleta}. Cotizá tu proyecto o escribinos.`,
+  description: "Taller en Caseros, Buenos Aires. Cotizá tu proyecto o escribinos.",
 };
 
-const mapaEmbed = `https://www.google.com/maps?q=${encodeURIComponent(
-  `${site.direccion.calle}, ${site.direccion.localidad}, ${site.direccion.provincia}, Argentina`,
-)}&output=embed`;
+export default async function ContactoPage() {
+  const s = await getSitio();
+  const wa = whatsappUrl(s.whatsapp, "Hola, quiero hacer una consulta.");
+  const direccion = direccionTexto(s.direccion);
+  const mapaEmbed = `https://www.google.com/maps?q=${encodeURIComponent(`${direccion}, Argentina`)}&output=embed`;
 
-export default function ContactoPage() {
-  const wa = whatsappUrl("Hola, quiero hacer una consulta.");
   return (
     <section className="mx-auto grid w-full max-w-6xl gap-12 px-6 pb-20 pt-14 sm:pt-20 lg:grid-cols-2">
       <div className="flex flex-col gap-8">
@@ -34,22 +35,22 @@ export default function ContactoPage() {
         <dl className="grid grid-cols-[auto_1fr] gap-x-8 gap-y-4 border-t border-border pt-6">
           <dt className="etiqueta pt-1 text-muted">Taller</dt>
           <dd>
-            <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
-              {direccionCompleta}
+            <a href={mapsUrl(s.direccion)} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
+              {direccion}
             </a>
           </dd>
           <dt className="etiqueta pt-1 text-muted">Instagram</dt>
           <dd>
-            <a href={site.instagram.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
-              {site.instagram.usuario}
+            <a href={s.instagram.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">
+              {s.instagram.usuario}
             </a>
           </dd>
-          {site.email && (
+          {s.email && (
             <>
               <dt className="etiqueta pt-1 text-muted">Email</dt>
               <dd>
-                <a href={`mailto:${site.email}`} className="underline underline-offset-4">
-                  {site.email}
+                <a href={`mailto:${s.email}`} className="underline underline-offset-4">
+                  {s.email}
                 </a>
               </dd>
             </>
@@ -57,7 +58,7 @@ export default function ContactoPage() {
         </dl>
       </div>
       <iframe
-        title={`Mapa: ${direccionCompleta}`}
+        title={`Mapa: ${direccion}`}
         src={mapaEmbed}
         className="aspect-[4/3] w-full border border-border"
         loading="lazy"

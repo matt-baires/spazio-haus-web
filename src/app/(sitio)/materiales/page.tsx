@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { CtaCotizar, Encabezado, EtiquetaEjemplo } from "@/components/ui";
-import { materiales, muestrarioEsEjemplo, type Muestra } from "@/content/materiales";
+import { getMateriales, type Muestra } from "@/lib/datos";
 
 export const metadata: Metadata = {
   title: "Materiales",
@@ -14,25 +15,34 @@ function Swatch({ muestra }: { muestra: Muestra }) {
       : undefined;
   return (
     <li className="flex flex-col gap-2">
-      <div
-        role="img"
-        aria-label={`Muestra de ${muestra.nombre}`}
-        className="aspect-square w-full border border-border"
-        style={{ backgroundColor: muestra.color, backgroundImage: veta }}
-      />
+      {muestra.foto ? (
+        <div className="relative aspect-square w-full overflow-hidden border border-border">
+          <Image src={muestra.foto.url} alt={muestra.foto.alt || muestra.nombre} fill sizes="(min-width: 640px) 20vw, 45vw" className="object-cover" />
+        </div>
+      ) : (
+        <div
+          role="img"
+          aria-label={`Muestra de ${muestra.nombre}`}
+          className="aspect-square w-full border border-border"
+          style={{ backgroundColor: muestra.color, backgroundImage: veta }}
+        />
+      )}
       <span className="cuerpo-chico">{muestra.nombre}</span>
     </li>
   );
 }
 
-export default function MaterialesPage() {
+export default async function MaterialesPage() {
+  const materiales = await getMateriales();
+  const hayEjemplos = materiales.some((g) => g.ejemplo);
+
   return (
     <>
       <section className="mx-auto w-full max-w-6xl px-6 pb-10 pt-14 sm:pt-20">
         <Encabezado etiqueta="Muestrario" titulo="Materiales y colores">
           <p>Melaminas y laqueados disponibles. Te ayudamos a combinarlos con tu espacio.</p>
         </Encabezado>
-        {muestrarioEsEjemplo && (
+        {hayEjemplos && (
           <p className="cuerpo-chico mt-6 flex items-center gap-2 text-muted">
             <EtiquetaEjemplo /> Colores de referencia. En el taller te mostramos las muestras reales.
           </p>
@@ -40,7 +50,7 @@ export default function MaterialesPage() {
       </section>
 
       {materiales.map((grupo, i) => (
-        <section key={grupo.id} id={grupo.id} className={i % 2 === 0 ? "bg-marfil" : ""}>
+        <section key={grupo.slug} id={grupo.slug} className={i % 2 === 0 ? "bg-marfil" : ""}>
           <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1fr_2fr]">
             <div className="flex flex-col gap-3">
               <span className="h-px w-10 bg-dorado" aria-hidden="true" />
