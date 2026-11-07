@@ -71,6 +71,9 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
                 </li>
               ))}
             </ul>
+            <Link href="/materiales" className="cuerpo-chico mt-5 inline-block underline underline-offset-4">
+              Ver el muestrario de materiales y colores
+            </Link>
           </div>
         </div>
       </section>

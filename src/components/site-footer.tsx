@@ -18,6 +18,9 @@ export function SiteFooter() {
               {item.label}
             </Link>
           ))}
+          <Link href="/materiales" className="cuerpo-chico text-muted hover:text-foreground">
+            Materiales
+          </Link>
           <Link href="/blog" className="cuerpo-chico text-muted hover:text-foreground">
             Blog
           </Link>

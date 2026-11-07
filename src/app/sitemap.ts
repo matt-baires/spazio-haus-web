@@ -5,7 +5,7 @@ import { servicios } from "@/content/servicios";
 import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const fijas = ["", "/obras", "/servicios", "/nosotros", "/profesionales", "/preguntas-frecuentes", "/contacto", "/cotizar", "/blog"];
+  const fijas = ["", "/obras", "/servicios", "/nosotros", "/profesionales", "/preguntas-frecuentes", "/contacto", "/cotizar", "/materiales", "/blog"];
   return [
     ...fijas.map((p) => ({ url: `${site.url}${p}` })),
     ...servicios.map((s) => ({ url: `${site.url}/servicios/${s.slug}` })),
