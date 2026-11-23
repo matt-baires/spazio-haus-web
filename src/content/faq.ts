@@ -31,6 +31,6 @@ export const faq = [
   {
     pregunta: "¿Trabajan con arquitectos e interioristas?",
     respuesta:
-      "Sí. Si tenés un proyecto con planos, pedí tu cotización eligiendo "Arquitecto o interiorista" y te respondemos con un presupuesto técnico.",
+      "Sí. Si tenés un proyecto con planos, pedí tu cotización eligiendo “Arquitecto o interiorista” y te respondemos con un presupuesto técnico.",
   },
 ];
