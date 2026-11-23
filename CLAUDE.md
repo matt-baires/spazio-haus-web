@@ -7,6 +7,7 @@ Sitio de **Spazio Haus**, estudio de mobiliario a medida con taller propio en Ca
 - Producción: https://spazio-haus-web.vercel.app (panel en `/admin`)
 - Repo: `matt-baires/spazio-haus-web`, rama `main`. Cada push a `main` despliega en Vercel (proyecto `spazio-haus-web`, equipo *matt-baires' projects*).
 - Stack, estructura, scripts y variables de entorno: ver [README.md](README.md). No duplicar esa información acá.
+- **PRD del sitio:** [PRD — Sitio e-commerce Spazio Haus](https://claude.ai/artifact/NaxmuFHpmVyfiHAafmaSKC). Define módulos (obras y servicios, cotización, tienda online, CMS), integraciones, métricas y el roadmap por fases (MVP, Fase 2, Fase 3). Consultarlo antes de sumar funcionalidades.
 
 ## Cómo trabajar en este repo
 
