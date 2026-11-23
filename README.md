@@ -69,6 +69,8 @@ npm run dev
 | `SPAZIOH_DATABASE_URL` (y demás `SPAZIOH_*`) | Conexión a Neon, creadas por la integración |
 | `PAYLOAD_SECRET` | Clave de Payload para firmar sesiones |
 | `BLOB_READ_WRITE_TOKEN` | Store privado `spazio-haus-consultas` (imágenes y adjuntos) |
+| `RESEND_API_KEY` | Envío de emails del panel (recuperar contraseña) con [Resend](https://resend.com). Sin ella, los emails solo se escriben en los logs |
+| `EMAIL_FROM` | Opcional. Remitente, con dominio verificado en Resend. Por defecto `onboarding@resend.dev`, que solo entrega al email de la cuenta de Resend |
 
 ## Pendiente
 
