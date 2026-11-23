@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { buttonVariants } from "@heroui/react";
 import { LogoHorizontal } from "@/components/logo-horizontal";
-import { navegacion } from "@/lib/site";
+import { navegacionHeader } from "@/lib/site";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -21,7 +21,7 @@ export function SiteHeader() {
         </Link>
 
         <nav aria-label="Principal" className="hidden items-center gap-6 lg:flex">
-          {navegacion.map((item) => (
+          {navegacionHeader.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -56,7 +56,7 @@ export function SiteHeader() {
       {abierto && (
         <nav id="menu-movil" aria-label="Principal" className="border-t border-border lg:hidden">
           <ul className="mx-auto flex w-full max-w-6xl flex-col px-6 py-4">
-            {navegacion.map((item) => (
+            {navegacionHeader.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}

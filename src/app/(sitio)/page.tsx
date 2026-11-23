@@ -92,19 +92,9 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 sm:py-24 lg:grid-cols-2">
-        <div className="flex flex-col items-start gap-4">
-          <p className="etiqueta text-muted">Para profesionales</p>
-          <h2 className="titulo">Arquitectos e interioristas</h2>
-          <p className="text-muted">
-            Fabricamos tu diseño respetando el plano, los materiales y los plazos. Un solo interlocutor de punta a punta.
-          </p>
-          <Link href="/profesionales" className={buttonVariants({ variant: "outline" })}>
-            Trabajemos juntos
-          </Link>
-        </div>
-        {faqHome.length > 0 && (
-          <div className="flex flex-col gap-5">
+      {faqHome.length > 0 && (
+        <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
+          <div className="flex max-w-3xl flex-col gap-5">
             <h2 className="titulo">Preguntas frecuentes</h2>
             <dl className="flex flex-col divide-y divide-border border-y border-border">
               {faqHome.map((f) => (
@@ -118,8 +108,8 @@ export default async function Home() {
               Más preguntas
             </Link>
           </div>
-        )}
-      </section>
+        </section>
+      )}
 
       <CtaCotizar />
     </>

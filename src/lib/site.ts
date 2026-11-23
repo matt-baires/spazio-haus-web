@@ -28,7 +28,9 @@ export const navegacion = [
   { href: "/obras", label: "Obras" },
   { href: "/servicios", label: "Servicios" },
   { href: "/nosotros", label: "Nosotros" },
-  { href: "/profesionales", label: "Profesionales" },
   { href: "/preguntas-frecuentes", label: "Preguntas" },
   { href: "/contacto", label: "Contacto" },
 ] as const;
+
+/** Links del menú superior: los del footer sin las preguntas frecuentes. */
+export const navegacionHeader = navegacion.filter((item) => item.href !== "/preguntas-frecuentes");
