@@ -9,7 +9,7 @@ export const site = {
   tagline: "Diseño a medida, hecho en taller.",
   desde: 2018,
   /** PENDIENTE: dominio definitivo. */
-  url: "https://spazio-haus-web.vercel.app",
+  url: "https://spaziohaus.vercel.app",
 } as const;
 
 export type Direccion = { calle: string; localidad: string; provincia: string };

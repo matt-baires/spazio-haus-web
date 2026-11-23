@@ -4,7 +4,7 @@
 
 Sitio de **Spazio Haus**, estudio de mobiliario a medida con taller propio en Caseros, Buenos Aires (desde 2018). Hace cocinas, racks, vanitorys, respaldos y muebles a medida. El sitio muestra obras, servicios y materiales, y recibe pedidos de cotización.
 
-- Producción: https://spazio-haus-web.vercel.app (panel en `/admin`)
+- Producción: https://spaziohaus.vercel.app (panel en `/admin`)
 - Repo: `matt-baires/spazio-haus-web`, rama `main`. Cada push a `main` despliega en Vercel (proyecto `spazio-haus-web`, equipo *matt-baires' projects*).
 - Stack, estructura, scripts y variables de entorno: ver [README.md](README.md). No duplicar esa información acá.
 - **PRD del sitio:** [PRD — Sitio e-commerce Spazio Haus](https://claude.ai/artifact/NaxmuFHpmVyfiHAafmaSKC). Define módulos (obras y servicios, cotización, tienda online, CMS), integraciones, métricas y el roadmap por fases (MVP, Fase 2, Fase 3). Consultarlo antes de sumar funcionalidades.

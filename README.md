@@ -2,8 +2,8 @@
 
 Sitio de Spazio Haus, estudio de mobiliario a medida con taller propio en Caseros. Desarrollo propio, desplegado en Vercel.
 
-- **Sitio:** https://spazio-haus-web.vercel.app
-- **Panel de contenidos:** https://spazio-haus-web.vercel.app/admin
+- **Sitio:** https://spaziohaus.vercel.app
+- **Panel de contenidos:** https://spaziohaus.vercel.app/admin
 
 ## Stack
 
