@@ -130,7 +130,7 @@ export function CtaCotizar({
   href?: string;
 }) {
   return (
-    <section className="bg-carbon text-hueso">
+    <section data-menu="oscuro" className="bg-carbon text-hueso">
       <div data-revelar className="mx-auto flex w-full max-w-6xl flex-col items-start gap-5 px-6 py-16 sm:py-20">
         <span className="filete-crece h-px w-10 bg-dorado" aria-hidden="true" />
         <h2 className="titulo">

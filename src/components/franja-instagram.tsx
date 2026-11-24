@@ -20,6 +20,7 @@ export function FranjaInstagram({ usuario, url }: { usuario: string; url: string
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Seguinos en Instagram: ${usuario}`}
+      data-menu="oscuro"
       className="group block overflow-hidden bg-foreground py-3 text-hueso/80"
     >
       <span className="marquesina-pista marquesina-rapida etiqueta flex w-max" aria-hidden="true">

@@ -103,7 +103,7 @@ export default async function Home() {
 
       <MarquesinaTexto />
 
-      <section className="bg-carbon text-hueso">
+      <section data-menu="oscuro" className="bg-carbon text-hueso">
         <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
           <h2 data-revelar className="titulo mb-10">
             <Dividir texto="Cómo trabajamos" />
