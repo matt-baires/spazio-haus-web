@@ -123,7 +123,7 @@ export default async function Home() {
 
           <div className="relative pb-14 pt-14 sm:pb-20 sm:pt-20">
             <h2 id="madera-maciza" className="sr-only">
-              Muebles de madera maciza
+              Madera maciza
             </h2>
             <TextoGigante texto="Madera maciza" />
 

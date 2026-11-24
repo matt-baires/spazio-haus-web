@@ -85,7 +85,7 @@ export const servicios: Servicio[] = [
   },
   {
     slug: "muebles-de-madera",
-    nombre: "Muebles de madera",
+    nombre: "Madera maciza",
     resumen: "Mesas, sillas y sillones que completan tu proyecto.",
     intro:
       "Una línea de piezas de madera para sumar a tus muebles a medida: mesas de comedor, sillas, sillones individuales y mesas bajas. Las diseñamos con las mismas maderas y terminaciones del resto del proyecto, para que todo el ambiente hable el mismo idioma.",

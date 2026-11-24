@@ -92,6 +92,18 @@ async function main() {
       idPorSlug.set(s.slug, doc.id);
       console.log(`[seed] servicio nuevo: ${s.nombre}`);
     }
+    // Nombres cambiados después de la carga inicial. Solo se actualizan si siguen con el nombre
+    // viejo, para no pisar un cambio hecho a mano en el panel.
+    const renombrados = [{ slug: "muebles-de-madera", de: "Muebles de madera", a: "Madera maciza" }];
+    for (const r of renombrados) {
+      const doc = (await payload.find({ collection: "servicios", where: { slug: { equals: r.slug } }, limit: 1, depth: 0, overrideAccess: true })).docs[0] as
+        | { id: number; nombre: string }
+        | undefined;
+      if (doc && doc.nombre === r.de) {
+        await payload.update({ collection: "servicios", id: doc.id, context, overrideAccess: true, data: { nombre: r.a } });
+        console.log(`[seed] servicio renombrado: ${r.de} → ${r.a}`);
+      }
+    }
   }
 
   // Obras de ejemplo (publicadas)
