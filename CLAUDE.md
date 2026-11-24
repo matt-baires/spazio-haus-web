@@ -72,7 +72,7 @@ Paleta acromática: blancos y gama de negros (decisión del cliente del 24/11/20
 
 ## Pendiente
 
-- Cargar en el panel WhatsApp, email y obras reales con fotos; después destildar "contenido de ejemplo".
+- Cargar en el panel email y obras reales con fotos, y borrar las obras marcadas como ejemplo. (El aviso de "sitio en construcción" se quitó el 24/11/2026.)
 - Dominio propio (`src/lib/site.ts → url`).
 - Emails automáticos por cada consulta (requiere proveedor de email).
 - Sello original en alta resolución/vectorial (hoy mide 150 px) y confirmar la tipografía real del sello (Cinzel es una aproximación).

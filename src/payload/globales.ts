@@ -60,7 +60,9 @@ export const Sitio: GlobalConfig = {
       label: "Mostrar el aviso de contenido de ejemplo",
       type: "checkbox",
       defaultValue: true,
-      admin: { description: "Destildalo cuando todo el contenido sea real." },
+      // El aviso se quitó del sitio a pedido del dueño (24/11/2026). El campo queda oculto
+      // en el panel para no tener que migrar la base.
+      admin: { hidden: true },
     },
   ],
 };
