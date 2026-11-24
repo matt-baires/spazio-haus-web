@@ -40,7 +40,7 @@ export default async function Home() {
 
       {/* Qué hacemos al estilo de la sección "Full spectrum lighting" de AYOCIN: foto de fondo con
           parallax, texto gigante en movimiento entre filetes y una fila por servicio, en blanco. */}
-      <section data-menu="oscuro" aria-labelledby="que-hacemos" className="relative overflow-hidden text-hueso">
+      <section data-menu="oscuro" aria-labelledby="que-hacemos" className="cortina overflow-hidden text-hueso">
         <div data-paralaje className="absolute inset-x-0 -top-[9%] h-[118%] will-change-transform" aria-hidden="true">
           <Image src={fotosEjemplo.muestrasMadera.url} alt="" fill sizes="100vw" className="object-cover" />
         </div>
@@ -80,7 +80,8 @@ export default async function Home() {
       </section>
 
       {destacadas.length > 0 && (
-        <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
+        <section className="cortina bg-background">
+          <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
           <div data-revelar className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <h2 className="titulo">
               <Dividir texto="Obras" />
@@ -94,13 +95,14 @@ export default async function Home() {
               <ObraCard key={o.slug} obra={o} orden={i} />
             ))}
           </div>
+          </div>
         </section>
       )}
 
       {piezas.length > 0 && (
         /* Al estilo de "Health Station" de AYOCIN: foto de fondo, texto gigante en movimiento
            y una tarjeta flotante con el carrusel de piezas de madera maciza. */
-        <section data-menu="oscuro" aria-labelledby="madera-maciza" className="relative overflow-hidden text-hueso">
+        <section data-menu="oscuro" aria-labelledby="madera-maciza" className="cortina overflow-hidden text-hueso">
           <div data-paralaje className="absolute inset-x-0 -top-[9%] h-[118%] will-change-transform" aria-hidden="true">
             <Image src={fotosEjemplo.maderaMesaTablones.url} alt="" fill sizes="100vw" className="object-cover" />
           </div>
@@ -119,7 +121,7 @@ export default async function Home() {
         </section>
       )}
 
-      <section data-menu="oscuro" aria-labelledby="como-trabajamos" className="bg-carbon py-20 text-hueso sm:py-28">
+      <section data-menu="oscuro" aria-labelledby="como-trabajamos" className="cortina bg-carbon py-20 text-hueso sm:py-28">
         <div className="mx-auto mb-14 grid w-full max-w-6xl gap-6 px-6 sm:mb-20 md:grid-cols-12 md:gap-x-6">
           <div className="flex flex-col gap-4 md:col-span-7">
             <span className="etiqueta text-hueso/50">Cómo trabajamos</span>

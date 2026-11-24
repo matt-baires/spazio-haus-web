@@ -49,7 +49,7 @@ export function PortadaRotativa({
       aria-label="Obras destacadas"
       onMouseEnter={() => setPausa(true)}
       onMouseLeave={() => setPausa(false)}
-      className="relative -mt-20 flex min-h-[640px] flex-col justify-end overflow-hidden text-hueso h-[100svh]"
+      className="cortina -mt-20 flex min-h-[640px] flex-col justify-end overflow-hidden text-hueso h-[100svh]"
     >
       {diapositivas.map((s, i) => (
         <div
