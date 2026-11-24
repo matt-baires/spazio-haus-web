@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Card, buttonVariants } from "@heroui/react";
 import { CtaCotizar, FotoObra, ObraCard } from "@/components/ui";
+import { MarcasHerrajes } from "@/components/marcas-herrajes";
 import { fotosEjemplo } from "@/lib/fotos-ejemplo";
 import { getObras, getPreguntas, getServicios } from "@/lib/datos";
 import { site } from "@/lib/site";
@@ -92,6 +93,8 @@ export default async function Home() {
           </ol>
         </div>
       </section>
+
+      <MarcasHerrajes />
 
       {faqHome.length > 0 && (
         <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
