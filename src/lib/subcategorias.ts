@@ -10,7 +10,7 @@ export const subcategorias: Record<string, Subcategoria[]> = {
   cocinas: [
     { slug: "con-isla", nombre: "Con isla", palabras: ["isla", "barra"] },
     { slug: "en-madera", nombre: "En madera", palabras: ["madera", "varillas", "roble", "nogal"] },
-    { slug: "de-color", nombre: "De color", palabras: ["negra", "blanca", "laqueada", "verde", "color"] },
+    { slug: "de-color", nombre: "De color", palabras: ["negra", "blanca", "laqueada", "verde", "salvia", "oliva", "azul", "terracota", "ciruela", "arena", "vison", "marfil", "crema", "color"] },
   ],
   racks: [
     { slug: "flotantes", nombre: "Flotantes", palabras: ["flotante", "suspendido"] },
@@ -20,16 +20,17 @@ export const subcategorias: Record<string, Subcategoria[]> = {
   vanitorys: [
     { slug: "suspendidos", nombre: "Suspendidos", palabras: ["suspendido", "flotante"] },
     { slug: "doble-bacha", nombre: "Doble bacha", palabras: ["doble"] },
-    { slug: "de-color", nombre: "De color", palabras: ["verde", "negro", "laqueado", "color"] },
+    { slug: "de-color", nombre: "De color", palabras: ["negro", "laqueado", "verde", "salvia", "oliva", "azul", "terracota", "ciruela", "arena", "vison", "marfil", "crema", "color"] },
   ],
   respaldos: [
     { slug: "con-mesas-de-luz", nombre: "Con mesas de luz", palabras: ["mesas de luz", "mesa de luz"] },
     { slug: "de-listones", nombre: "De listones", palabras: ["listones"] },
-    { slug: "paneles", nombre: "Paneles de pared", palabras: ["panel", "pared"] },
+    { slug: "tapizados", nombre: "Tapizados", palabras: ["capitone", "tapizado", "curvo"] },
+    { slug: "paneles", nombre: "Paneles de pared", palabras: ["panel", "esterilla"] },
   ],
   vestidores: [
     { slug: "con-isla", nombre: "Con isla", palabras: ["isla"] },
-    { slug: "con-puertas", nombre: "Con puertas", palabras: ["puertas", "vidrio"] },
+    { slug: "con-puertas", nombre: "Con puertas", palabras: ["puertas", "vidrio", "corredizas"] },
     { slug: "abiertos", nombre: "Abiertos", palabras: ["en u", "abierto", "luz"] },
   ],
   "muebles-a-medida": [
