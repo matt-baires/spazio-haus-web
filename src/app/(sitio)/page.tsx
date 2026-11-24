@@ -26,13 +26,13 @@ export default async function Home() {
       : [
           { foto: fotosEjemplo.cocinaMaderaLed, etiqueta: "Cocinas", titulo: "Cocina en madera con barra y luz integrada", href: "/servicios/cocinas" },
           { foto: fotosEjemplo.vestidorIslaVentana, etiqueta: "Vestidores", titulo: "Vestidor con isla junto a la ventana", href: "/servicios/vestidores" },
-          { foto: fotosEjemplo.obraVanitoryMaderaBanera, etiqueta: "Vanitorys", titulo: "Vanitory de madera con doble bacha", href: "/servicios/vanitorys" },
+          { foto: fotosEjemplo.curvoRobleLuz, etiqueta: "Muebles a medida", titulo: "Roble con esquinas curvas y luz en los estantes", href: "/servicios/muebles-a-medida" },
           { foto: fotosEjemplo.obraRespaldoListones, etiqueta: "Respaldos", titulo: "Respaldo de listones de madera maciza", href: "/servicios/respaldos" },
-          { foto: fotosEjemplo.obraPlacardMadera, etiqueta: "Muebles a medida", titulo: "Placard de madera con espejos", href: "/servicios/muebles-a-medida" },
+          { foto: fotosEjemplo.curvoAparadorVarillas, etiqueta: "Racks", titulo: "Aparador de varillas con laterales redondeados", href: "/servicios/racks", posicion: "50% 70%" },
           { foto: fotosEjemplo.obraCocinaNegra, etiqueta: "Cocinas", titulo: "Cocina negra con tiradores dorados", href: "/servicios/cocinas" },
-          { foto: fotosEjemplo.obraRackEstantesMadera, etiqueta: "Racks", titulo: "Rack bajo con estantes de madera", href: "/servicios/racks" },
-          { foto: fotosEjemplo.vestidorMaderaIsla, etiqueta: "Vestidores", titulo: "Vestidor de madera con isla", href: "/servicios/vestidores" },
-          { foto: fotosEjemplo.obraBiblioteca, etiqueta: "Muebles a medida", titulo: "Biblioteca de pared con cajones", href: "/servicios/muebles-a-medida" },
+          { foto: fotosEjemplo.curvoVanitoryAzul, etiqueta: "Vanitorys", titulo: "Vanitory azul de frente curvo", href: "/servicios/vanitorys", posicion: "50% 62%" },
+          { foto: fotosEjemplo.curvoNogal, etiqueta: "Muebles a medida", titulo: "Nogal oscuro con canto curvo", href: "/servicios/muebles-a-medida" },
+          { foto: fotosEjemplo.curvoRobleSol, etiqueta: "Madera maciza", titulo: "Lateral curvo de roble", href: "/servicios/muebles-de-madera", posicion: "50% 35%" },
           { foto: fotosEjemplo.maderaComedor, etiqueta: "Madera maciza", titulo: "Mesa de comedor de madera maciza", href: "/servicios/muebles-de-madera" },
         ];
 

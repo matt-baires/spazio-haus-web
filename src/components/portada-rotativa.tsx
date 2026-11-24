@@ -8,7 +8,8 @@ import { Dividir } from "@/components/dividir";
 import { Flecha, orden } from "@/components/flecha";
 import type { Foto } from "@/lib/datos";
 
-export type Diapositiva = { foto: Foto; etiqueta: string; titulo: string; href: string };
+/** `posicion`: encuadre vertical de la foto (object-position), útil para fotos verticales. */
+export type Diapositiva = { foto: Foto; etiqueta: string; titulo: string; href: string; posicion?: string };
 
 const DURACION = 5000;
 const RADIO = 17;
@@ -68,6 +69,7 @@ export function PortadaRotativa({
             fill
             sizes="100vw"
             priority={i === 0}
+            style={s.posicion ? { objectPosition: s.posicion } : undefined}
             className={`object-cover transition-transform duration-[6000ms] ease-out ${
               i === actual ? "scale-100" : "motion-safe:scale-110"
             }`}

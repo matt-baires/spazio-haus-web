@@ -55,3 +55,8 @@ Fotos de stock de [Unsplash](https://unsplash.com) bajo la [licencia de Unsplash
 | vestidor-vidrio.jpg | https://images.unsplash.com/photo-1738229115082-b5647ffb3503 |
 | vestidor-puertas-acanaladas.jpg | https://images.unsplash.com/photo-1662454419622-a41092ecd245 |
 | vestidor-estantes.jpg | https://images.unsplash.com/photo-1640357154220-9775b0f31dec |
+| curvo-roble-luz.jpg | https://images.unsplash.com/photo-1765371514615-495c20659e3a |
+| curvo-aparador-varillas.jpg | https://images.unsplash.com/photo-1767963758785-b9def36c13e3 |
+| curvo-vanitory-azul.jpg | https://images.unsplash.com/photo-1782805134528-9b4e58e20069 |
+| curvo-nogal.jpg | https://images.unsplash.com/photo-1684846416931-dddf8cbfc2ad |
+| curvo-roble-sol.jpg | https://images.unsplash.com/photo-1772442364436-6ee6e42302a2 |

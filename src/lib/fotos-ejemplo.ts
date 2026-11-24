@@ -65,6 +65,12 @@ export const fotosEjemplo = {
   vestidorVidrio: f("vestidor-vidrio", "Vestidor con puertas de vidrio y luz interior", 1800, 1013),
   vestidorPuertasAcanaladas: f("vestidor-puertas-acanaladas", "Vestidor con puertas de vidrio acanalado", 1800, 1277),
   vestidorEstantes: f("vestidor-estantes", "Vestidor con estantes, cajones y luz a lo largo", 1800, 1200),
+  // Muebles de terminación curva.
+  curvoRobleLuz: f("curvo-roble-luz", "Muebles de roble con esquinas curvas, estantes con luz y mesada de mármol", 1800, 1166),
+  curvoAparadorVarillas: f("curvo-aparador-varillas", "Aparador de varillas de roble con laterales redondeados", 1800, 2249),
+  curvoVanitoryAzul: f("curvo-vanitory-azul", "Vanitory azul de frente curvo con mesada de mármol", 1800, 2699),
+  curvoNogal: f("curvo-nogal", "Detalle de un mueble de nogal oscuro con canto curvo", 1800, 2700),
+  curvoRobleSol: f("curvo-roble-sol", "Lateral curvo de un mueble de roble con luz de tarde", 1800, 2700),
 } satisfies Record<string, Foto>;
 
 const porServicio: Record<string, Foto> = {
