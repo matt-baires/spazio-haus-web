@@ -28,10 +28,10 @@ export function CarruselPiezas({ piezas, href }: { piezas: Pieza[]; href: string
         if (e.key === "ArrowRight") ir(1);
         if (e.key === "ArrowLeft") ir(-1);
       }}
-      className="grid gap-4 rounded-lg bg-background p-3 text-foreground outline-none focus-visible:ring-2 focus-visible:ring-dorado sm:p-4 md:grid-cols-2 md:gap-8"
+      className="redondeado grid gap-4 bg-background p-3 text-foreground outline-none focus-visible:ring-2 focus-visible:ring-dorado sm:p-4 md:grid-cols-2 md:gap-8"
     >
       <div
-        className="relative aspect-[4/5] overflow-hidden rounded-md bg-niebla md:aspect-square"
+        className="redondeado relative isolate aspect-[4/5] overflow-hidden bg-niebla md:aspect-square"
         onTouchStart={(e) => (toque.current = e.touches[0].clientX)}
         onTouchEnd={(e) => {
           if (toque.current === null) return;

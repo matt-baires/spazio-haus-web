@@ -91,7 +91,7 @@ export function ProcesoHome({ pasos }: { pasos: Paso[] }) {
             style={orden(0)}
             className={`flex flex-col gap-6 transition-opacity duration-500 ${i === activo ? "md:opacity-100" : "md:opacity-40"}`}
           >
-            <div className="zoom-hover group relative aspect-[16/10] w-full overflow-hidden bg-carbon">
+            <div className="zoom-hover redondeado group relative isolate aspect-[16/10] w-full overflow-hidden bg-carbon">
               <Image src={p.foto.url} alt={p.foto.alt} fill sizes="(min-width: 768px) 55vw, 100vw" className="object-cover" />
             </div>
             <div className="grid gap-4 border-t border-hueso/20 pt-6 sm:grid-cols-[auto_1fr] sm:gap-x-8">

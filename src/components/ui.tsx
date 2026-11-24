@@ -40,7 +40,7 @@ export function FotoObra({
 }) {
   if (foto) {
     return (
-      <div className={`zoom-hover relative ${proporcion} w-full overflow-hidden bg-niebla ${className}`}>
+      <div className={`zoom-hover redondeado relative isolate ${proporcion} w-full overflow-hidden bg-niebla ${className}`}>
         {paralaje ? (
           <div data-paralaje className="absolute inset-x-0 -top-[9%] h-[118%] will-change-transform">
             <Image src={foto.url} alt={foto.alt} fill sizes={sizes} priority={prioridad} className="object-cover" />
@@ -55,7 +55,7 @@ export function FotoObra({
     <div
       role="img"
       aria-label={etiqueta}
-      className={`relative flex ${proporcion} w-full items-end overflow-hidden border border-border bg-niebla ${className}`}
+      className={`redondeado relative flex ${proporcion} w-full items-end overflow-hidden border border-border bg-niebla ${className}`}
     >
       <svg aria-hidden="true" viewBox="0 0 400 300" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice">
         <g fill="none" stroke="var(--sh-ceniza)" strokeWidth="1.5">

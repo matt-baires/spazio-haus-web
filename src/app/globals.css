@@ -45,7 +45,7 @@
   --surface-shadow: none;
   --field-shadow: none;
 
-  /* Radios: botones y campos 4 px, tarjetas 8 px, fotos a escuadra */
+  /* Radios: botones y campos 4 px; tarjetas y fotos 8 px (utilidad `redondeado`); fotos de fondo a borde, rectas */
   --radius: 0.25rem;
   --field-radius: 4px;
 }
@@ -124,6 +124,10 @@ body {
 @utility destacado {
   font-size: 22px;
   line-height: 30px;
+}
+/* Mismo redondeado para tarjetas y fotos en todo el sitio */
+@utility redondeado {
+  border-radius: 8px;
 }
 @utility cuerpo-chico {
   font-size: 14px;
@@ -224,10 +228,10 @@ body {
 }
 @keyframes entrar-foto {
   from {
-    clip-path: inset(100% 0 0 0);
+    clip-path: inset(100% 0 0 0 round 8px);
   }
   to {
-    clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0 round 8px);
   }
 }
 @keyframes foto-zoom {

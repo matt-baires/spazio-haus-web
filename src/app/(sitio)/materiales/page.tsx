@@ -29,14 +29,14 @@ function Swatch({ muestra }: { muestra: Muestra }) {
   return (
     <li className="flex flex-col gap-2">
       {muestra.foto ? (
-        <div className="relative aspect-square w-full overflow-hidden border border-border">
+        <div className="redondeado relative aspect-square w-full overflow-hidden border border-border">
           <Image src={muestra.foto.url} alt={muestra.foto.alt || muestra.nombre} fill sizes="(min-width: 640px) 20vw, 45vw" className="object-cover" />
         </div>
       ) : (
         <div
           role="img"
           aria-label={`Muestra de ${muestra.nombre}`}
-          className="aspect-square w-full border border-border"
+          className="redondeado aspect-square w-full border border-border"
           style={{ backgroundColor: muestra.color, backgroundImage: veta }}
         />
       )}

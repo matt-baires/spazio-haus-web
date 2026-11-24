@@ -91,7 +91,7 @@ export default async function ContactoPage() {
         <iframe
           title={`Mapa: ${direccion}`}
           src={mapaEmbed}
-          className="aspect-[4/3] w-full border border-border"
+          className="redondeado aspect-[4/3] w-full border border-border"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />
