@@ -124,11 +124,70 @@ export function CtaCotizar({
   titulo = "¿Tenés un espacio para resolver?",
   texto = "Contanos qué necesitás, con medidas aproximadas y fotos si las tenés. Lo diseñamos con vos y lo fabricamos en nuestro taller.",
   href = "/cotizar",
+  foto,
 }: {
   titulo?: string;
   texto?: string;
   href?: string;
+  /** Con foto, el llamado va a pantalla completa al estilo de "Our mission" de AYOCIN. */
+  foto?: Foto;
 }) {
+  if (foto) {
+    return (
+      <section
+        data-menu="oscuro"
+        className="relative flex min-h-[640px] flex-col justify-between overflow-hidden py-14 text-hueso sm:py-20 lg:min-h-[88svh]"
+      >
+        <div data-paralaje className="absolute inset-x-0 -top-[9%] h-[118%] will-change-transform" aria-hidden="true">
+          <Image src={foto.url} alt="" fill sizes="100vw" className="object-cover" />
+        </div>
+        <div className="absolute inset-0 bg-black/50" aria-hidden="true" />
+
+        <div aria-hidden="true" className="relative overflow-hidden border-y border-hueso/20 py-4">
+          <div
+            className="marquesina-pista marquesina-lenta titulo-grande flex w-max whitespace-nowrap uppercase"
+            style={{ fontSize: "clamp(64px, 13vw, 190px)", lineHeight: 1 }}
+          >
+            {[0, 1].map((copia) => (
+              <span key={copia} className="flex shrink-0 items-center">
+                {[0, 1, 2].map((k) => (
+                  <span key={k} className="flex shrink-0 items-center gap-[0.3em] pr-[0.3em]">
+                    <span>Hablemos</span>
+                    <span className="h-[0.08em] w-[0.08em] rounded-full bg-dorado" />
+                  </span>
+                ))}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative mx-auto mt-14 grid w-full max-w-6xl gap-y-6 px-6 md:grid-cols-12 md:gap-x-6">
+          <h2 data-revelar className="titulo md:col-span-5">
+            <Dividir texto={titulo} />
+          </h2>
+          <div data-revelar className="flex flex-col items-start gap-6 md:col-span-4" style={orden(1)}>
+            <p className="text-hueso/85">{texto}</p>
+            <Link
+              href={href}
+              className={buttonVariants({ variant: "secondary", size: "lg", className: "flecha gap-2 bg-hueso text-foreground" })}
+            >
+              Cotizá tu proyecto
+              <Flecha />
+            </Link>
+          </div>
+          <span
+            data-revelar
+            style={orden(2)}
+            className="etiqueta inline-flex items-center gap-2 self-start text-hueso/80 md:col-span-3 md:justify-self-end"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-dorado" aria-hidden="true" />
+            Taller en Caseros
+          </span>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section data-menu="oscuro" className="bg-carbon text-hueso">
       <div data-revelar className="mx-auto flex w-full max-w-6xl flex-col items-start gap-5 px-6 py-16 sm:py-20">

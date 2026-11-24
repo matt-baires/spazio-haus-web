@@ -189,7 +189,7 @@ export default async function Home() {
 
       <MarcasHerrajes />
 
-      <CtaCotizar />
+      <CtaCotizar foto={fotosEjemplo.obraCocinaVarillasLed} />
     </>
   );
 }
