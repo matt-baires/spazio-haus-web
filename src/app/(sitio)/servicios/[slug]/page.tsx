@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { buttonVariants } from "@heroui/react";
 import { CtaCotizar, FotoObra, ObraCard } from "@/components/ui";
 import { getObras, getServicio, getServicios, getSitio } from "@/lib/datos";
-import { fotoEjemploServicio } from "@/lib/fotos-ejemplo";
+import { fotoEjemploServicio, galeriaEjemploServicio } from "@/lib/fotos-ejemplo";
 import { whatsappUrl } from "@/lib/site";
 
 export async function generateStaticParams() {
@@ -25,6 +25,7 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
   if (!s) notFound();
 
   const obrasDelTipo = obras.filter((o) => o.tipo === s.slug);
+  const galeria = galeriaEjemploServicio(s.slug);
   const wa = whatsappUrl(sitio.whatsapp, `Hola, quiero consultar por ${s.nombre.toLowerCase()} a medida.`);
 
   return (
@@ -77,6 +78,17 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
           </div>
         </div>
       </section>
+
+      {obrasDelTipo.length === 0 && galeria.length > 0 && (
+        <section className="mx-auto w-full max-w-6xl px-6 py-16">
+          <h2 className="titulo mb-10">Piezas de la línea</h2>
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {galeria.map((f) => (
+              <FotoObra key={f.url} foto={f} proporcion="aspect-[4/5]" sizes="(min-width: 1024px) 25vw, 50vw" />
+            ))}
+          </div>
+        </section>
+      )}
 
       {obrasDelTipo.length > 0 && (
         <section className="mx-auto w-full max-w-6xl px-6 py-16">

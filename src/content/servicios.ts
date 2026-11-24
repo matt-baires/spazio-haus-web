@@ -83,6 +83,20 @@ export const servicios: Servicio[] = [
     ],
     materiales: ["Melamina", "Laqueado", "Madera", "Herrajes de cierre suave"],
   },
+  {
+    slug: "muebles-de-madera",
+    nombre: "Muebles de madera",
+    resumen: "Mesas, sillas y sillones que completan tu proyecto.",
+    intro:
+      "Una línea de piezas de madera para sumar a tus muebles a medida: mesas de comedor, sillas, sillones individuales y mesas bajas. Las diseñamos con las mismas maderas y terminaciones del resto del proyecto, para que todo el ambiente hable el mismo idioma.",
+    queResolvemos: [
+      "Mesas de comedor y de trabajo",
+      "Sillas y banquetas",
+      "Sillones individuales",
+      "Mesas bajas, ratonas y de arrime",
+    ],
+    materiales: ["Paraíso", "Guatambú", "Roble", "Petiribí", "Tapizado"],
+  },
 ];
 
 export function getServicio(slug: string) {

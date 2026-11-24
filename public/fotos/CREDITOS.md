@@ -19,3 +19,8 @@ Fotos de stock de [Unsplash](https://unsplash.com) bajo la [licencia de Unsplash
 | detalle-tiradores.jpg | https://images.unsplash.com/photo-1693892985308-44965a6060d1 |
 | muestras-madera.jpg | https://images.unsplash.com/photo-1693722232788-2a03684b5e60 |
 | mueble-madera.jpg | https://images.unsplash.com/photo-1782177388316-7546da332c3a |
+| madera-comedor.jpg | https://images.unsplash.com/photo-1636138388621-258a72ecb07e |
+| madera-sillon.jpg | https://images.unsplash.com/photo-1658211312038-4293c7bdd37e |
+| madera-mesa-baja.jpg | https://images.unsplash.com/photo-1777513538143-8525eb3943f6 |
+| madera-ensamble.jpg | https://images.unsplash.com/photo-1758977403865-f79e156415b3 |
+| madera-silla.jpg | https://images.unsplash.com/photo-1705320678447-78c5fe2615a7 |

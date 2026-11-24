@@ -68,6 +68,30 @@ async function main() {
   } else {
     const r = await payload.find({ collection: "servicios", limit: 100, depth: 0, overrideAccess: true });
     for (const d of r.docs) idPorSlug.set((d as { slug: string }).slug, d.id);
+    // Servicios que se sumaron al contenido después de la carga inicial: se agregan una vez,
+    // al final, sin tocar los existentes. Solo los de esta lista, para no recrear uno que
+    // se haya borrado a propósito desde el panel.
+    const nuevos = new Set(["muebles-de-madera"]);
+    let orden = r.docs.length;
+    for (const s of servicios) {
+      if (!nuevos.has(s.slug) || idPorSlug.has(s.slug)) continue;
+      const doc = await payload.create({
+        collection: "servicios",
+        context,
+        overrideAccess: true,
+        data: {
+          nombre: s.nombre,
+          slug: s.slug,
+          orden: orden++,
+          resumen: s.resumen,
+          intro: s.intro,
+          queResolvemos: s.queResolvemos.map((texto) => ({ texto })),
+          materiales: s.materiales.map((texto) => ({ texto })),
+        },
+      });
+      idPorSlug.set(s.slug, doc.id);
+      console.log(`[seed] servicio nuevo: ${s.nombre}`);
+    }
   }
 
   // Obras de ejemplo (publicadas)

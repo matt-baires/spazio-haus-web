@@ -29,6 +29,11 @@ export const fotosEjemplo = {
   detalleTiradores: f("detalle-tiradores", "Detalle de tiradores metálicos sobre puertas de madera", 1800, 831),
   muestrasMadera: f("muestras-madera", "Muestras de maderas y enchapados sobre fondo negro", 1800, 1200),
   muebleMadera: f("mueble-madera", "Cajoneras de madera a medida en un ambiente con luz natural", 1800, 1200),
+  maderaComedor: f("madera-comedor", "Mesa de comedor de madera con sillas en un ambiente luminoso", 1800, 2700),
+  maderaSillon: f("madera-sillon", "Sillón individual de madera con asiento y respaldo de esterilla", 1800, 1800),
+  maderaMesaBaja: f("madera-mesa-baja", "Mesa baja de madera maciza con estante inferior", 1800, 1200),
+  maderaEnsamble: f("madera-ensamble", "Detalle del ensamble de una mesa de madera con su silla", 1800, 2304),
+  maderaSilla: f("madera-silla", "Silla de madera con respaldo curvo y asiento tapizado", 1800, 2700),
 } satisfies Record<string, Foto>;
 
 const porServicio: Record<string, Foto> = {
@@ -37,7 +42,20 @@ const porServicio: Record<string, Foto> = {
   vanitorys: fotosEjemplo.vanitoryDoble,
   respaldos: fotosEjemplo.respaldoMadera,
   "muebles-a-medida": fotosEjemplo.vestidorLargo,
+  "muebles-de-madera": fotosEjemplo.maderaComedor,
 };
+
+/** Piezas de ejemplo que se muestran en la página de un servicio que todavía no tiene obras. */
+const galeriaPorServicio: Record<string, Foto[]> = {
+  "muebles-de-madera": [
+    fotosEjemplo.maderaSillon,
+    fotosEjemplo.maderaMesaBaja,
+    fotosEjemplo.maderaSilla,
+    fotosEjemplo.maderaEnsamble,
+  ],
+};
+
+export const galeriaEjemploServicio = (slug: string): Foto[] => galeriaPorServicio[slug] ?? [];
 
 const porObra: Record<string, Foto> = {
   "cocina-madera-mesada-negra": fotosEjemplo.cocinaMaderaMesadaNegra,
