@@ -52,7 +52,8 @@ export default function SitioLayout({ children }: LayoutProps<"/">) {
           <DatosEstructurados />
         </Suspense>
         <SiteHeader />
-        <main className="flex flex-1 flex-col">{children}</main>
+        {/* El contenido va por encima del pie (fijo abajo) y lo descubre al llegar al final. */}
+        <main className="relative z-10 flex flex-1 flex-col bg-background">{children}</main>
         <Suspense>
           <SiteFooter />
         </Suspense>
