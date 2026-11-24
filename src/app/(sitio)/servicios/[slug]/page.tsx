@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { buttonVariants } from "@heroui/react";
 import { CtaCotizar, FotoObra, ObraCard } from "@/components/ui";
 import { getObras, getServicio, getServicios, getSitio } from "@/lib/datos";
+import { fotoEjemploServicio } from "@/lib/fotos-ejemplo";
 import { whatsappUrl } from "@/lib/site";
 
 export async function generateStaticParams() {
@@ -44,7 +45,7 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
             )}
           </div>
         </div>
-        <FotoObra foto={s.imagen} etiqueta={`Foto de ${s.nombre.toLowerCase()}`} proporcion="aspect-[5/4]" prioridad sizes="(min-width: 1024px) 50vw, 100vw" />
+        <FotoObra foto={s.imagen ?? fotoEjemploServicio(s.slug)} etiqueta={`Foto de ${s.nombre.toLowerCase()}`} proporcion="aspect-[5/4]" prioridad sizes="(min-width: 1024px) 50vw, 100vw" />
       </section>
 
       <section className="bg-champagne">

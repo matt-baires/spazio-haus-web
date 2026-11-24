@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Encabezado, EtiquetaEjemplo, FotoObra } from "@/components/ui";
 import { getArticulos } from "@/lib/datos";
 import { fechaLarga } from "@/lib/formato";
+import { fotoEjemploArticulo } from "@/lib/fotos-ejemplo";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -18,7 +19,7 @@ export default async function BlogPage() {
       <div className="mt-12 grid gap-10 sm:grid-cols-2">
         {articulos.map((a) => (
           <Link key={a.slug} href={`/blog/${a.slug}`} className="group flex flex-col gap-4">
-            <FotoObra foto={a.imagen} etiqueta={a.categoria} proporcion="aspect-[16/9]" sizes="(min-width: 640px) 50vw, 100vw" />
+            <FotoObra foto={a.imagen ?? fotoEjemploArticulo(a.slug)} etiqueta={a.categoria} proporcion="aspect-[16/9]" sizes="(min-width: 640px) 50vw, 100vw" />
             <div className="flex flex-col gap-2">
               <span className="cuerpo-chico flex items-center gap-2 text-muted">
                 {a.categoria} · {fechaLarga(a.fecha)} {a.ejemplo && <EtiquetaEjemplo />}

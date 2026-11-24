@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Chip, buttonVariants } from "@heroui/react";
 import type { ReactNode } from "react";
 import type { Foto, Obra } from "@/lib/datos";
+import { fotoEjemploObra } from "@/lib/fotos-ejemplo";
 
 export function EtiquetaEjemplo() {
   return (
@@ -81,7 +82,7 @@ export function ObraCard({ obra }: { obra: Obra }) {
   return (
     <Link href={`/obras/${obra.slug}`} className="group flex flex-col gap-3">
       <div className="relative">
-        <FotoObra foto={obra.fotos[0]} etiqueta={obra.tipoNombre || "Obra"} />
+        <FotoObra foto={obra.fotos[0] ?? fotoEjemploObra(obra.slug, obra.tipo)} etiqueta={obra.tipoNombre || "Obra"} />
         {obra.ejemplo && (
           <span className="absolute right-3 top-3">
             <EtiquetaEjemplo />

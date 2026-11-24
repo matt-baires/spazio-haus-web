@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { buttonVariants } from "@heroui/react";
 import { CtaCotizar, EtiquetaEjemplo, FotoObra, ObraCard } from "@/components/ui";
 import { getObra, getObras, getSitio } from "@/lib/datos";
+import { fotoEjemploObra, fotoEjemploServicio, fotosEjemplo } from "@/lib/fotos-ejemplo";
 import { whatsappUrl } from "@/lib/site";
 
 export async function generateStaticParams() {
@@ -18,7 +19,7 @@ export async function generateMetadata(props: PageProps<"/obras/[slug]">): Promi
   return {
     title: obra.titulo,
     description: obra.descripcion,
-    openGraph: obra.fotos[0] ? { images: [{ url: obra.fotos[0].url, alt: obra.fotos[0].alt }] } : undefined,
+    openGraph: { images: [obra.fotos[0] ?? fotoEjemploObra(obra.slug, obra.tipo)].map((f) => ({ url: f.url, alt: f.alt })) },
   };
 }
 
@@ -29,8 +30,13 @@ export default async function ObraPage(props: PageProps<"/obras/[slug]">) {
 
   const relacionadas = obras.filter((o) => o.tipo === obra.tipo && o.slug !== obra.slug).slice(0, 3);
   const wa = whatsappUrl(sitio.whatsapp, `Hola, vi la obra "${obra.titulo}" en la web y quiero cotizar algo así.`);
-  const [principal, ...resto] = obra.fotos;
-  const pendientes = obra.fotos.length === 0 ? Math.max(obra.fotosPrevistas - 2, 1) : 0;
+  // Sin fotos propias todavía: fotos de ejemplo del mismo tipo de mueble.
+  const sinFotos = obra.fotos.length === 0;
+  const principal = obra.fotos[0] ?? fotoEjemploObra(obra.slug, obra.tipo);
+  const resto = sinFotos
+    ? [fotoEjemploServicio(obra.tipo)].filter((f) => f.url !== principal.url)
+    : obra.fotos.slice(1);
+  const detalle = obra.fotoDetalle ?? fotosEjemplo.detalleTiradores;
 
   return (
     <>
@@ -56,10 +62,7 @@ export default async function ObraPage(props: PageProps<"/obras/[slug]">) {
               {resto.map((f) => (
                 <FotoObra key={f.url} foto={f} proporcion="aspect-square" sizes="(min-width: 1024px) 30vw, 50vw" />
               ))}
-              {Array.from({ length: pendientes }, (_, i) => (
-                <FotoObra key={i} etiqueta={`Foto ${i + 2}`} proporcion="aspect-square" />
-              ))}
-              <FotoObra foto={obra.fotoDetalle} etiqueta="Foto de detalle" proporcion="aspect-square" sizes="(min-width: 1024px) 30vw, 50vw" />
+              <FotoObra foto={detalle} etiqueta="Foto de detalle" proporcion="aspect-square" sizes="(min-width: 1024px) 30vw, 50vw" />
             </div>
           </div>
 

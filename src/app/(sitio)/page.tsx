@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Card, buttonVariants } from "@heroui/react";
 import { CtaCotizar, FotoObra, ObraCard } from "@/components/ui";
+import { fotosEjemplo } from "@/lib/fotos-ejemplo";
 import { getObras, getPreguntas, getServicios } from "@/lib/datos";
 import { site } from "@/lib/site";
 
@@ -13,7 +14,7 @@ const pasos = [
 export default async function Home() {
   const [obras, servicios, preguntas] = await Promise.all([getObras(), getServicios(), getPreguntas()]);
   const destacadas = (obras.some((o) => o.destacada) ? obras.filter((o) => o.destacada) : obras).slice(0, 3);
-  const portada = destacadas.find((o) => o.fotos.length > 0)?.fotos[0] ?? null;
+  const portada = destacadas.find((o) => o.fotos.length > 0)?.fotos[0] ?? fotosEjemplo.cocinaMaderaMesadaNegra;
   const faqHome = (preguntas.some((p) => p.enHome) ? preguntas.filter((p) => p.enHome) : preguntas).slice(0, 3);
 
   return (

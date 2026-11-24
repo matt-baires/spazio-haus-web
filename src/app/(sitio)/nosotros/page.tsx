@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CtaCotizar, Encabezado, FotoObra } from "@/components/ui";
+import { fotosEjemplo } from "@/lib/fotos-ejemplo";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -35,7 +36,7 @@ export default function NosotrosPage() {
             quieren un mueble pensado al milímetro y no uno de catálogo.
           </p>
         </Encabezado>
-        <FotoObra etiqueta="Foto del taller" proporcion="aspect-[4/3]" />
+        <FotoObra foto={fotosEjemplo.taller} etiqueta="Foto del taller" proporcion="aspect-[4/3]" />
       </section>
 
       <section className="bg-champagne">
@@ -77,7 +78,7 @@ export default function NosotrosPage() {
             </li>
           </ol>
         </div>
-        <FotoObra etiqueta="Foto de detalle: cantos y herrajes" proporcion="aspect-[4/3]" />
+        <FotoObra foto={fotosEjemplo.detalleTiradores} etiqueta="Foto de detalle: cantos y herrajes" proporcion="aspect-[4/3]" />
       </section>
 
       <CtaCotizar />

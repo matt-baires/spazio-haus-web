@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
   },
   images: {
     // Imágenes del CMS (servidas por Payload desde el almacenamiento privado) y de la marca
-    localPatterns: [{ pathname: "/api/medios/file/**" }, { pathname: "/marca/**" }],
+    localPatterns: [{ pathname: "/api/medios/file/**" }, { pathname: "/marca/**" }, { pathname: "/fotos/**" }],
   },
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
