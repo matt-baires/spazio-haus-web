@@ -15,7 +15,7 @@ Fotos de stock de [Unsplash](https://unsplash.com) bajo la [licencia de Unsplash
 | respaldo-mesa-de-luz.jpg | https://images.unsplash.com/photo-1761591671882-b1c7b84bd0d6 |
 | placard-vestidor.jpg | https://images.unsplash.com/photo-1778731660303-1fa5ede75477 |
 | vestidor-largo.jpg | https://images.unsplash.com/photo-1792270219156-9327e8175161 |
-| taller.jpg | https://images.unsplash.com/photo-1687422810663-c316494f725a |
+| taller.jpg | https://images.unsplash.com/photo-1659930087003-2d64e33181f7 |
 | detalle-tiradores.jpg | https://images.unsplash.com/photo-1693892985308-44965a6060d1 |
 | muestras-madera.jpg | https://images.unsplash.com/photo-1693722232788-2a03684b5e60 |
 | mueble-madera.jpg | https://images.unsplash.com/photo-1782177388316-7546da332c3a |

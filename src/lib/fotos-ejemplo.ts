@@ -25,7 +25,7 @@ export const fotosEjemplo = {
   respaldoMesaDeLuz: f("respaldo-mesa-de-luz", "Respaldo de madera con mesa de luz y lámpara colgante", 1800, 2446),
   placardVestidor: f("placard-vestidor", "Placard a medida con barral, estantes y cajones", 1800, 2700),
   vestidorLargo: f("vestidor-largo", "Vestidor largo con frentes claros y puertas de vidrio", 1800, 2699),
-  taller: f("taller", "Carpintero trabajando una pieza de madera en el taller", 1800, 1202),
+  taller: f("taller", "Manos marcando con lápiz una tabla de madera entre virutas, en el taller", 1800, 1200),
   detalleTiradores: f("detalle-tiradores", "Detalle de tiradores metálicos sobre puertas de madera", 1800, 831),
   muestrasMadera: f("muestras-madera", "Muestras de maderas y enchapados sobre fondo negro", 1800, 1200),
   muebleMadera: f("mueble-madera", "Cajoneras de madera a medida en un ambiente con luz natural", 1800, 1200),
