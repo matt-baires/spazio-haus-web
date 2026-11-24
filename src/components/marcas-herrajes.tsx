@@ -54,7 +54,7 @@ export function MarcasHerrajes() {
           data-revelar
           className="frase max-w-3xl"
         >
-          <Dividir texto="Herrajes de marcas reconocidas en todo el mundo." />
+          <Dividir texto="Utilizamos herrajes de marcas reconocidas en todo el mundo." />
         </h2>
       </div>
 
