@@ -23,11 +23,16 @@ export default async function Home() {
     conFoto.length >= 3
       ? conFoto.map((o) => ({ foto: o.fotos[0], etiqueta: o.tipoNombre || "Obra", titulo: o.titulo, href: `/obras/${o.slug}` }))
       : [
-          { foto: fotosEjemplo.cocinaMaderaMesadaNegra, etiqueta: "Cocinas", titulo: "Cocina en madera con mesada negra", href: "/servicios/cocinas" },
-          { foto: fotosEjemplo.obraRackNogal, etiqueta: "Racks", titulo: "Rack en nogal con panel y guardado", href: "/servicios/racks" },
+          { foto: fotosEjemplo.cocinaMaderaLed, etiqueta: "Cocinas", titulo: "Cocina en madera con barra y luz integrada", href: "/servicios/cocinas" },
+          { foto: fotosEjemplo.vestidorIslaVentana, etiqueta: "Vestidores", titulo: "Vestidor con isla junto a la ventana", href: "/servicios/vestidores" },
           { foto: fotosEjemplo.obraVanitoryMaderaBanera, etiqueta: "Vanitorys", titulo: "Vanitory de madera con doble bacha", href: "/servicios/vanitorys" },
           { foto: fotosEjemplo.obraRespaldoListones, etiqueta: "Respaldos", titulo: "Respaldo de listones de madera maciza", href: "/servicios/respaldos" },
           { foto: fotosEjemplo.obraPlacardMadera, etiqueta: "Muebles a medida", titulo: "Placard de madera con espejos", href: "/servicios/muebles-a-medida" },
+          { foto: fotosEjemplo.obraCocinaNegra, etiqueta: "Cocinas", titulo: "Cocina negra con tiradores dorados", href: "/servicios/cocinas" },
+          { foto: fotosEjemplo.obraRackEstantesMadera, etiqueta: "Racks", titulo: "Rack bajo con estantes de madera", href: "/servicios/racks" },
+          { foto: fotosEjemplo.vestidorMaderaIsla, etiqueta: "Vestidores", titulo: "Vestidor de madera con isla", href: "/servicios/vestidores" },
+          { foto: fotosEjemplo.obraBiblioteca, etiqueta: "Muebles a medida", titulo: "Biblioteca de pared con cajones", href: "/servicios/muebles-a-medida" },
+          { foto: fotosEjemplo.maderaComedor, etiqueta: "Madera maciza", titulo: "Mesa de comedor de madera maciza", href: "/servicios/muebles-de-madera" },
         ];
 
   return (

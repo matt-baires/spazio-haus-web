@@ -51,7 +51,11 @@ export function PortadaRotativa({
       onMouseLeave={() => setPausa(false)}
       className="cortina -mt-20 flex min-h-[640px] flex-col justify-end overflow-hidden text-hueso h-[100svh]"
     >
-      {diapositivas.map((s, i) => (
+      {diapositivas.map((s, i) => {
+        // Solo se montan la foto actual, la anterior (para el fundido) y la siguiente (precarga).
+        const cerca = i === actual || i === (actual + 1) % total || i === (actual - 1 + total) % total;
+        if (!cerca) return null;
+        return (
         <div
           key={s.foto.url}
           aria-hidden={i !== actual || undefined}
@@ -68,7 +72,8 @@ export function PortadaRotativa({
             }`}
           />
         </div>
-      ))}
+        );
+      })}
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-black/35" aria-hidden="true" />
 
       <div className="relative mx-auto grid w-full max-w-6xl gap-8 px-6 pb-10 sm:pb-14 md:grid-cols-12 md:items-end">
