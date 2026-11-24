@@ -30,7 +30,7 @@ const pilares = [
 export default function NosotrosPage() {
   return (
     <>
-      <section className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-16 pt-8 sm:pt-12 lg:grid-cols-2">
+      <section className="mx-auto grid w-full max-w-6xl items-start gap-12 px-6 pb-16 pt-8 sm:pt-12 lg:grid-cols-2">
         <Encabezado etiqueta="Nosotros" titulo={`Un estudio con taller, desde ${site.desde}`}>
           <p>
             {site.nombre} es un {site.descriptor.toLowerCase()} que diseña y fabrica en su propio taller, para quienes

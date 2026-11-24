@@ -32,7 +32,7 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
 
   return (
     <>
-      <section className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-16 pt-8 sm:pt-12 lg:grid-cols-2">
+      <section className="mx-auto grid w-full max-w-6xl items-start gap-12 px-6 pb-16 pt-8 sm:pt-12 lg:grid-cols-2">
         <div className="flex flex-col gap-6">
           <p className="etiqueta entrar text-muted" style={orden(0)}>Servicios</p>
           <h1 className="titulo-grande">
