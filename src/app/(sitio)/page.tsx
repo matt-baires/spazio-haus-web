@@ -51,13 +51,13 @@ export default async function Home() {
         </div>
         <div className="absolute inset-0 bg-black/55" aria-hidden="true" />
 
-        <div className="relative pt-16 sm:pt-28">
+        <div className="relative pt-16 sm:pt-20">
           <h2 id="que-hacemos" className="sr-only">
             Qué hacemos
           </h2>
           <TextoGigante texto="Qué hacemos" />
 
-          <ul className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-28">
+          <ul className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20">
             {servicios.map((s, i) => (
               <li
                 key={s.slug}
@@ -86,7 +86,7 @@ export default async function Home() {
 
       {destacadas.length > 0 && (
         <section className="cortina bg-background">
-          <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
+          <div className="mx-auto w-full max-w-6xl px-6 py-12 sm:py-16">
           <div data-revelar className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <h2 className="titulo">
               <Dividir texto="Obras" />
@@ -113,7 +113,7 @@ export default async function Home() {
           </div>
           <div className="absolute inset-0 bg-black/45" aria-hidden="true" />
 
-          <div className="relative pb-14 pt-14 sm:pb-20 sm:pt-20">
+          <div className="relative pb-14 pt-8 sm:pb-20 sm:pt-12">
             <h2 id="madera-maciza" className="sr-only">
               Madera maciza
             </h2>
@@ -126,7 +126,7 @@ export default async function Home() {
         </section>
       )}
 
-      <section data-menu="oscuro" aria-labelledby="como-trabajamos" className="cortina bg-carbon py-20 text-hueso sm:py-28">
+      <section data-menu="oscuro" aria-labelledby="como-trabajamos" className="cortina bg-carbon py-14 text-hueso sm:py-20">
         <div className="mx-auto mb-14 grid w-full max-w-6xl gap-6 px-6 sm:mb-20 md:grid-cols-12 md:gap-x-6">
           <div className="flex flex-col gap-4 md:col-span-7">
             <span className="etiqueta text-hueso/50">Cómo trabajamos</span>

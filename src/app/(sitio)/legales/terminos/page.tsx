@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "Términos y condiciones", robots: { 
 
 export default function TerminosPage() {
   return (
-    <section className="mx-auto w-full max-w-2xl px-6 pb-20 pt-14 sm:pt-20">
+    <section className="mx-auto w-full max-w-2xl px-6 pb-14 pt-8 sm:pt-12">
       <Encabezado etiqueta="Legales" titulo="Términos y condiciones">
         <p>Borrador de ejemplo. Debe revisarlo un asesor legal antes de publicarse como definitivo.</p>
       </Encabezado>

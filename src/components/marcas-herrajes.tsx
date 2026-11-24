@@ -47,7 +47,7 @@ export function TiraMarcas() {
 /** Sección de la portada: título grande, tira de marcas y un texto con filete. */
 export function MarcasHerrajes() {
   return (
-    <section aria-labelledby="marcas-titulo" className="cortina bg-background py-16 sm:py-24">
+    <section aria-labelledby="marcas-titulo" className="cortina bg-background py-12 sm:py-16">
       <div className="mx-auto w-full max-w-6xl px-6">
         <h2
           id="marcas-titulo"

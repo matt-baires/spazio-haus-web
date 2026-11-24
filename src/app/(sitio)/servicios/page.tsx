@@ -13,12 +13,12 @@ export default async function ServiciosPage() {
   const servicios = await getServicios();
   return (
     <>
-      <section className="mx-auto w-full max-w-6xl px-6 pb-10 pt-14 sm:pt-20">
+      <section className="mx-auto w-full max-w-6xl px-6 pb-10 pt-8 sm:pt-12">
         <Encabezado etiqueta="Servicios" titulo="Muebles pensados para cada espacio">
           <p>Diseñamos y fabricamos en nuestro taller. Elegí por dónde empezar.</p>
         </Encabezado>
       </section>
-      <section className="mx-auto grid w-full max-w-6xl gap-10 px-6 pb-20 sm:grid-cols-2">
+      <section className="mx-auto grid w-full max-w-6xl gap-10 px-6 pb-14 sm:grid-cols-2">
         {servicios.map((s) => (
           <Link key={s.slug} href={`/servicios/${s.slug}`} className="group flex flex-col gap-4">
             <FotoObra foto={s.imagen ?? fotoEjemploServicio(s.slug)} etiqueta={s.nombre} proporcion="aspect-[16/10]" sizes="(min-width: 640px) 50vw, 100vw" />

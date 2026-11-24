@@ -32,7 +32,7 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
 
   return (
     <>
-      <section className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-16 pt-14 sm:pt-20 lg:grid-cols-2">
+      <section className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-16 pt-8 sm:pt-12 lg:grid-cols-2">
         <div className="flex flex-col gap-6">
           <p className="etiqueta entrar text-muted" style={orden(0)}>Servicios</p>
           <h1 className="titulo-grande">
@@ -54,7 +54,7 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
       </section>
 
       <section className="bg-humo">
-        <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 py-16 sm:grid-cols-2">
+        <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 py-12 sm:grid-cols-2">
           {s.queResolvemos.length > 0 && (
             <div>
               <h2 className="titulo mb-6">Qué resolvemos</h2>
@@ -84,7 +84,7 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
       </section>
 
       {galeria.length > 0 && (
-        <section className="mx-auto w-full max-w-6xl px-6 py-16">
+        <section className="mx-auto w-full max-w-6xl px-6 py-12">
           <div data-revelar className="mb-10 flex flex-col gap-3">
             <h2 className="titulo">
               <Dividir texto="Piezas de la línea" />
@@ -108,7 +108,7 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
       )}
 
       {obrasDelTipo.length > 0 && (
-        <section className="mx-auto w-full max-w-6xl px-6 py-16">
+        <section className="mx-auto w-full max-w-6xl px-6 py-12">
           <h2 className="titulo mb-10">Obras de {s.nombre.toLowerCase()}</h2>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {obrasDelTipo.map((o) => (

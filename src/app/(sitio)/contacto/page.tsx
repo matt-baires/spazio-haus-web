@@ -25,7 +25,7 @@ export default async function ContactoPage() {
 
   return (
     <>
-      <section className="mx-auto grid w-full max-w-6xl gap-12 px-6 pb-20 pt-14 sm:pt-20 lg:grid-cols-2">
+      <section className="mx-auto grid w-full max-w-6xl gap-12 px-6 pb-14 pt-8 sm:pt-12 lg:grid-cols-2">
         <div className="flex flex-col gap-8">
           <Encabezado etiqueta="Contacto" titulo="Hablemos de tu espacio">
             <p>
@@ -99,7 +99,7 @@ export default async function ContactoPage() {
 
       {destacadas.length > 0 && (
         <section className="bg-humo">
-          <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
+          <div className="mx-auto w-full max-w-6xl px-6 py-12 sm:py-16">
             <div data-revelar className="flex max-w-3xl flex-col gap-5">
               <h2 className="titulo">
                 <Dividir texto="Preguntas frecuentes" />

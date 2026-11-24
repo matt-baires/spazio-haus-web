@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default async function BlogPage() {
   const articulos = await getArticulos();
   return (
-    <section className="mx-auto w-full max-w-6xl px-6 pb-20 pt-14 sm:pt-20">
+    <section className="mx-auto w-full max-w-6xl px-6 pb-14 pt-8 sm:pt-12">
       <Encabezado etiqueta="Blog" titulo="Materiales, cuidados y guías" />
       {articulos.length === 0 && <p className="mt-10 text-muted">Pronto vas a encontrar artículos acá.</p>}
       <div className="mt-12 grid gap-10 sm:grid-cols-2">

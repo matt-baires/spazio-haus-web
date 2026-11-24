@@ -25,7 +25,7 @@ export default async function ArticuloPage(props: PageProps<"/blog/[slug]">) {
 
   return (
     <>
-      <article className="mx-auto w-full max-w-2xl px-6 pb-20 pt-10">
+      <article className="mx-auto w-full max-w-2xl px-6 pb-14 pt-10">
         <nav aria-label="Ruta" className="cuerpo-chico mb-8 text-muted">
           <Link href="/blog" className="hover:text-foreground">
             Blog

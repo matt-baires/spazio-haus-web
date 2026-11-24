@@ -16,7 +16,7 @@ export default async function CotizarPage() {
   const tipos = servicios.map((s) => ({ id: s.slug, nombre: s.nombre }));
 
   return (
-    <section className="mx-auto grid w-full max-w-6xl gap-14 px-6 pb-24 pt-14 sm:pt-20 lg:grid-cols-[1fr_1.6fr]">
+    <section className="mx-auto grid w-full max-w-6xl gap-14 px-6 pb-24 pt-8 sm:pt-12 lg:grid-cols-[1fr_1.6fr]">
       <div className="flex flex-col gap-6 lg:sticky lg:top-8 lg:self-start">
         <Encabezado etiqueta="Cotización" titulo="Cotizá tu proyecto">
           <p>Con medidas aproximadas y fotos alcanza para empezar. Las medidas definitivas las tomamos nosotros.</p>

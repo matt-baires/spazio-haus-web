@@ -13,7 +13,7 @@ export default async function ObrasPage() {
   const [obras, servicios] = await Promise.all([getObras(), getServicios()]);
   return (
     <>
-      <section className="mx-auto w-full max-w-6xl px-6 pb-20 pt-14 sm:pt-20">
+      <section className="mx-auto w-full max-w-6xl px-6 pb-14 pt-8 sm:pt-12">
         {obras.length === 0 ? (
           <p className="text-muted">Pronto vas a ver acá nuestras obras terminadas.</p>
         ) : (

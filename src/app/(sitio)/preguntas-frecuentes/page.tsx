@@ -28,7 +28,7 @@ export default async function FaqPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
-      <section className="mx-auto w-full max-w-6xl px-6 pb-20 pt-14 sm:pb-32 sm:pt-20">
+      <section className="mx-auto w-full max-w-6xl px-6 pb-14 pt-8 sm:pb-20 sm:pt-12">
         <div className="grid gap-y-2 border-y border-border py-8 sm:py-12 md:grid-cols-12 md:gap-x-6">
           <p className="frase text-muted md:col-span-4">
             <Dividir texto="Ayuda" alCargar />
@@ -44,7 +44,7 @@ export default async function FaqPage() {
               key={f.pregunta}
               data-revelar
               style={orden(i % 4)}
-              className="grid gap-y-3 border-b border-border pb-10 pt-8 md:grid-cols-12 md:gap-x-6 md:pb-12 md:pt-6"
+              className="grid gap-y-3 border-b border-border pb-10 pt-8 md:grid-cols-12 md:gap-x-6 md:pb-10 md:pt-6"
             >
               <span className="etiqueta text-muted md:col-span-4 md:pt-2">{String(i + 1).padStart(2, "0")}</span>
               <h2 className="destacado font-semibold md:col-span-5 md:pr-10">{f.pregunta}</h2>

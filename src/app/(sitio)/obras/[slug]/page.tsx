@@ -40,7 +40,7 @@ export default async function ObraPage(props: PageProps<"/obras/[slug]">) {
 
   return (
     <>
-      <article className="mx-auto w-full max-w-6xl px-6 pb-20 pt-10">
+      <article className="mx-auto w-full max-w-6xl px-6 pb-14 pt-10">
         <nav aria-label="Ruta" className="cuerpo-chico mb-8 text-muted">
           <Link href="/obras" className="hover:text-foreground">
             Obras
@@ -108,7 +108,7 @@ export default async function ObraPage(props: PageProps<"/obras/[slug]">) {
 
       {relacionadas.length > 0 && (
         <section className="bg-humo">
-          <div className="mx-auto w-full max-w-6xl px-6 py-16">
+          <div className="mx-auto w-full max-w-6xl px-6 py-12">
             <h2 className="titulo mb-10">Más {obra.tipoNombre.toLowerCase()}</h2>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {relacionadas.map((o) => (

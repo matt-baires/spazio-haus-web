@@ -30,7 +30,7 @@ const pilares = [
 export default function NosotrosPage() {
   return (
     <>
-      <section className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-16 pt-14 sm:pt-20 lg:grid-cols-2">
+      <section className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-16 pt-8 sm:pt-12 lg:grid-cols-2">
         <Encabezado etiqueta="Nosotros" titulo={`Un estudio con taller, desde ${site.desde}`}>
           <p>
             {site.nombre} es un {site.descriptor.toLowerCase()} que diseña y fabrica en su propio taller, para quienes
@@ -41,7 +41,7 @@ export default function NosotrosPage() {
       </section>
 
       <section className="bg-humo">
-        <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
+        <div className="mx-auto w-full max-w-6xl px-6 py-12 sm:py-16">
           <p className="etiqueta mb-3 text-muted">Nuestra promesa</p>
           <h2 className="titulo mb-12">{site.tagline}</h2>
           <div className="grid gap-10 sm:grid-cols-3">
@@ -57,7 +57,7 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      <section className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 sm:py-24 lg:grid-cols-2">
+      <section className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-12 sm:py-16 lg:grid-cols-2">
         <div className="flex flex-col gap-4">
           <h2 className="titulo">Cómo trabajamos</h2>
           <ol className="flex flex-col gap-6">

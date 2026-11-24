@@ -51,7 +51,7 @@ export default async function MaterialesPage() {
 
   return (
     <>
-      <section className="mx-auto w-full max-w-6xl px-6 pb-10 pt-14 sm:pt-20">
+      <section className="mx-auto w-full max-w-6xl px-6 pb-10 pt-8 sm:pt-12">
         <Encabezado etiqueta="Muestrario" titulo="Herrajes, materiales y colores">
           <p>
             Los herrajes que usamos y las melaminas y laqueados disponibles. Te ayudamos a combinarlos con tu
@@ -65,7 +65,7 @@ export default async function MaterialesPage() {
         )}
       </section>
 
-      <section id="herrajes" className="scroll-mt-24 py-16 sm:py-20">
+      <section id="herrajes" className="scroll-mt-24 py-12 sm:py-14">
         <div className="mx-auto grid w-full max-w-6xl gap-8 px-6 lg:grid-cols-[1fr_1fr] lg:items-end">
           <div data-revelar className="flex flex-col gap-4">
             <span className="etiqueta text-muted">Herrajes</span>
@@ -96,7 +96,7 @@ export default async function MaterialesPage() {
 
       {materiales.map((grupo, i) => (
         <section key={grupo.slug} id={grupo.slug} className={i % 2 === 0 ? "bg-humo" : ""}>
-          <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1fr_2fr]">
+          <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-12 lg:grid-cols-[1fr_2fr]">
             <div className="flex flex-col gap-3">
               <span className="h-px w-10 bg-dorado" aria-hidden="true" />
               <h2 className="titulo">{grupo.nombre}</h2>

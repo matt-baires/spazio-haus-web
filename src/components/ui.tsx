@@ -142,7 +142,7 @@ export function CtaCotizar({
     return (
       <section
         data-menu="oscuro"
-        className="relative flex min-h-[640px] flex-col justify-between overflow-hidden py-14 text-hueso sm:py-20 lg:min-h-[88svh]"
+        className="relative flex min-h-[640px] flex-col justify-between overflow-hidden py-14 text-hueso sm:py-14 lg:min-h-[88svh]"
       >
         <div data-paralaje className="absolute inset-x-0 -top-[9%] h-[118%] will-change-transform" aria-hidden="true">
           <Image src={foto.url} alt="" fill sizes="100vw" className="object-cover" />
@@ -180,7 +180,7 @@ export function CtaCotizar({
 
   return (
     <section data-menu="oscuro" className="bg-carbon text-hueso">
-      <div data-revelar className="mx-auto flex w-full max-w-6xl flex-col items-start gap-5 px-6 py-16 sm:py-20">
+      <div data-revelar className="mx-auto flex w-full max-w-6xl flex-col items-start gap-5 px-6 py-12 sm:py-14">
         <span className="filete-crece h-px w-10 bg-dorado" aria-hidden="true" />
         <h2 className="titulo">
           <Dividir texto={titulo} />
