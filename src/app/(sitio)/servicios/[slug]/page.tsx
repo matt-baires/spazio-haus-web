@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { buttonVariants } from "@heroui/react";
 import { CtaCotizar, FotoObra, ObraCard } from "@/components/ui";
+import { Dividir } from "@/components/dividir";
 import { orden } from "@/components/flecha";
 import { getObras, getServicio, getServicios, getSitio } from "@/lib/datos";
 import { fotoEjemploServicio, galeriaEjemploServicio } from "@/lib/fotos-ejemplo";
@@ -34,7 +35,9 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
       <section className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-16 pt-14 sm:pt-20 lg:grid-cols-2">
         <div className="flex flex-col gap-6">
           <p className="etiqueta entrar text-muted" style={orden(0)}>Servicios</p>
-          <h1 style={orden(1)} className="titulo-grande entrar text-[36px] leading-[44px] sm:text-[48px] sm:leading-[56px]">{s.nombre}</h1>
+          <h1 className="titulo-grande text-[36px] leading-[44px] sm:text-[48px] sm:leading-[56px]">
+            <Dividir texto={s.nombre} alCargar />
+          </h1>
           <p className="entrar text-muted" style={orden(2)}>{s.intro}</p>
           <div className="flex flex-wrap gap-3">
             <Link href={`/cotizar?tipo=${s.slug}`} className={buttonVariants({ variant: "primary", size: "lg" })}>
@@ -47,7 +50,7 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
             )}
           </div>
         </div>
-        <FotoObra foto={s.imagen ?? fotoEjemploServicio(s.slug)} etiqueta={`Foto de ${s.nombre.toLowerCase()}`} proporcion="aspect-[5/4]" prioridad sizes="(min-width: 1024px) 50vw, 100vw" className="entrar-foto" />
+        <FotoObra foto={s.imagen ?? fotoEjemploServicio(s.slug)} etiqueta={`Foto de ${s.nombre.toLowerCase()}`} proporcion="aspect-[5/4]" prioridad sizes="(min-width: 1024px) 50vw, 100vw" className="entrar-foto" paralaje />
       </section>
 
       <section className="bg-champagne">
@@ -83,7 +86,9 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
       {obrasDelTipo.length === 0 && galeria.length > 0 && (
         <section className="mx-auto w-full max-w-6xl px-6 py-16">
           <div data-revelar className="mb-10 flex flex-col gap-3">
-            <h2 className="titulo">Piezas de la línea</h2>
+            <h2 className="titulo">
+              <Dividir texto="Piezas de la línea" />
+            </h2>
             <p className="max-w-2xl text-muted">
               Cada pieza se hace a pedido en el taller: elegís la madera, la medida y la terminación.
             </p>

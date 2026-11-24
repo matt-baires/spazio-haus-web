@@ -2,7 +2,9 @@ import Link from "next/link";
 import { Card, buttonVariants } from "@heroui/react";
 import { CtaCotizar, FotoObra, ObraCard } from "@/components/ui";
 import { Flecha, orden } from "@/components/flecha";
+import { Dividir } from "@/components/dividir";
 import { MarcasHerrajes } from "@/components/marcas-herrajes";
+import { MarquesinaTexto } from "@/components/marquesina-texto";
 import { fotosEjemplo } from "@/lib/fotos-ejemplo";
 import { getObras, getPreguntas, getServicios } from "@/lib/datos";
 import { site } from "@/lib/site";
@@ -26,8 +28,8 @@ export default async function Home() {
           <p className="etiqueta entrar text-muted" style={orden(0)}>
             {site.descriptor}
           </p>
-          <h1 className="titulo-grande entrar text-[36px] leading-[44px] sm:text-[48px] sm:leading-[56px]" style={orden(1)}>
-            {site.tagline}
+          <h1 className="titulo-grande text-[36px] leading-[44px] sm:text-[48px] sm:leading-[56px]">
+            <Dividir texto={site.tagline} alCargar />
           </h1>
           <p className="entrar max-w-xl text-muted" style={orden(2)}>
             Lo diseñamos con vos. Lo fabricamos en nuestro taller de Caseros, desde {site.desde}.
@@ -49,13 +51,16 @@ export default async function Home() {
           prioridad
           sizes="(min-width: 1024px) 45vw, 100vw"
           className="entrar-foto"
+          paralaje
         />
       </section>
 
       <section className="bg-champagne">
         <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
           <div data-revelar className="mb-10 flex flex-wrap items-end justify-between gap-4">
-            <h2 className="titulo">Qué hacemos</h2>
+            <h2 className="titulo">
+              <Dividir texto="Qué hacemos" />
+            </h2>
             <Link href="/servicios" className="cuerpo-chico underline underline-offset-4">
               Todos los servicios
             </Link>
@@ -82,7 +87,9 @@ export default async function Home() {
       {destacadas.length > 0 && (
         <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
           <div data-revelar className="mb-10 flex flex-wrap items-end justify-between gap-4">
-            <h2 className="titulo">Obras</h2>
+            <h2 className="titulo">
+              <Dividir texto="Obras" />
+            </h2>
             <Link href="/obras" className="cuerpo-chico underline underline-offset-4">
               Ver todas
             </Link>
@@ -95,10 +102,12 @@ export default async function Home() {
         </section>
       )}
 
+      <MarquesinaTexto />
+
       <section className="bg-travertino">
         <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
           <h2 data-revelar className="titulo mb-10">
-            Cómo trabajamos
+            <Dividir texto="Cómo trabajamos" />
           </h2>
           <ol className="grid gap-10 sm:grid-cols-3">
             {pasos.map((p, i) => (
@@ -118,7 +127,9 @@ export default async function Home() {
       {faqHome.length > 0 && (
         <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
           <div data-revelar className="flex max-w-3xl flex-col gap-5">
-            <h2 className="titulo">Preguntas frecuentes</h2>
+            <h2 className="titulo">
+              <Dividir texto="Preguntas frecuentes" />
+            </h2>
             <dl className="flex flex-col divide-y divide-border border-y border-border">
               {faqHome.map((f) => (
                 <div key={f.pregunta} className="py-4">

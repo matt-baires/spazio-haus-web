@@ -57,7 +57,7 @@ export default async function ObraPage(props: PageProps<"/obras/[slug]">) {
 
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
           <div className="flex flex-col gap-4">
-            <FotoObra foto={principal} etiqueta="Foto principal de la obra" prioridad sizes="(min-width: 1024px) 60vw, 100vw" />
+            <FotoObra foto={principal} etiqueta="Foto principal de la obra" prioridad sizes="(min-width: 1024px) 60vw, 100vw" paralaje />
             <div className="grid grid-cols-2 gap-4">
               {resto.map((f) => (
                 <FotoObra key={f.url} foto={f} proporcion="aspect-square" sizes="(min-width: 1024px) 30vw, 50vw" />

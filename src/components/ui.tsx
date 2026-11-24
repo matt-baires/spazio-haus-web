@@ -4,6 +4,7 @@ import { Chip, buttonVariants } from "@heroui/react";
 import type { ReactNode } from "react";
 import type { Foto, Obra } from "@/lib/datos";
 import { fotoEjemploObra } from "@/lib/fotos-ejemplo";
+import { Dividir } from "@/components/dividir";
 import { Flecha, orden } from "@/components/flecha";
 
 export function EtiquetaEjemplo() {
@@ -24,6 +25,7 @@ export function FotoObra({
   proporcion = "aspect-[4/3]",
   sizes = "(min-width: 1024px) 33vw, 100vw",
   prioridad = false,
+  paralaje = false,
   className = "",
 }: {
   foto?: Foto | null;
@@ -31,12 +33,20 @@ export function FotoObra({
   proporcion?: string;
   sizes?: string;
   prioridad?: boolean;
+  /** La foto se desplaza más lento que la página al hacer scroll. */
+  paralaje?: boolean;
   className?: string;
 }) {
   if (foto) {
     return (
       <div className={`zoom-hover relative ${proporcion} w-full overflow-hidden bg-travertino ${className}`}>
-        <Image src={foto.url} alt={foto.alt} fill sizes={sizes} priority={prioridad} className="object-cover" />
+        {paralaje ? (
+          <div data-paralaje className="absolute inset-x-0 -top-[9%] h-[118%] will-change-transform">
+            <Image src={foto.url} alt={foto.alt} fill sizes={sizes} priority={prioridad} className="object-cover" />
+          </div>
+        ) : (
+          <Image src={foto.url} alt={foto.alt} fill sizes={sizes} priority={prioridad} className="object-cover" />
+        )}
       </div>
     );
   }
@@ -77,8 +87,8 @@ export function Encabezado({
           {etiqueta}
         </p>
       )}
-      <h1 className="titulo-grande entrar text-[32px] leading-[40px] sm:text-[48px] sm:leading-[56px]" style={orden(1)}>
-        {titulo}
+      <h1 className="titulo-grande text-[32px] leading-[40px] sm:text-[48px] sm:leading-[56px]">
+        <Dividir texto={titulo} alCargar />
       </h1>
       {children && (
         <div className="entrar max-w-2xl text-muted" style={orden(2)}>
@@ -123,7 +133,9 @@ export function CtaCotizar({
     <section className="bg-nogal text-crema">
       <div data-revelar className="mx-auto flex w-full max-w-6xl flex-col items-start gap-5 px-6 py-16 sm:py-20">
         <span className="filete-crece h-px w-10 bg-dorado" aria-hidden="true" />
-        <h2 className="titulo">{titulo}</h2>
+        <h2 className="titulo">
+          <Dividir texto={titulo} />
+        </h2>
         <p className="max-w-xl opacity-80">{texto}</p>
         <Link
           href={href}

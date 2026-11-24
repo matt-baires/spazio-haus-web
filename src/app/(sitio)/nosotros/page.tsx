@@ -36,7 +36,7 @@ export default function NosotrosPage() {
             quieren un mueble pensado al milímetro y no uno de catálogo.
           </p>
         </Encabezado>
-        <FotoObra foto={fotosEjemplo.taller} etiqueta="Foto del taller" proporcion="aspect-[4/3]" />
+        <FotoObra foto={fotosEjemplo.taller} etiqueta="Foto del taller" proporcion="aspect-[4/3]" paralaje />
       </section>
 
       <section className="bg-champagne">
@@ -78,7 +78,7 @@ export default function NosotrosPage() {
             </li>
           </ol>
         </div>
-        <FotoObra foto={fotosEjemplo.detalleTiradores} etiqueta="Foto de detalle: cantos y herrajes" proporcion="aspect-[4/3]" />
+        <FotoObra foto={fotosEjemplo.detalleTiradores} etiqueta="Foto de detalle: cantos y herrajes" proporcion="aspect-[4/3]" paralaje />
       </section>
 
       <CtaCotizar />

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Dividir } from "@/components/dividir";
 
 /**
  * Tira de logos de las marcas de herrajes que usa el taller, en movimiento continuo.
@@ -39,7 +40,9 @@ export function MarcasHerrajes() {
     <section aria-labelledby="marcas-titulo" className="border-y border-border py-14 sm:py-16">
       <div data-revelar className="mx-auto mb-10 flex w-full max-w-6xl flex-col gap-3 px-6">
         <span className="filete-crece h-px w-10 bg-dorado" aria-hidden="true" />
-        <h2 id="marcas-titulo" className="titulo">Herrajes que usamos</h2>
+        <h2 id="marcas-titulo" className="titulo">
+          <Dividir texto="Herrajes que usamos" />
+        </h2>
         <p className="max-w-2xl text-muted">
           Bisagras, correderas, sistemas de apertura y elevables de marcas reconocidas en todo el mundo. Lo que no se
           ve también se elige.
