@@ -235,58 +235,21 @@ body {
   }
 }
 /*
- * Cortina entre secciones (como AYOCIN): mientras una sección sale por arriba se queda un poco
- * atrás y se oscurece, y la siguiente sube y la tapa. Va atada al scroll con animation-timeline;
- * en navegadores sin soporte o con "reducir movimiento" las secciones pasan normal.
- * Cada sección con .cortina necesita fondo propio (opaco) para tapar a la anterior.
+ * Cortina entre secciones (como AYOCIN): la mueve components/revelar.tsx según el scroll
+ * (corrimiento con `translate` y sombra con --sombra). Cada sección con .cortina necesita
+ * fondo propio (opaco) para tapar a la anterior.
  */
 .cortina {
   position: relative;
 }
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .cortina {
-      animation: cortina-sale linear both;
-      animation-timeline: view();
-      animation-range: exit 0% exit 100%;
-    }
-    .cortina::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 30;
-      pointer-events: none;
-      background: #000;
-      opacity: 0;
-      animation: cortina-sombra linear both;
-      animation-timeline: view();
-      animation-range: exit 0% exit 100%;
-    }
-  }
-}
-/* Respaldo sin animation-timeline: la mueve components/revelar.tsx y la sombra va por --sombra */
-@supports not (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .cortina::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 30;
-      pointer-events: none;
-      background: #000;
-      opacity: var(--sombra, 0);
-    }
-  }
-}
-@keyframes cortina-sale {
-  to {
-    translate: 0 45vh;
-  }
-}
-@keyframes cortina-sombra {
-  to {
-    opacity: 0.6;
-  }
+.cortina::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  background: #000;
+  opacity: var(--sombra, 0);
 }
 
 /* Anillo de progreso de la portada rotativa */
@@ -343,7 +306,7 @@ body {
 }
 /*
  * Con "reducir movimiento" las tiras siguen andando (son contenido, como un carrusel), pero
- * a la mitad de velocidad. Lo que sí se apaga es el parallax, la cortina y las apariciones.
+ * a la mitad de velocidad. Lo que sí se apaga es el parallax y las apariciones (la cortina queda).
  */
 @media (prefers-reduced-motion: reduce) {
   .marquesina-pista {

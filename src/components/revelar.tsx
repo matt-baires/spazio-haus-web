@@ -22,7 +22,6 @@ export function Revelar() {
   useEffect(() => {
     if (sinMovimiento()) return;
     const lenis = new Lenis({ autoRaf: true, lerp: 0.09 });
-    const cortinaNativa = CSS.supports("animation-timeline: view()");
 
     let cuadro = 0;
     const paralaje = () => {
@@ -35,19 +34,6 @@ export function Revelar() {
         const desplazamiento = Math.max(-1, Math.min(1, avance)) * caja.height * 0.08;
         el.style.transform = `translate3d(0, ${desplazamiento.toFixed(1)}px, 0)`;
       });
-      // Cortina entre secciones para navegadores sin animation-timeline (Safari viejo, Firefox):
-      // mientras la sección sale por arriba se corre hacia abajo y se oscurece.
-      if (!cortinaNativa) {
-        document.querySelectorAll<HTMLElement>(".cortina").forEach((el) => {
-          const corrido = parseFloat(el.dataset.cortinaY ?? "0");
-          const abajo = el.getBoundingClientRect().bottom - corrido;
-          const avance = Math.max(0, Math.min(1, (alto - abajo) / alto));
-          const y = avance * alto * 0.45;
-          el.dataset.cortinaY = String(y);
-          el.style.translate = avance > 0 ? `0 ${y.toFixed(1)}px` : "";
-          el.style.setProperty("--sombra", (avance * 0.6).toFixed(3));
-        });
-      }
     };
     const alMover = () => {
       cancelAnimationFrame(cuadro);
@@ -67,6 +53,38 @@ export function Revelar() {
       lenis.destroy();
     };
   }, []);
+
+  // Cortina entre secciones (como AYOCIN): mientras una sección sale por arriba se corre hacia
+  // abajo y se oscurece, y la siguiente la tapa. La mueve el sitio en todos los navegadores para
+  // que Safari se vea igual que Chrome, y queda activa también con "reducir movimiento"
+  // (decisión del dueño, 24/11/2026).
+  useEffect(() => {
+    let cuadro = 0;
+    const mover = () => {
+      const alto = window.innerHeight;
+      document.querySelectorAll<HTMLElement>(".cortina").forEach((el) => {
+        const corrido = parseFloat(el.dataset.cortinaY ?? "0");
+        const abajo = el.getBoundingClientRect().bottom - corrido;
+        const avance = Math.max(0, Math.min(1, (alto - abajo) / alto));
+        const y = avance * alto * 0.45;
+        el.dataset.cortinaY = String(y);
+        el.style.translate = avance > 0 ? `0 ${y.toFixed(1)}px` : "";
+        el.style.setProperty("--sombra", (avance * 0.6).toFixed(3));
+      });
+    };
+    const alMover = () => {
+      cancelAnimationFrame(cuadro);
+      cuadro = requestAnimationFrame(mover);
+    };
+    mover();
+    window.addEventListener("scroll", alMover, { passive: true });
+    window.addEventListener("resize", alMover);
+    return () => {
+      cancelAnimationFrame(cuadro);
+      window.removeEventListener("scroll", alMover);
+      window.removeEventListener("resize", alMover);
+    };
+  }, [pathname]);
 
   // Apariciones: se rearma en cada página.
   useEffect(() => {
