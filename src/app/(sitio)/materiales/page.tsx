@@ -52,12 +52,10 @@ export default async function MaterialesPage() {
   return (
     <>
       <section className="mx-auto w-full max-w-6xl px-6 pb-10 pt-14 sm:pt-20">
-        <Encabezado etiqueta="Muestrario" titulo="Materiales y colores">
+        <Encabezado etiqueta="Muestrario" titulo="Herrajes, materiales y colores">
           <p>
-            Melaminas, laqueados y los herrajes que usamos. Te ayudamos a combinarlos con tu espacio.{" "}
-            <a href="#herrajes" className="underline underline-offset-4">
-              Ver herrajes
-            </a>
+            Los herrajes que usamos y las melaminas y laqueados disponibles. Te ayudamos a combinarlos con tu
+            espacio.
           </p>
         </Encabezado>
         {hayEjemplos && (
@@ -67,28 +65,7 @@ export default async function MaterialesPage() {
         )}
       </section>
 
-      {materiales.map((grupo, i) => (
-        <section key={grupo.slug} id={grupo.slug} className={i % 2 === 0 ? "bg-humo" : ""}>
-          <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1fr_2fr]">
-            <div className="flex flex-col gap-3">
-              <span className="h-px w-10 bg-dorado" aria-hidden="true" />
-              <h2 className="titulo">{grupo.nombre}</h2>
-              <p className="text-muted">{grupo.descripcion}</p>
-              <p className="cuerpo-chico">
-                <span className="text-muted">Ideal para: </span>
-                {grupo.ideal}
-              </p>
-            </div>
-            <ul className="grid grid-cols-2 gap-5 sm:grid-cols-3">
-              {grupo.muestras.map((m) => (
-                <Swatch key={m.nombre} muestra={m} />
-              ))}
-            </ul>
-          </div>
-        </section>
-      ))}
-
-      <section id="herrajes" className={materiales.length % 2 === 0 ? "bg-humo" : ""}>
+      <section id="herrajes" className="bg-humo">
         <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1fr_2fr]">
           <div data-revelar className="flex flex-col gap-3">
             <span className="filete-crece h-px w-10 bg-dorado" aria-hidden="true" />
@@ -101,7 +78,7 @@ export default async function MaterialesPage() {
             </p>
             <p className="cuerpo-chico">
               <span className="text-muted">Ideal para: </span>
-              cocinas, placares y todo mueble que se abre todos los días.
+              cocinas, placares, vanitorys y todo mueble con puertas o cajones.
             </p>
           </div>
           <div className="flex flex-col gap-10">
@@ -124,6 +101,27 @@ export default async function MaterialesPage() {
           </div>
         </div>
       </section>
+
+      {materiales.map((grupo, i) => (
+        <section key={grupo.slug} id={grupo.slug} className={i % 2 === 1 ? "bg-humo" : ""}>
+          <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1fr_2fr]">
+            <div className="flex flex-col gap-3">
+              <span className="h-px w-10 bg-dorado" aria-hidden="true" />
+              <h2 className="titulo">{grupo.nombre}</h2>
+              <p className="text-muted">{grupo.descripcion}</p>
+              <p className="cuerpo-chico">
+                <span className="text-muted">Ideal para: </span>
+                {grupo.ideal}
+              </p>
+            </div>
+            <ul className="grid grid-cols-2 gap-5 sm:grid-cols-3">
+              {grupo.muestras.map((m) => (
+                <Swatch key={m.nombre} muestra={m} />
+              ))}
+            </ul>
+          </div>
+        </section>
+      ))}
 
       <CtaCotizar
         titulo="¿Ya tenés una combinación en mente?"
