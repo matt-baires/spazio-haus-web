@@ -60,7 +60,7 @@ export function GaleriaObras({
 
   return (
     <div className="flex flex-col gap-10">
-      <div className="grid items-end gap-10 lg:grid-cols-12 lg:gap-x-10">
+      <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-x-10">
         <div className="flex flex-col gap-8 lg:col-span-6">
           {encabezado}
       <div role="group" aria-label="Filtrar por categoría" className="flex flex-wrap gap-2">
