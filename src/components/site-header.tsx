@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { buttonVariants } from "@heroui/react";
 import { LogoHorizontal } from "@/components/logo-horizontal";
 import { navegacionHeader } from "@/lib/site";
@@ -10,12 +10,32 @@ import { navegacionHeader } from "@/lib/site";
 export function SiteHeader() {
   const pathname = usePathname();
   const [abierto, setAbierto] = useState(false);
+  const [bajo, setBajo] = useState(false);
+
+  // Arriba de todo el menú es transparente; al bajar se vuelve translúcido con desenfoque.
+  useEffect(() => {
+    const revisar = () => setBajo(window.scrollY > 8);
+    revisar();
+    window.addEventListener("scroll", revisar, { passive: true });
+    return () => window.removeEventListener("scroll", revisar);
+  }, []);
+  const solido = bajo || abierto;
 
   const activo = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="border-b border-border bg-background">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-6 py-5">
+    <header
+      className={`sticky top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-500 ${
+        solido
+          ? "border-border/70 bg-background/70 backdrop-blur-xl backdrop-saturate-150"
+          : "border-transparent bg-transparent"
+      }`}
+    >
+      <div
+        className={`mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-6 transition-[padding] duration-500 ${
+          bajo ? "py-3" : "py-5"
+        }`}
+      >
         <Link href="/" aria-label="Spazio Haus, ir al inicio" onClick={() => setAbierto(false)}>
           <LogoHorizontal compacto />
         </Link>
