@@ -7,8 +7,7 @@ import { direccionTexto, mapsUrl, navegacion, site } from "@/lib/site";
 export async function SiteFooter() {
   const s = await getSitio();
   return (
-    <footer className="bg-background">
-      <FranjaInstagram usuario={s.instagram.usuario} url={s.instagram.url} />
+    <footer className="border-t border-border bg-background">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-14 sm:grid-cols-3">
         <div className="flex flex-col gap-4">
           <LogoHorizontal />
@@ -63,6 +62,7 @@ export async function SiteFooter() {
           </span>
         </div>
       </div>
+      <FranjaInstagram usuario={s.instagram.usuario} url={s.instagram.url} />
     </footer>
   );
 }
