@@ -140,14 +140,14 @@ export default async function Home() {
           </div>
           <div className="absolute inset-0 bg-black/45" aria-hidden="true" />
 
-          <div className="relative pb-16 pt-16 sm:pb-28 sm:pt-28">
+          <div className="relative pb-14 pt-14 sm:pb-20 sm:pt-20">
             <h2 id="madera-maciza" className="sr-only">
               Muebles de madera maciza
             </h2>
             <div aria-hidden="true" className="relative overflow-hidden border-y border-hueso/20 py-4">
               <div
                 className="marquesina-pista marquesina-lenta titulo-grande flex w-max whitespace-nowrap uppercase"
-                style={{ fontSize: "clamp(72px, 15vw, 220px)", lineHeight: 1 }}
+                style={{ fontSize: "clamp(64px, 13vw, 190px)", lineHeight: 1 }}
               >
                 {[0, 1].map((copia) => (
                   <span key={copia} className="flex shrink-0 items-center">
@@ -162,7 +162,7 @@ export default async function Home() {
               </div>
             </div>
 
-            <div data-revelar data-menu="claro" className="mx-auto mt-16 w-full max-w-5xl px-4 sm:mt-24 sm:px-6">
+            <div data-revelar data-menu="claro" className="mx-auto mt-12 w-full max-w-5xl px-4 sm:mt-16 sm:px-6">
               <CarruselPiezas piezas={piezas} href="/servicios/muebles-de-madera" />
             </div>
           </div>
