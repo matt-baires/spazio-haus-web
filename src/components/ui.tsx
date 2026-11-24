@@ -87,7 +87,7 @@ export function Encabezado({
           {etiqueta}
         </p>
       )}
-      <h1 className="titulo-grande text-[32px] leading-[40px] sm:text-[48px] sm:leading-[56px]">
+      <h1 className="titulo-grande">
         <Dividir texto={titulo} alCargar />
       </h1>
       {children && (

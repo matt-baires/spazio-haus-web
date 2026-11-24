@@ -35,7 +35,7 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
       <section className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-16 pt-14 sm:pt-20 lg:grid-cols-2">
         <div className="flex flex-col gap-6">
           <p className="etiqueta entrar text-muted" style={orden(0)}>Servicios</p>
-          <h1 className="titulo-grande text-[36px] leading-[44px] sm:text-[48px] sm:leading-[56px]">
+          <h1 className="titulo-grande">
             <Dividir texto={s.nombre} alCargar />
           </h1>
           <p className="entrar text-muted" style={orden(2)}>{s.intro}</p>

@@ -189,7 +189,7 @@ export function CotizarForm({ tipos }: { tipos: Opcion[] }) {
         </TextField>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="adjuntos" className="text-sm font-medium">
+          <label htmlFor="adjuntos" className="cuerpo-chico font-medium">
             Fotos del espacio o planos (opcional)
           </label>
           <input

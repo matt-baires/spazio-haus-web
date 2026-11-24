@@ -35,8 +35,8 @@ export default async function ArticuloPage(props: PageProps<"/blog/[slug]">) {
         <p className="cuerpo-chico mb-4 flex items-center gap-2 text-muted">
           {fechaLarga(a.fecha)} {a.ejemplo && <EtiquetaEjemplo />}
         </p>
-        <h1 className="titulo-grande mb-4 text-[32px] leading-[40px] sm:text-[40px] sm:leading-[48px]">{a.titulo}</h1>
-        <p className="mb-10 text-lg text-muted">{a.bajada}</p>
+        <h1 className="titulo-grande mb-4">{a.titulo}</h1>
+        <p className="destacado mb-10 text-muted">{a.bajada}</p>
         <RichText data={a.cuerpo} className="articulo flex flex-col gap-5" />
       </article>
       <CtaCotizar />

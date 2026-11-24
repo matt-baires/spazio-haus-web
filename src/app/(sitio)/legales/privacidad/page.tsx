@@ -12,18 +12,18 @@ export default function PrivacidadPage() {
       </Encabezado>
       <div className="mt-10 flex flex-col gap-6">
         <section className="flex flex-col gap-2">
-          <h2 className="text-lg font-semibold">Qué datos pedimos</h2>
+          <h2 className="destacado font-semibold">Qué datos pedimos</h2>
           <p>
             Cuando completás el formulario de cotización guardamos tu nombre, tus datos de contacto, la descripción del
             proyecto y los archivos que adjuntás. Solo los usamos para responder tu consulta y preparar el presupuesto.
           </p>
         </section>
         <section className="flex flex-col gap-2">
-          <h2 className="text-lg font-semibold">Con quién los compartimos</h2>
+          <h2 className="destacado font-semibold">Con quién los compartimos</h2>
           <p>No vendemos ni cedemos tus datos. Se guardan en servicios de alojamiento contratados por {site.nombre}.</p>
         </section>
         <section className="flex flex-col gap-2">
-          <h2 className="text-lg font-semibold">Tus derechos</h2>
+          <h2 className="destacado font-semibold">Tus derechos</h2>
           <p>
             Podés pedir acceso, rectificación o eliminación de tus datos en cualquier momento, escribiéndonos o en nuestro
             taller de Caseros, según la Ley 25.326 de Protección de Datos Personales.

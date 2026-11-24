@@ -23,7 +23,7 @@ export default async function ServiciosPage() {
           <Link key={s.slug} href={`/servicios/${s.slug}`} className="group flex flex-col gap-4">
             <FotoObra foto={s.imagen ?? fotoEjemploServicio(s.slug)} etiqueta={s.nombre} proporcion="aspect-[16/10]" sizes="(min-width: 640px) 50vw, 100vw" />
             <div className="flex flex-col gap-1">
-              <h2 className="text-xl font-semibold group-hover:underline group-hover:underline-offset-4">{s.nombre}</h2>
+              <h2 className="destacado font-semibold group-hover:underline group-hover:underline-offset-4">{s.nombre}</h2>
               <p className="text-muted">{s.resumen}</p>
             </div>
           </Link>

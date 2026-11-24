@@ -69,7 +69,7 @@ export default async function MaterialesPage() {
         <div className="mx-auto grid w-full max-w-6xl gap-8 px-6 lg:grid-cols-[1fr_1fr] lg:items-end">
           <div data-revelar className="flex flex-col gap-4">
             <span className="etiqueta text-muted">Herrajes</span>
-            <h2 className="max-w-xl text-[32px] font-normal leading-[38px] tracking-[-0.01em] sm:text-[44px] sm:leading-[50px]">
+            <h2 className="frase max-w-xl">
               <Dividir texto="Lo que no se ve también se elige." />
             </h2>
           </div>
@@ -87,7 +87,7 @@ export default async function MaterialesPage() {
           {herrajes.map((h, i) => (
             <li key={h.nombre} data-revelar className="flex flex-col gap-2 border-t border-foreground pt-5" style={orden(i % 3)}>
               <span className="etiqueta text-muted">{String(i + 1).padStart(2, "0")}</span>
-              <span className="text-lg font-semibold">{h.nombre}</span>
+              <span className="destacado font-semibold">{h.nombre}</span>
               <span className="cuerpo-chico text-muted">{h.texto}</span>
             </li>
           ))}

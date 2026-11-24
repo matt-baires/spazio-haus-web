@@ -47,7 +47,7 @@ export default function NosotrosPage() {
             {pilares.map((p) => (
               <div key={p.titulo} className="flex flex-col gap-3">
                 <span className="h-px w-10 bg-dorado" aria-hidden="true" />
-                <h3 className="text-lg font-semibold">{p.titulo}</h3>
+                <h3 className="destacado font-semibold">{p.titulo}</h3>
                 <p className="text-muted">{p.texto}</p>
                 <p className="cuerpo-chico text-muted">{p.prueba}</p>
               </div>

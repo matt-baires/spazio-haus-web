@@ -24,7 +24,7 @@ export default async function BlogPage() {
               <span className="cuerpo-chico flex items-center gap-2 text-muted">
                 {a.categoria} · {fechaLarga(a.fecha)} {a.ejemplo && <EtiquetaEjemplo />}
               </span>
-              <h2 className="text-xl font-semibold group-hover:underline group-hover:underline-offset-4">{a.titulo}</h2>
+              <h2 className="destacado font-semibold group-hover:underline group-hover:underline-offset-4">{a.titulo}</h2>
               <p className="text-muted">{a.bajada}</p>
             </div>
           </Link>

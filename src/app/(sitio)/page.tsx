@@ -28,7 +28,7 @@ export default async function Home() {
           <p className="etiqueta entrar text-muted" style={orden(0)}>
             {site.descriptor}
           </p>
-          <h1 className="titulo-grande text-[36px] leading-[44px] sm:text-[48px] sm:leading-[56px]">
+          <h1 className="titulo-grande">
             <Dividir texto={site.tagline} alCargar />
           </h1>
           <p className="entrar max-w-xl text-muted" style={orden(2)}>
@@ -70,7 +70,7 @@ export default async function Home() {
               <Link key={s.slug} href={`/servicios/${s.slug}`} className="group" data-revelar style={orden(i)}>
                 <Card className="h-full bg-background transition-[transform,background-color] duration-500 ease-out group-hover:bg-background/70 motion-safe:group-hover:-translate-y-1">
                   <Card.Header>
-                    <Card.Title className="text-lg">{s.nombre}</Card.Title>
+                    <Card.Title className="destacado">{s.nombre}</Card.Title>
                     <Card.Description className="text-muted">{s.resumen}</Card.Description>
                     <span
                       className="mt-2 h-px w-0 bg-dorado transition-[width] duration-500 ease-out group-hover:w-10"
@@ -114,7 +114,7 @@ export default async function Home() {
               <li key={p.paso} data-revelar className="flex flex-col gap-3" style={orden(i + 1)}>
                 <span className="etiqueta text-hueso/60">{p.paso}</span>
                 <span className="filete-crece h-px w-10 bg-dorado" aria-hidden="true" />
-                <h3 className="text-lg font-semibold">{p.titulo}</h3>
+                <h3 className="destacado font-semibold">{p.titulo}</h3>
                 <p className="text-hueso/75">{p.texto}</p>
               </li>
             ))}

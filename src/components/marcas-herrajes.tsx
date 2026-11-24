@@ -52,7 +52,7 @@ export function MarcasHerrajes() {
         <h2
           id="marcas-titulo"
           data-revelar
-          className="max-w-2xl text-[32px] font-normal leading-[38px] tracking-[-0.01em] sm:text-[44px] sm:leading-[50px]"
+          className="frase max-w-3xl"
         >
           <Dividir texto="Herrajes de marcas reconocidas en todo el mundo." />
         </h2>
@@ -64,7 +64,7 @@ export function MarcasHerrajes() {
 
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 sm:grid-cols-2">
         <div data-revelar className="flex flex-col gap-4 border-l border-foreground pl-6 sm:pl-10">
-          <p className="max-w-md text-[20px] leading-[28px]">
+          <p className="destacado max-w-md">
             Lo que no se ve también se elige. Bisagras, correderas y elevables que se abren y cierran todos los días.
           </p>
           <span className="cuerpo-chico text-muted">Blum · Häfele · Hettich · Salice · Ducasse</span>

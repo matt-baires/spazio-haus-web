@@ -80,20 +80,43 @@ body {
   line-height: 26px;
 }
 
-/* Estilos tipográficos del design system */
+/*
+ * Escala tipográfica: seis tamaños y nada fuera de ellos.
+ *   12 etiqueta · 14 cuerpo-chico · 17 cuerpo (body) · 22 destacado · 30 titulo · 48 titulo-grande / frase (36 en celular)
+ * Cinzel (titulo, titulo-grande) solo para el nombre y títulos cortos; las frases largas van en `frase`.
+ * Únicas excepciones: el nombre en el logo y el texto gigante decorativo de la portada.
+ */
 @utility titulo-grande {
   font-family: var(--font-display);
-  font-size: 48px;
-  line-height: 56px;
+  font-size: 36px;
+  line-height: 44px;
   font-weight: 600;
   letter-spacing: 0.02em;
+  @media (width >= 40rem) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+@utility frase {
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  @media (width >= 40rem) {
+    font-size: 48px;
+    line-height: 56px;
+  }
 }
 @utility titulo {
   font-family: var(--font-display);
-  font-size: 28px;
-  line-height: 36px;
+  font-size: 30px;
+  line-height: 38px;
   font-weight: 600;
   letter-spacing: 0.02em;
+}
+@utility destacado {
+  font-size: 22px;
+  line-height: 30px;
 }
 @utility cuerpo-chico {
   font-size: 14px;
@@ -257,8 +280,8 @@ body {
 
 /* Texto enriquecido del blog (viene del CMS) */
 .articulo h2 {
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 22px;
+  line-height: 30px;
   font-weight: 600;
   margin-top: 12px;
 }
