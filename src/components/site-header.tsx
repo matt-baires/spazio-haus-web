@@ -70,7 +70,7 @@ export function SiteHeader() {
           solido ? "scale-x-100" : "scale-x-0"
         }`}
       />
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-6 py-4">
+      <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between gap-6 px-6">
         <Link href="/" aria-label="Spazio Haus, ir al inicio" onClick={() => setAbierto(false)}>
           <LogoHorizontal compacto />
         </Link>

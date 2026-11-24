@@ -234,6 +234,15 @@ body {
     clip-path: inset(0 0 0 0 round 8px);
   }
 }
+/* Anillo de progreso de la portada rotativa */
+@keyframes anillo {
+  from {
+    stroke-dashoffset: var(--vuelta);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
 @keyframes foto-zoom {
   from {
     transform: scale(1.15);
@@ -283,6 +292,9 @@ body {
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
+  }
+  .anillo-progreso {
+    animation: none !important;
   }
   .marquesina-pista > [aria-hidden] {
     display: none;
