@@ -247,7 +247,7 @@ export const Preguntas: CollectionConfig = {
     ordenCampo,
     {
       name: "enHome",
-      label: "Mostrar en la home",
+      label: "Mostrar en Contacto",
       type: "checkbox",
       defaultValue: false,
       admin: { position: "sidebar" },
