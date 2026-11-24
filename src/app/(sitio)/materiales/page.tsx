@@ -1,12 +1,25 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Dividir } from "@/components/dividir";
+import { orden } from "@/components/flecha";
+import { TarjetaMarca, marcas } from "@/components/marcas-herrajes";
 import { CtaCotizar, Encabezado, EtiquetaEjemplo } from "@/components/ui";
 import { getMateriales, type Muestra } from "@/lib/datos";
 
 export const metadata: Metadata = {
   title: "Materiales",
-  description: "Melaminas, laqueados y maderas con los que diseñamos y fabricamos tus muebles a medida.",
+  description:
+    "Melaminas, laqueados, maderas y herrajes Blum, Häfele, Hettich, Salice y Ducasse con los que fabricamos tus muebles a medida.",
 };
+
+const herrajes = [
+  { nombre: "Bisagras con cierre suave", texto: "La puerta frena sola en el último tramo y cierra sin golpe." },
+  { nombre: "Correderas telescópicas", texto: "El cajón sale completo y se ve hasta el fondo. También con cierre suave." },
+  { nombre: "Apertura por presión", texto: "Para frentes sin tirador: el mueble se abre con un toque." },
+  { nombre: "Elevables", texto: "Las puertas de alacena suben y quedan firmes a la altura que elijas." },
+  { nombre: "Equipamiento interior", texto: "Barrales, canastos, cajones internos y organizadores para placares y cocinas." },
+  { nombre: "Tiradores", texto: "Embutidos, de perfil o de manija, en metal o en madera." },
+];
 
 function Swatch({ muestra }: { muestra: Muestra }) {
   const veta =
@@ -40,7 +53,12 @@ export default async function MaterialesPage() {
     <>
       <section className="mx-auto w-full max-w-6xl px-6 pb-10 pt-14 sm:pt-20">
         <Encabezado etiqueta="Muestrario" titulo="Materiales y colores">
-          <p>Melaminas y laqueados disponibles. Te ayudamos a combinarlos con tu espacio.</p>
+          <p>
+            Melaminas, laqueados y los herrajes que usamos. Te ayudamos a combinarlos con tu espacio.{" "}
+            <a href="#herrajes" className="underline underline-offset-4">
+              Ver herrajes
+            </a>
+          </p>
         </Encabezado>
         {hayEjemplos && (
           <p className="cuerpo-chico mt-6 flex items-center gap-2 text-muted">
@@ -69,6 +87,43 @@ export default async function MaterialesPage() {
           </div>
         </section>
       ))}
+
+      <section id="herrajes" className={materiales.length % 2 === 0 ? "bg-champagne" : ""}>
+        <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1fr_2fr]">
+          <div data-revelar className="flex flex-col gap-3">
+            <span className="filete-crece h-px w-10 bg-dorado" aria-hidden="true" />
+            <h2 className="titulo">
+              <Dividir texto="Herrajes" />
+            </h2>
+            <p className="text-muted">
+              Lo que no se ve también se elige. Usamos herrajes de marcas reconocidas en todo el mundo, pensados para
+              abrirse y cerrarse todos los días.
+            </p>
+            <p className="cuerpo-chico">
+              <span className="text-muted">Ideal para: </span>
+              cocinas, placares y todo mueble que se abre todos los días.
+            </p>
+          </div>
+          <div className="flex flex-col gap-10">
+            <ul className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
+              {herrajes.map((h, i) => (
+                <li key={h.nombre} data-revelar className="flex flex-col gap-1 border-t border-border pt-4" style={orden(i % 2)}>
+                  <span className="font-semibold">{h.nombre}</span>
+                  <span className="cuerpo-chico text-muted">{h.texto}</span>
+                </li>
+              ))}
+            </ul>
+            <div data-revelar className="flex flex-col gap-4">
+              <span className="etiqueta text-muted">Marcas</span>
+              <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+                {marcas.map((m) => (
+                  <TarjetaMarca key={m.nombre} marca={m} ancho="w-full" />
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <CtaCotizar
         titulo="¿Ya tenés una combinación en mente?"
