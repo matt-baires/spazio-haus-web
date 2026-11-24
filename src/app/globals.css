@@ -190,7 +190,11 @@ body {
 .marquesina-pista {
   animation: marquesina 40s linear infinite;
 }
-.marquesina:hover .marquesina-pista {
+.marquesina-rapida {
+  animation-duration: 30s;
+}
+.marquesina:hover .marquesina-pista,
+.group:hover > .marquesina-rapida {
   animation-play-state: paused;
 }
 @keyframes marquesina {
@@ -208,7 +212,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
   }
-  .marquesina-pista > ul[aria-hidden] {
+  .marquesina-pista > [aria-hidden] {
     display: none;
   }
 }

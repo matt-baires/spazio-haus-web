@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FranjaInstagram } from "@/components/franja-instagram";
 import { LogoHorizontal } from "@/components/logo-horizontal";
 import { getSitio } from "@/lib/datos";
 import { direccionTexto, mapsUrl, navegacion, site } from "@/lib/site";
@@ -6,7 +7,8 @@ import { direccionTexto, mapsUrl, navegacion, site } from "@/lib/site";
 export async function SiteFooter() {
   const s = await getSitio();
   return (
-    <footer className="border-t border-border bg-background">
+    <footer className="bg-background">
+      <FranjaInstagram usuario={s.instagram.usuario} url={s.instagram.url} />
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-14 sm:grid-cols-3">
         <div className="flex flex-col gap-4">
           <LogoHorizontal />
