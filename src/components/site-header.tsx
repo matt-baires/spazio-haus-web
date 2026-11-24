@@ -24,18 +24,22 @@ export function SiteHeader() {
   const activo = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header
-      className={`sticky top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-500 ${
-        solido
-          ? "border-border/70 bg-background/70 backdrop-blur-xl backdrop-saturate-150"
-          : "border-transparent bg-transparent"
-      }`}
-    >
-      <div
-        className={`mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-6 transition-[padding] duration-500 ${
-          bajo ? "py-3" : "py-5"
+    <header className={`sticky top-0 z-50 ${abierto ? "bg-background" : ""}`}>
+      {/* Mismo efecto que AYOCIN: velo gris al 20 % con desenfoque de 8 px que aparece al bajar,
+          y un filete al 20 % que se dibuja de izquierda a derecha. */}
+      <span
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-0 -z-10 bg-ceniza/20 backdrop-blur-[8px] transition-opacity duration-500 ${
+          solido ? "opacity-100" : "opacity-0"
         }`}
-      >
+      />
+      <span
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-x-0 bottom-0 h-px origin-left bg-foreground/20 transition-transform duration-700 ease-out ${
+          solido ? "scale-x-100" : "scale-x-0"
+        }`}
+      />
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-6 py-4">
         <Link href="/" aria-label="Spazio Haus, ir al inicio" onClick={() => setAbierto(false)}>
           <LogoHorizontal compacto />
         </Link>
