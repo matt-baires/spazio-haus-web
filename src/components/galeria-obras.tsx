@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { ObraCard } from "@/components/ui";
-import type { Obra } from "@/lib/datos";
+import type { Foto, Obra } from "@/lib/datos";
 import { OTRAS, subcategoriaDe, subcategorias } from "@/lib/subcategorias";
 
 type Tipo = { slug: string; nombre: string; resumen?: string };
@@ -15,7 +16,18 @@ const dos = (n: number) => String(n).padStart(2, "0");
  * y, dentro de cada una, subcategoría (Madera maciza → Mesas, Sillas…). Al elegir una categoría
  * aparece su cabecera con el nombre en grande, la cantidad y las subcategorías.
  */
-export function GaleriaObras({ obras, tipos }: { obras: Obra[]; tipos: Tipo[] }) {
+export function GaleriaObras({
+  obras,
+  tipos,
+  fotos,
+  encabezado,
+}: {
+  obras: Obra[];
+  tipos: Tipo[];
+  /** Foto de cada categoría (por slug) y la de "todas", para el costado de la cabecera. */
+  fotos: Record<string, Foto>;
+  encabezado: ReactNode;
+}) {
   const [categoria, setCategoria] = useState("todas");
   const [sub, setSub] = useState("todas");
 
@@ -43,8 +55,14 @@ export function GaleriaObras({ obras, tipos }: { obras: Obra[]; tipos: Tipo[] })
       activa ? "border-foreground bg-foreground text-hueso" : "border-border hover:border-foreground"
     }`;
 
+  const cantidadActual = categoria === "todas" ? obras.length : obras.filter((o) => o.tipo === categoria).length;
+  const claves = ["todas", ...categorias.map((t) => t.slug)].filter((k) => fotos[k]);
+
   return (
     <div className="flex flex-col gap-10">
+      <div className="grid items-end gap-10 lg:grid-cols-12 lg:gap-x-10">
+        <div className="flex flex-col gap-8 lg:col-span-6">
+          {encabezado}
       <div role="group" aria-label="Filtrar por categoría" className="flex flex-wrap gap-2">
         {[{ slug: "todas", nombre: "Todas" }, ...categorias].map((t) => {
           const cantidad = t.slug === "todas" ? obras.length : obras.filter((o) => o.tipo === t.slug).length;
@@ -56,9 +74,37 @@ export function GaleriaObras({ obras, tipos }: { obras: Obra[]; tipos: Tipo[] })
           );
         })}
       </div>
+        </div>
+
+        {/* Foto de la categoría elegida: cambia con un fundido al tocar cada filtro. */}
+        <div className="redondeado relative isolate aspect-[4/3] overflow-hidden bg-niebla lg:col-span-6">
+          {claves.map((k) => (
+            <Image
+              key={k}
+              src={fotos[k].url}
+              alt={k === categoria ? fotos[k].alt : ""}
+              aria-hidden={k !== categoria || undefined}
+              fill
+              priority={k === "todas"}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className={`object-cover transition-[opacity,transform] duration-700 ease-out ${
+                k === categoria ? "scale-100 opacity-100" : "scale-105 opacity-0"
+              }`}
+            />
+          ))}
+          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/50 to-transparent" aria-hidden="true" />
+          <span
+            key={categoria}
+            className="cuerpo-chico absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-background/90 px-3 py-1 backdrop-blur-sm motion-safe:animate-[entrar_0.6s_cubic-bezier(0.2,0.7,0.2,1)]"
+          >
+            {tipoActual?.nombre ?? "Todas las obras"}
+            <span className="tabular-nums text-muted">{dos(cantidadActual)}</span>
+          </span>
+        </div>
+      </div>
 
       {tipoActual && (
-        <div key={tipoActual.slug} className="grid gap-6 border-y border-border py-8 motion-safe:animate-[entrar_0.6s_cubic-bezier(0.2,0.7,0.2,1)] md:grid-cols-12 md:items-end">
+        <div key={tipoActual.slug} className="grid gap-5 border-y border-border py-6 motion-safe:animate-[entrar_0.6s_cubic-bezier(0.2,0.7,0.2,1)] md:grid-cols-12 md:items-end">
           <div className="flex flex-col gap-3 md:col-span-7">
             <span className="etiqueta text-muted">Categoría</span>
             <h2 className="frase">{tipoActual.nombre}</h2>
