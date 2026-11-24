@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { Card, buttonVariants } from "@heroui/react";
+import Image from "next/image";
+import { buttonVariants } from "@heroui/react";
 import { CtaCotizar, FotoObra, ObraCard } from "@/components/ui";
 import { Flecha, orden } from "@/components/flecha";
 import { Dividir } from "@/components/dividir";
 import { MarcasHerrajes } from "@/components/marcas-herrajes";
-import { MarquesinaTexto } from "@/components/marquesina-texto";
 import { fotosEjemplo } from "@/lib/fotos-ejemplo";
 import { getObras, getServicios } from "@/lib/datos";
 import { site } from "@/lib/site";
@@ -54,32 +54,60 @@ export default async function Home() {
         />
       </section>
 
-      <section className="bg-humo">
-        <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
-          <div data-revelar className="mb-10 flex flex-wrap items-end justify-between gap-4">
-            <h2 className="titulo">
-              <Dividir texto="Qué hacemos" />
-            </h2>
-            <Link href="/servicios" className="cuerpo-chico underline underline-offset-4">
-              Todos los servicios
-            </Link>
+      {/* Qué hacemos al estilo de la sección "Full spectrum lighting" de AYOCIN: foto de fondo con
+          parallax, texto gigante en movimiento entre filetes y una fila por servicio, en blanco. */}
+      <section data-menu="oscuro" aria-labelledby="que-hacemos" className="relative overflow-hidden text-hueso">
+        <div data-paralaje className="absolute inset-x-0 -top-[9%] h-[118%] will-change-transform" aria-hidden="true">
+          <Image src={fotosEjemplo.muestrasMadera.url} alt="" fill sizes="100vw" className="object-cover" />
+        </div>
+        <div className="absolute inset-0 bg-black/55" aria-hidden="true" />
+
+        <div className="relative pt-16 sm:pt-28">
+          <h2 id="que-hacemos" className="sr-only">
+            Qué hacemos
+          </h2>
+          <div aria-hidden="true" className="relative overflow-hidden border-y border-hueso/20 py-4">
+            <div
+              className="marquesina-pista marquesina-lenta titulo-grande flex w-max whitespace-nowrap uppercase"
+              style={{ fontSize: "clamp(72px, 15vw, 220px)", lineHeight: 1 }}
+            >
+              {[0, 1].map((copia) => (
+                <span key={copia} className="flex shrink-0 items-center" aria-hidden={copia === 1 || undefined}>
+                  {[0, 1, 2].map((k) => (
+                    <span key={k} className="flex shrink-0 items-center gap-[0.3em] pr-[0.3em]">
+                      <span>Qué hacemos</span>
+                      <span className="h-[0.08em] w-[0.08em] rounded-full bg-dorado" />
+                    </span>
+                  ))}
+                </span>
+              ))}
+            </div>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+          <ul className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-28">
             {servicios.map((s, i) => (
-              <Link key={s.slug} href={`/servicios/${s.slug}`} className="group" data-revelar style={orden(i)}>
-                <Card className="h-full bg-background transition-[transform,background-color] duration-500 ease-out group-hover:bg-background/70 motion-safe:group-hover:-translate-y-1">
-                  <Card.Header>
-                    <Card.Title className="destacado">{s.nombre}</Card.Title>
-                    <Card.Description className="text-muted">{s.resumen}</Card.Description>
-                    <span
-                      className="mt-2 h-px w-0 bg-dorado transition-[width] duration-500 ease-out group-hover:w-10"
-                      aria-hidden="true"
-                    />
-                  </Card.Header>
-                </Card>
-              </Link>
+              <li
+                key={s.slug}
+                data-revelar
+                style={orden(i % 3)}
+                className="grid gap-y-3 border-b border-hueso/20 pb-10 pt-8 md:grid-cols-12 md:gap-x-6 md:pb-14 md:pt-10"
+              >
+                <span className="titulo hidden text-hueso/60 md:col-span-4 md:block">{String.fromCharCode(65 + i)}</span>
+                <h3 className="titulo md:col-span-4">
+                  <Link href={`/servicios/${s.slug}`} className="hover:underline hover:underline-offset-8">
+                    {s.nombre}
+                  </Link>
+                </h3>
+                <div className="flex flex-col items-start gap-4 md:col-span-4 md:pt-1">
+                  <p className="text-hueso/80">{s.resumen}</p>
+                  <Link href={`/servicios/${s.slug}`} className="flecha cuerpo-chico inline-flex items-center gap-2 underline underline-offset-4">
+                    Ver {s.nombre.toLowerCase()}
+                    <Flecha />
+                  </Link>
+                </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -100,8 +128,6 @@ export default async function Home() {
           </div>
         </section>
       )}
-
-      <MarquesinaTexto />
 
       <section data-menu="oscuro" className="bg-carbon text-hueso">
         <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
