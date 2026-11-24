@@ -4,6 +4,7 @@ import { buttonVariants } from "@heroui/react";
 import { CtaCotizar, FotoObra, ObraCard } from "@/components/ui";
 import { Flecha, orden } from "@/components/flecha";
 import { Dividir } from "@/components/dividir";
+import { TextoGigante } from "@/components/texto-gigante";
 import { MarcasHerrajes } from "@/components/marcas-herrajes";
 import { CarruselPiezas } from "@/components/carrusel-piezas";
 import { fotosEjemplo, galeriaEjemploServicio } from "@/lib/fotos-ejemplo";
@@ -68,23 +69,7 @@ export default async function Home() {
           <h2 id="que-hacemos" className="sr-only">
             Qué hacemos
           </h2>
-          <div aria-hidden="true" className="relative overflow-hidden border-y border-hueso/20 py-4">
-            <div
-              className="marquesina-pista marquesina-lenta titulo-grande flex w-max whitespace-nowrap uppercase"
-              style={{ fontSize: "clamp(72px, 15vw, 220px)", lineHeight: 1 }}
-            >
-              {[0, 1].map((copia) => (
-                <span key={copia} className="flex shrink-0 items-center" aria-hidden={copia === 1 || undefined}>
-                  {[0, 1, 2].map((k) => (
-                    <span key={k} className="flex shrink-0 items-center gap-[0.3em] pr-[0.3em]">
-                      <span>Qué hacemos</span>
-                      <span className="h-[0.08em] w-[0.08em] rounded-full bg-dorado" />
-                    </span>
-                  ))}
-                </span>
-              ))}
-            </div>
-          </div>
+          <TextoGigante texto="Qué hacemos" />
 
           <ul className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-28">
             {servicios.map((s, i) => (
@@ -144,23 +129,7 @@ export default async function Home() {
             <h2 id="madera-maciza" className="sr-only">
               Muebles de madera maciza
             </h2>
-            <div aria-hidden="true" className="relative overflow-hidden border-y border-hueso/20 py-4">
-              <div
-                className="marquesina-pista marquesina-lenta titulo-grande flex w-max whitespace-nowrap uppercase"
-                style={{ fontSize: "clamp(64px, 13vw, 190px)", lineHeight: 1 }}
-              >
-                {[0, 1].map((copia) => (
-                  <span key={copia} className="flex shrink-0 items-center">
-                    {[0, 1, 2].map((k) => (
-                      <span key={k} className="flex shrink-0 items-center gap-[0.3em] pr-[0.3em]">
-                        <span>Madera maciza</span>
-                        <span className="h-[0.08em] w-[0.08em] rounded-full bg-dorado" />
-                      </span>
-                    ))}
-                  </span>
-                ))}
-              </div>
-            </div>
+            <TextoGigante texto="Madera maciza" />
 
             <div data-revelar data-menu="claro" className="mx-auto mt-12 w-full max-w-5xl px-4 sm:mt-16 sm:px-6">
               <CarruselPiezas piezas={piezas} href="/servicios/muebles-de-madera" />
