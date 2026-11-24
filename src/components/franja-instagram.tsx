@@ -1,6 +1,6 @@
 /**
  * Franja negra en movimiento arriba del pie: "Seguinos en Instagram · @usuario".
- * Toda la franja es un solo enlace al perfil. Con "reducir movimiento" queda quieta.
+ * Toda la franja es un solo enlace al perfil. Con "reducir movimiento" sigue andando, más lenta.
  */
 export function FranjaInstagram({ usuario, url }: { usuario: string; url: string }) {
   const tramo = (oculto: boolean) => (

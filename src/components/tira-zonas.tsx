@@ -2,7 +2,7 @@
  * Tira de barrios, countries y empresas donde trabajamos, en movimiento continuo entre dos
  * filetes (al estilo de phippscharlie.com). Texto grande y fino en mayúsculas, sin adornos.
  * Es una excepción decorativa a la escala tipográfica, como los textos gigantes.
- * Con "reducir movimiento" queda quieta.
+ * Con "reducir movimiento" sigue andando, más lenta.
  */
 export const zonas = [
   "Nordelta",

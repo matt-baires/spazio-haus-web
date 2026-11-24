@@ -18,7 +18,7 @@ const VUELTA = 2 * Math.PI * RADIO;
  * Cabecera de la portada al estilo de Moffitt.Moffitt.: foto a pantalla completa que cambia
  * cada 5 segundos, el título fijo abajo a la izquierda, la obra de cada foto con su etiqueta,
  * y abajo a la derecha el contador con un anillo de progreso y la flecha para pasar.
- * Se pausa al pasar el mouse; con "reducir movimiento" no avanza sola.
+ * Se pausa al pasar el mouse (solo con mouse) y sigue rotando también con "reducir movimiento".
  */
 export function PortadaRotativa({
   diapositivas,
@@ -34,7 +34,7 @@ export function PortadaRotativa({
   const total = diapositivas.length;
 
   useEffect(() => {
-    if (pausa || total < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (pausa || total < 2) return;
     const t = setTimeout(() => setActual((i) => (i + 1) % total), DURACION);
     return () => clearTimeout(t);
   }, [actual, pausa, total]);
@@ -47,8 +47,9 @@ export function PortadaRotativa({
       data-menu="oscuro"
       aria-roledescription="carrusel"
       aria-label="Obras destacadas"
-      onMouseEnter={() => setPausa(true)}
-      onMouseLeave={() => setPausa(false)}
+      // Solo se pausa con mouse: en celular y tablet un toque no la deja frenada.
+      onPointerEnter={(e) => e.pointerType === "mouse" && setPausa(true)}
+      onPointerLeave={(e) => e.pointerType === "mouse" && setPausa(false)}
       className="cortina -mt-20 flex min-h-[640px] flex-col justify-end overflow-hidden text-hueso h-[100svh]"
     >
       {diapositivas.map((s, i) => {
@@ -68,7 +69,7 @@ export function PortadaRotativa({
             sizes="100vw"
             priority={i === 0}
             className={`object-cover transition-transform duration-[6000ms] ease-out ${
-              i === actual ? "scale-100" : "scale-110"
+              i === actual ? "scale-100" : "motion-safe:scale-110"
             }`}
           />
         </div>

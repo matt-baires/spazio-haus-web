@@ -315,30 +315,25 @@ body {
 .marquesina-lenta {
   animation-duration: 60s;
 }
-.marquesina:hover .marquesina-pista,
-.group:hover > .marquesina-rapida {
-  animation-play-state: paused;
+/* Pausa al pasar el mouse, solo con mouse real: en celular y tablet un toque no la frena. */
+@media (hover: hover) and (pointer: fine) {
+  .marquesina:hover .marquesina-pista,
+  .group:hover > .marquesina-rapida {
+    animation-play-state: paused;
+  }
 }
 @keyframes marquesina {
   to {
     transform: translateX(-50%);
   }
 }
+/*
+ * Con "reducir movimiento" las tiras siguen andando (son contenido, como un carrusel), pero
+ * a la mitad de velocidad. Lo que sí se apaga es el parallax, la cortina y las apariciones.
+ */
 @media (prefers-reduced-motion: reduce) {
-  .marquesina {
-    mask-image: none;
-  }
   .marquesina-pista {
-    animation: none;
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .anillo-progreso {
-    animation: none !important;
-  }
-  .marquesina-pista > [aria-hidden] {
-    display: none;
+    animation-duration: 120s;
   }
 }
 

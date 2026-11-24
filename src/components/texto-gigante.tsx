@@ -1,7 +1,7 @@
 /**
  * Texto gigante en movimiento entre dos filetes, sobre una foto oscura (al estilo de AYOCIN).
  * Un solo componente para que "Qué hacemos", "Madera maciza" y "Hablemos" tengan siempre el
- * mismo tamaño. Es decorativo: los lectores de pantalla lo saltean (cada sección tiene su título).
+ * mismo tamaño. Es decorativo: los lectores de pantalla lo saltean (cada sección tiene su título). Con "reducir movimiento" sigue andando, más lento.
  */
 export function TextoGigante({ texto }: { texto: string }) {
   return (
