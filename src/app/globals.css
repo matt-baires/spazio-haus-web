@@ -264,6 +264,20 @@ body {
     }
   }
 }
+/* Respaldo sin animation-timeline: la mueve components/revelar.tsx y la sombra va por --sombra */
+@supports not (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .cortina::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 30;
+      pointer-events: none;
+      background: #000;
+      opacity: var(--sombra, 0);
+    }
+  }
+}
 @keyframes cortina-sale {
   to {
     translate: 0 45vh;
