@@ -67,6 +67,13 @@
 .button {
   border-radius: 4px;
 }
+/* Botones en la escala tipográfica: 14 px en todos los tamaños */
+.button,
+.button.button--sm,
+.button.button--md,
+.button.button--lg {
+  font-size: 14px;
+}
 .card {
   border-radius: 8px;
 }
