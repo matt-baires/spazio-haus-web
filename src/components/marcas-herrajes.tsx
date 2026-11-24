@@ -2,28 +2,31 @@ import Image from "next/image";
 
 /**
  * Tira de logos de las marcas de herrajes que usa el taller, en movimiento continuo.
- * Logos en un solo tono (public/marcas). La altura se ajusta por logo para que pesen parecido.
+ * Logos en sus colores originales (public/marcas), cada uno en una tarjeta blanca.
+ * La altura se ajusta por logo para que pesen parecido.
  * Con "reducir movimiento" activado en el sistema, la tira queda quieta y centrada.
  */
 const marcas = [
-  { nombre: "Blum", archivo: "blum", ancho: 458, alto: 123, h: 30 },
-  { nombre: "Häfele", archivo: "hafele", ancho: 696, alto: 116, h: 22 },
-  { nombre: "Hettich", archivo: "hettich", ancho: 192, alto: 120, h: 44 },
-  { nombre: "Salice", archivo: "salice", ancho: 771, alto: 120, h: 22 },
-  { nombre: "Ducasse", archivo: "ducasse", ancho: 545, alto: 120, h: 30 },
+  { nombre: "Blum", archivo: "blum", ancho: 321, alto: 160, h: 44 },
+  { nombre: "Häfele", archivo: "hafele", ancho: 970, alto: 160, h: 24 },
+  { nombre: "Hettich", archivo: "hettich", ancho: 257, alto: 160, h: 52 },
+  { nombre: "Salice", archivo: "salice", ancho: 954, alto: 160, h: 24 },
+  { nombre: "Ducasse", archivo: "ducasse", ancho: 734, alto: 160, h: 34 },
 ];
 
 function Tira({ oculta = false }: { oculta?: boolean }) {
   return (
-    <ul className="flex shrink-0 items-center gap-16 pr-16 sm:gap-24 sm:pr-24" aria-hidden={oculta || undefined}>
+    <ul className="flex shrink-0 items-center gap-4 py-2 pr-4 sm:gap-6 sm:pr-6" aria-hidden={oculta || undefined}>
       {marcas.map((m) => (
-        <li key={m.nombre} className="shrink-0">
+        <li
+          key={m.nombre}
+          className="flex h-24 w-52 shrink-0 items-center justify-center rounded-2xl border border-border bg-white px-6 shadow-sm transition-transform duration-300 motion-safe:hover:-translate-y-1"
+        >
           <Image
             src={`/marcas/${m.archivo}.png`}
             alt={oculta ? "" : m.nombre}
             width={Math.round((m.ancho / m.alto) * m.h)}
             height={m.h}
-            className="opacity-60"
           />
         </li>
       ))}
