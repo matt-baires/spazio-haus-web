@@ -82,13 +82,20 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
 
       {obrasDelTipo.length === 0 && galeria.length > 0 && (
         <section className="mx-auto w-full max-w-6xl px-6 py-16">
-          <h2 data-revelar className="titulo mb-10">
-            Piezas de la línea
-          </h2>
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {galeria.map((f, i) => (
-              <div key={f.url} data-revelar className="group" style={orden(i)}>
-                <FotoObra foto={f} proporcion="aspect-[4/5]" sizes="(min-width: 1024px) 25vw, 50vw" />
+          <div data-revelar className="mb-10 flex flex-col gap-3">
+            <h2 className="titulo">Piezas de la línea</h2>
+            <p className="max-w-2xl text-muted">
+              Cada pieza se hace a pedido en el taller: elegís la madera, la medida y la terminación.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-3">
+            {galeria.map((pieza, i) => (
+              <div key={pieza.foto.url} data-revelar className="group flex flex-col gap-3" style={orden(i % 3)}>
+                <FotoObra foto={pieza.foto} proporcion="aspect-[4/5]" sizes="(min-width: 1024px) 33vw, 50vw" />
+                <div className="flex flex-col gap-1">
+                  <span className="font-semibold">{pieza.nombre}</span>
+                  <span className="cuerpo-chico text-muted">{pieza.detalle}</span>
+                </div>
               </div>
             ))}
           </div>

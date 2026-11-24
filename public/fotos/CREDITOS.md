@@ -24,3 +24,16 @@ Fotos de stock de [Unsplash](https://unsplash.com) bajo la [licencia de Unsplash
 | madera-mesa-baja.jpg | https://images.unsplash.com/photo-1777513538143-8525eb3943f6 |
 | madera-ensamble.jpg | https://images.unsplash.com/photo-1758977403865-f79e156415b3 |
 | madera-silla.jpg | https://images.unsplash.com/photo-1705320678447-78c5fe2615a7 |
+| madera-banqueta-alta.jpg | https://images.unsplash.com/photo-1634798245965-03669c757183 |
+| madera-banquetas-bajas.jpg | https://images.unsplash.com/photo-1540809799-5da9372c3f64 |
+| madera-mesa-ratona.jpg | https://images.unsplash.com/photo-1581428982868-e410dd047a90 |
+| madera-mesas-nido.jpg | https://images.unsplash.com/photo-1611486212355-d276af4581c0 |
+| madera-mesa-de-luz.jpg | https://images.unsplash.com/photo-1532372320572-cda25653a26d |
+| madera-mesa-redonda.jpg | https://images.unsplash.com/photo-1749476101600-90b2eb7efa89 |
+| madera-mesa-tablones.jpg | https://images.unsplash.com/photo-1605635544350-5796fb1622d1 |
+| madera-silla-recta.jpg | https://images.unsplash.com/photo-1774294067819-91abcd349372 |
+| madera-escritorio.jpg | https://images.unsplash.com/photo-1784012980517-005c26585344 |
+| madera-consola.jpg | https://images.unsplash.com/photo-1788223900715-641af24db423 |
+| madera-aparador.jpg | https://images.unsplash.com/photo-1767963758785-b9def36c13e3 |
+| madera-estante.jpg | https://images.unsplash.com/photo-1787917142802-a7deb450ad17 |
+| madera-canto-vivo.jpg | https://images.unsplash.com/photo-1566921895456-1cee64031c33 |

@@ -34,6 +34,19 @@ export const fotosEjemplo = {
   maderaMesaBaja: f("madera-mesa-baja", "Mesa baja de madera maciza con estante inferior", 1800, 1200),
   maderaEnsamble: f("madera-ensamble", "Detalle del ensamble de una mesa de madera con su silla", 1800, 2304),
   maderaSilla: f("madera-silla", "Silla de madera con respaldo curvo y asiento tapizado", 1800, 2700),
+  maderaBanquetaAlta: f("madera-banqueta-alta", "Banqueta alta de madera con asiento redondo y apoyapiés", 1800, 3200),
+  maderaBanquetasBajas: f("madera-banquetas-bajas", "Dos banquetas bajas de madera maciza con asiento redondo", 1800, 2466),
+  maderaMesaRatona: f("madera-mesa-ratona", "Mesa ratona de madera con patas de hierro frente a un sillón", 1800, 2700),
+  maderaMesasNido: f("madera-mesas-nido", "Juego de tres mesas nido de madera", 1800, 1200),
+  maderaMesaDeLuz: f("madera-mesa-de-luz", "Mesa de luz de madera con bordes redondeados y estante abierto", 1800, 2700),
+  maderaMesaRedonda: f("madera-mesa-redonda", "Mesa redonda de madera con luz natural", 1800, 2700),
+  maderaMesaTablones: f("madera-mesa-tablones", "Mesa larga de tablones de madera con sillas negras", 1800, 1193),
+  maderaSillaRecta: f("madera-silla-recta", "Silla de madera de líneas rectas con asiento tapizado claro", 1800, 2700),
+  maderaEscritorio: f("madera-escritorio", "Escritorio de madera con frente de varillas", 1800, 1091),
+  maderaConsola: f("madera-consola", "Consola de madera con cajones blancos", 1800, 1013),
+  maderaAparador: f("madera-aparador", "Aparador de madera con puertas de varillas", 1800, 2249),
+  maderaEstante: f("madera-estante", "Estante de pared de madera con libros", 1800, 1800),
+  maderaCantoVivo: f("madera-canto-vivo", "Mesa auxiliar con tapa de madera de canto vivo", 1800, 2399),
 } satisfies Record<string, Foto>;
 
 const porServicio: Record<string, Foto> = {
@@ -45,17 +58,35 @@ const porServicio: Record<string, Foto> = {
   "muebles-de-madera": fotosEjemplo.maderaComedor,
 };
 
+export type Pieza = { nombre: string; detalle: string; foto: Foto };
+
+const p = (nombre: string, detalle: string, foto: Foto): Pieza => ({ nombre, detalle, foto });
+
 /** Piezas de ejemplo que se muestran en la página de un servicio que todavía no tiene obras. */
-const galeriaPorServicio: Record<string, Foto[]> = {
+const galeriaPorServicio: Record<string, Pieza[]> = {
   "muebles-de-madera": [
-    fotosEjemplo.maderaSillon,
-    fotosEjemplo.maderaMesaBaja,
-    fotosEjemplo.maderaSilla,
-    fotosEjemplo.maderaEnsamble,
+    p("Mesa de comedor", "Tapa maciza a la medida del ambiente", fotosEjemplo.maderaComedor),
+    p("Mesa redonda", "Para cuatro o seis, con pata central o cuatro patas", fotosEjemplo.maderaMesaRedonda),
+    p("Mesa de tablones", "Tablones encolados, ideal para comedor o trabajo", fotosEjemplo.maderaMesaTablones),
+    p("Silla tapizada", "Respaldo curvo y asiento en tela a elección", fotosEjemplo.maderaSilla),
+    p("Silla recta", "Líneas simples, asiento tapizado", fotosEjemplo.maderaSillaRecta),
+    p("Banqueta alta", "Con apoyapiés, a la altura de tu barra", fotosEjemplo.maderaBanquetaAlta),
+    p("Banqueta baja", "Asiento redondo de madera maciza", fotosEjemplo.maderaBanquetasBajas),
+    p("Sillón individual", "Estructura de madera y esterilla", fotosEjemplo.maderaSillon),
+    p("Mesa baja", "Madera maciza con estante inferior", fotosEjemplo.maderaMesaBaja),
+    p("Mesa ratona", "Tapa de madera y patas de hierro", fotosEjemplo.maderaMesaRatona),
+    p("Mesas nido", "Tres medidas que se guardan una dentro de otra", fotosEjemplo.maderaMesasNido),
+    p("Mesa de arrime", "Tapa de canto vivo, cada pieza es única", fotosEjemplo.maderaCantoVivo),
+    p("Mesa de luz", "Bordes redondeados y estante abierto", fotosEjemplo.maderaMesaDeLuz),
+    p("Aparador", "Puertas de varillas y guardado interior", fotosEjemplo.maderaAparador),
+    p("Consola", "Para recibidor o pasillo, con cajones", fotosEjemplo.maderaConsola),
+    p("Escritorio", "Frente de varillas y medida a elección", fotosEjemplo.maderaEscritorio),
+    p("Estante de pared", "Parante de madera con estantes regulables", fotosEjemplo.maderaEstante),
+    p("Detalle de ensamble", "Uniones de carpintería en madera maciza", fotosEjemplo.maderaEnsamble),
   ],
 };
 
-export const galeriaEjemploServicio = (slug: string): Foto[] => galeriaPorServicio[slug] ?? [];
+export const galeriaEjemploServicio = (slug: string): Pieza[] => galeriaPorServicio[slug] ?? [];
 
 const porObra: Record<string, Foto> = {
   "cocina-madera-mesada-negra": fotosEjemplo.cocinaMaderaMesadaNegra,
