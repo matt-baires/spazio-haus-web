@@ -24,8 +24,9 @@ function Tramo({ oculto = false }: { oculto?: boolean }) {
   return (
     <ul className="flex shrink-0 items-center" aria-hidden={oculto || undefined}>
       {zonas.map((z) => (
-        <li key={z} className="shrink-0 pr-[0.9em]">
-          {z}
+        <li key={z} className="flex shrink-0 items-center gap-[0.45em] pr-[0.45em]">
+          <span>{z}</span>
+          <span className="h-[0.12em] w-[0.12em] rounded-full bg-dorado" aria-hidden="true" />
         </li>
       ))}
     </ul>
@@ -37,7 +38,7 @@ export function TiraZonas() {
     <section aria-labelledby="zonas-titulo" className="cortina bg-background py-12 sm:py-16">
       <div className="mx-auto mb-6 flex w-full max-w-6xl items-center justify-between gap-4 px-6">
         <h2 id="zonas-titulo" className="etiqueta text-muted">
-          Dónde trabajamos
+          Confiaron en nosotros
         </h2>
         <span className="etiqueta hidden text-muted sm:block">Countries, barrios y casas</span>
       </div>
