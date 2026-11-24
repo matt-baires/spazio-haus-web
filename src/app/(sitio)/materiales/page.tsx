@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Dividir } from "@/components/dividir";
 import { orden } from "@/components/flecha";
-import { TarjetaMarca, marcas } from "@/components/marcas-herrajes";
+import { TiraMarcas } from "@/components/marcas-herrajes";
 import { CtaCotizar, Encabezado, EtiquetaEjemplo } from "@/components/ui";
 import { getMateriales, type Muestra } from "@/lib/datos";
 
@@ -92,11 +92,7 @@ export default async function MaterialesPage() {
             </ul>
             <div data-revelar className="flex flex-col gap-4">
               <span className="etiqueta text-muted">Marcas</span>
-              <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-                {marcas.map((m) => (
-                  <TarjetaMarca key={m.nombre} marca={m} ancho="w-full" />
-                ))}
-              </ul>
+              <TiraMarcas />
             </div>
           </div>
         </div>

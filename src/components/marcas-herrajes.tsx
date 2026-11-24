@@ -1,71 +1,82 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Dividir } from "@/components/dividir";
 
 /**
- * Tira de logos de las marcas de herrajes que usa el taller, en movimiento continuo.
- * Logos en sus colores originales (public/marcas), cada uno en una tarjeta blanca.
- * La altura se ajusta por logo para que pesen parecido.
- * Con "reducir movimiento" activado en el sistema, la tira queda quieta y centrada.
+ * Marcas de herrajes que usa el taller: logos en sus colores originales (public/marcas),
+ * sueltos sobre el fondo y en movimiento continuo. La altura se ajusta por logo para que
+ * pesen parecido. Con "reducir movimiento" la tira queda quieta y centrada.
  */
 export const marcas = [
-  { nombre: "Blum", archivo: "blum", ancho: 321, alto: 160, h: 44 },
-  { nombre: "Häfele", archivo: "hafele", ancho: 970, alto: 160, h: 24 },
-  { nombre: "Hettich", archivo: "hettich", ancho: 257, alto: 160, h: 52 },
-  { nombre: "Salice", archivo: "salice", ancho: 954, alto: 160, h: 24 },
-  { nombre: "Ducasse", archivo: "ducasse", ancho: 734, alto: 160, h: 34 },
+  { nombre: "Blum", archivo: "blum", ancho: 321, alto: 160, h: 52 },
+  { nombre: "Häfele", archivo: "hafele", ancho: 970, alto: 160, h: 30 },
+  { nombre: "Hettich", archivo: "hettich", ancho: 257, alto: 160, h: 64 },
+  { nombre: "Salice", archivo: "salice", ancho: 954, alto: 160, h: 30 },
+  { nombre: "Ducasse", archivo: "ducasse", ancho: 734, alto: 160, h: 42 },
 ];
-
-/** Tarjeta blanca con el logo de una marca, en su color original. */
-export function TarjetaMarca({
-  marca,
-  oculta = false,
-  ancho = "w-52",
-}: {
-  marca: (typeof marcas)[number];
-  oculta?: boolean;
-  ancho?: string;
-}) {
-  return (
-    <li
-      className={`flex h-24 shrink-0 items-center justify-center rounded-2xl border border-border bg-white px-6 shadow-sm transition-transform duration-300 motion-safe:hover:-translate-y-1 ${ancho}`}
-    >
-      <Image
-        src={`/marcas/${marca.archivo}.png`}
-        alt={oculta ? "" : marca.nombre}
-        width={Math.round((marca.ancho / marca.alto) * marca.h)}
-        height={marca.h}
-      />
-    </li>
-  );
-}
 
 function Tira({ oculta = false }: { oculta?: boolean }) {
   return (
-    <ul className="flex shrink-0 items-center gap-4 py-2 pr-4 sm:gap-6 sm:pr-6" aria-hidden={oculta || undefined}>
+    <ul className="flex shrink-0 items-center gap-20 pr-20 sm:gap-32 sm:pr-32" aria-hidden={oculta || undefined}>
       {marcas.map((m) => (
-        <TarjetaMarca key={m.nombre} marca={m} oculta={oculta} />
+        <li key={m.nombre} className="flex h-20 shrink-0 items-center">
+          <Image
+            src={`/marcas/${m.archivo}.png`}
+            alt={oculta ? "" : m.nombre}
+            width={Math.round((m.ancho / m.alto) * m.h)}
+            height={m.h}
+          />
+        </li>
       ))}
     </ul>
   );
 }
 
+/** Tira de logos en color, en movimiento. Se pausa al pasar el mouse. */
+export function TiraMarcas() {
+  return (
+    <div className="marquesina relative overflow-hidden">
+      <div className="marquesina-pista flex w-max">
+        <Tira />
+        <Tira oculta />
+      </div>
+    </div>
+  );
+}
+
+/** Sección de la portada: título grande, tira de marcas y un texto con filete. */
 export function MarcasHerrajes() {
   return (
-    <section aria-labelledby="marcas-titulo" className="border-y border-border py-14 sm:py-16">
-      <div data-revelar className="mx-auto mb-10 flex w-full max-w-6xl flex-col gap-3 px-6">
-        <span className="filete-crece h-px w-10 bg-dorado" aria-hidden="true" />
-        <h2 id="marcas-titulo" className="titulo">
-          <Dividir texto="Herrajes que usamos" />
+    <section aria-labelledby="marcas-titulo" className="py-16 sm:py-24">
+      <div className="mx-auto w-full max-w-6xl px-6">
+        <h2
+          id="marcas-titulo"
+          data-revelar
+          className="max-w-2xl text-[32px] font-normal leading-[38px] tracking-[-0.01em] sm:text-[44px] sm:leading-[50px]"
+        >
+          <Dividir texto="Herrajes de marcas reconocidas en todo el mundo." />
         </h2>
-        <p className="max-w-2xl text-muted">
-          Bisagras, correderas, sistemas de apertura y elevables de marcas reconocidas en todo el mundo. Lo que no se
-          ve también se elige.
-        </p>
       </div>
-      <div className="marquesina relative overflow-hidden">
-        <div className="marquesina-pista flex w-max">
-          <Tira />
-          <Tira oculta />
+
+      <div className="my-12 sm:my-16">
+        <TiraMarcas />
+      </div>
+
+      <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 sm:grid-cols-2">
+        <div data-revelar className="flex flex-col gap-4 border-l border-foreground pl-6 sm:pl-10">
+          <p className="max-w-md text-[20px] leading-[28px]">
+            Lo que no se ve también se elige. Bisagras, correderas y elevables que se abren y cierran todos los días.
+          </p>
+          <span className="cuerpo-chico text-muted">Blum · Häfele · Hettich · Salice · Ducasse</span>
+        </div>
+        <div data-revelar className="flex flex-col items-start gap-3 sm:pt-1">
+          <p className="cuerpo-chico max-w-sm text-muted">
+            Los usamos en cocinas, placares y vanitorys: cierre suave, apertura por presión, correderas telescópicas y
+            sistemas para alacenas.
+          </p>
+          <Link href="/materiales#herrajes" className="cuerpo-chico underline underline-offset-4">
+            Ver los herrajes
+          </Link>
         </div>
       </div>
     </section>
