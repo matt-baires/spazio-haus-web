@@ -68,7 +68,7 @@ export default async function MaterialesPage() {
       </section>
 
       {materiales.map((grupo, i) => (
-        <section key={grupo.slug} id={grupo.slug} className={i % 2 === 0 ? "bg-champagne" : ""}>
+        <section key={grupo.slug} id={grupo.slug} className={i % 2 === 0 ? "bg-humo" : ""}>
           <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1fr_2fr]">
             <div className="flex flex-col gap-3">
               <span className="h-px w-10 bg-dorado" aria-hidden="true" />
@@ -88,7 +88,7 @@ export default async function MaterialesPage() {
         </section>
       ))}
 
-      <section id="herrajes" className={materiales.length % 2 === 0 ? "bg-champagne" : ""}>
+      <section id="herrajes" className={materiales.length % 2 === 0 ? "bg-humo" : ""}>
         <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1fr_2fr]">
           <div data-revelar className="flex flex-col gap-3">
             <span className="filete-crece h-px w-10 bg-dorado" aria-hidden="true" />

@@ -53,7 +53,7 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
         <FotoObra foto={s.imagen ?? fotoEjemploServicio(s.slug)} etiqueta={`Foto de ${s.nombre.toLowerCase()}`} proporcion="aspect-[5/4]" prioridad sizes="(min-width: 1024px) 50vw, 100vw" className="entrar-foto" paralaje />
       </section>
 
-      <section className="bg-champagne">
+      <section className="bg-humo">
         <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 py-16 sm:grid-cols-2">
           {s.queResolvemos.length > 0 && (
             <div>

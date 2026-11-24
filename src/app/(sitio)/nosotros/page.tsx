@@ -39,7 +39,7 @@ export default function NosotrosPage() {
         <FotoObra foto={fotosEjemplo.taller} etiqueta="Foto del taller" proporcion="aspect-[4/3]" paralaje />
       </section>
 
-      <section className="bg-champagne">
+      <section className="bg-humo">
         <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
           <p className="etiqueta mb-3 text-muted">Nuestra promesa</p>
           <h2 className="titulo mb-12">{site.tagline}</h2>

@@ -55,7 +55,7 @@ export default async function Home() {
         />
       </section>
 
-      <section className="bg-champagne">
+      <section className="bg-humo">
         <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
           <div data-revelar className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <h2 className="titulo">
@@ -104,7 +104,7 @@ export default async function Home() {
 
       <MarquesinaTexto />
 
-      <section className="bg-travertino">
+      <section className="bg-carbon text-hueso">
         <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
           <h2 data-revelar className="titulo mb-10">
             <Dividir texto="Cómo trabajamos" />
@@ -112,10 +112,10 @@ export default async function Home() {
           <ol className="grid gap-10 sm:grid-cols-3">
             {pasos.map((p, i) => (
               <li key={p.paso} data-revelar className="flex flex-col gap-3" style={orden(i + 1)}>
-                <span className="etiqueta text-muted">{p.paso}</span>
+                <span className="etiqueta text-hueso/60">{p.paso}</span>
                 <span className="filete-crece h-px w-10 bg-dorado" aria-hidden="true" />
                 <h3 className="text-lg font-semibold">{p.titulo}</h3>
-                <p className="text-muted">{p.texto}</p>
+                <p className="text-hueso/75">{p.texto}</p>
               </li>
             ))}
           </ol>

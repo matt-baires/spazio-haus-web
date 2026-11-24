@@ -4,44 +4,41 @@
 
 /*
  * Spazio Haus · tokens del design system aplicados a HeroUI.
- * Fuente: design system "Spazio Haus" (tokens.json, versión 1).
- * Fondos claros; el negro y el dorado quedan para el sello, el texto y filetes finos.
- * Franjas cálidas sacadas del dorado y la madera (referencia: AYOCIN, sin sus pasteles):
- * marfil de base, champagne y travertino alternados, nogal para las secciones oscuras.
+ * Paleta acromática (referencia: Moffitt.Moffitt.): blanco de base, un gris casi blanco para
+ * paneles, grises finos para divisores y negros para las secciones oscuras.
+ * El único color es el dorado del sello y de los filetes; el resto lo ponen las fotos.
  */
 :root {
   /* Paleta de marca */
-  --sh-blanco: #ffffff;
-  --sh-marfil: #f4f1eb; /* fondo de la página */
-  --sh-champagne: #efe3cb; /* franja cálida: luz natural sin competir con el dorado */
-  --sh-travertino: #e2d3bf; /* franja alternada y fondo de fotos pendientes */
-  --sh-roble: #b79f82; /* solo filetes y bordes; el sello se pierde encima */
-  --sh-nogal: #2e2521; /* secciones oscuras; hace brillar el dorado */
-  --sh-piedra: #d9d3c8;
+  --sh-blanco: #ffffff; /* fondo de la página y campos */
+  --sh-humo: #f5f5f5; /* paneles, tarjetas y secciones alternadas */
+  --sh-niebla: #ebecec; /* divisores finos y fondo de fotos pendientes */
+  --sh-ceniza: #d8d8da; /* bordes de campos y botones secundarios */
+  --sh-carbon: #1c1c1c; /* secciones oscuras */
+  --sh-negro: #141414; /* sello, texto principal, botón principal */
+  --sh-hueso: #ffffff; /* texto sobre negro */
   --sh-dorado-mate: #b8955a; /* solo filetes de 1 px y el sello; nunca texto chico */
-  --sh-negro: #141414;
-  --sh-crema: #f2ede4;
-  --sh-texto-secundario: #5a554d; /* AA sobre marfil, champagne y travertino */
+  --sh-texto-secundario: #595b60; /* AA sobre blanco y humo */
 
   /* Mapeo a las variables de HeroUI */
-  --background: var(--sh-marfil);
+  --background: var(--sh-blanco);
   --foreground: var(--sh-negro);
-  --surface: var(--sh-champagne);
+  --surface: var(--sh-humo);
   --surface-foreground: var(--sh-negro);
-  --surface-secondary: var(--sh-champagne);
-  --surface-tertiary: var(--sh-piedra);
+  --surface-secondary: var(--sh-humo);
+  --surface-tertiary: var(--sh-niebla);
   --overlay: var(--sh-blanco);
   --muted: var(--sh-texto-secundario);
-  --default: var(--sh-champagne);
+  --default: var(--sh-humo);
   --default-foreground: var(--sh-negro);
   --accent: var(--sh-negro);
-  --accent-foreground: var(--sh-crema);
-  --border: var(--sh-piedra);
-  --separator: var(--sh-piedra);
+  --accent-foreground: var(--sh-hueso);
+  --border: var(--sh-niebla);
+  --separator: var(--sh-niebla);
   --focus: var(--sh-dorado-mate);
   --link: var(--sh-negro);
   --field-background: var(--sh-blanco);
-  --field-border: var(--sh-piedra);
+  --field-border: var(--sh-ceniza);
   --field-border-width: 1px;
 
   /* Marca plana: sin sombras en superficies */
@@ -58,14 +55,12 @@
   --font-sans: "Instrument Sans Variable", "Instrument Sans", system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --color-marfil: var(--sh-marfil);
-  --color-champagne: var(--sh-champagne);
-  --color-travertino: var(--sh-travertino);
-  --color-roble: var(--sh-roble);
-  --color-nogal: var(--sh-nogal);
-  --color-piedra: var(--sh-piedra);
+  --color-humo: var(--sh-humo);
+  --color-niebla: var(--sh-niebla);
+  --color-ceniza: var(--sh-ceniza);
+  --color-carbon: var(--sh-carbon);
   --color-dorado: var(--sh-dorado-mate);
-  --color-crema: var(--sh-crema);
+  --color-hueso: var(--sh-hueso);
 }
 
 /* Formas de marca sobre los componentes de HeroUI */

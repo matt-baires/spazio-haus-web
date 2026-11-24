@@ -39,7 +39,7 @@ export function FotoObra({
 }) {
   if (foto) {
     return (
-      <div className={`zoom-hover relative ${proporcion} w-full overflow-hidden bg-travertino ${className}`}>
+      <div className={`zoom-hover relative ${proporcion} w-full overflow-hidden bg-niebla ${className}`}>
         {paralaje ? (
           <div data-paralaje className="absolute inset-x-0 -top-[9%] h-[118%] will-change-transform">
             <Image src={foto.url} alt={foto.alt} fill sizes={sizes} priority={prioridad} className="object-cover" />
@@ -54,10 +54,10 @@ export function FotoObra({
     <div
       role="img"
       aria-label={etiqueta}
-      className={`relative flex ${proporcion} w-full items-end overflow-hidden border border-border bg-travertino ${className}`}
+      className={`relative flex ${proporcion} w-full items-end overflow-hidden border border-border bg-niebla ${className}`}
     >
       <svg aria-hidden="true" viewBox="0 0 400 300" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice">
-        <g fill="none" stroke="var(--sh-piedra)" strokeWidth="1.5">
+        <g fill="none" stroke="var(--sh-ceniza)" strokeWidth="1.5">
           <rect x="80" y="150" width="240" height="90" />
           <line x1="160" y1="150" x2="160" y2="240" />
           <line x1="240" y1="150" x2="240" y2="240" />
@@ -130,7 +130,7 @@ export function CtaCotizar({
   href?: string;
 }) {
   return (
-    <section className="bg-nogal text-crema">
+    <section className="bg-carbon text-hueso">
       <div data-revelar className="mx-auto flex w-full max-w-6xl flex-col items-start gap-5 px-6 py-16 sm:py-20">
         <span className="filete-crece h-px w-10 bg-dorado" aria-hidden="true" />
         <h2 className="titulo">
@@ -139,7 +139,7 @@ export function CtaCotizar({
         <p className="max-w-xl opacity-80">{texto}</p>
         <Link
           href={href}
-          className={buttonVariants({ variant: "secondary", size: "lg", className: "flecha gap-2 bg-crema text-foreground" })}
+          className={buttonVariants({ variant: "secondary", size: "lg", className: "flecha gap-2 bg-hueso text-foreground" })}
         >
           Cotizá tu proyecto
           <Flecha />

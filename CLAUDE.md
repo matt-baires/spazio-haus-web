@@ -44,22 +44,22 @@ Así sí: "Cocina en madera con mesada negra. Diseñada y fabricada a medida." �
 
 ### Visual
 
-| Color | HEX | Uso |
-| --- | --- | --- |
-| Negro | `#141414` | Sello, texto principal |
-| Dorado mate | `#B8955A` | Solo aros del sello y filetes finos. Nunca texto chico |
-| Crema | `#F2EDE4` | Texto sobre negro |
-| Blanco | `#FFFFFF` | Campos de formulario |
-| Marfil | `#F4F1EB` | Fondo de la página |
-| Champagne | `#EFE3CB` | Franjas cálidas y tarjetas |
-| Travertino | `#E2D3BF` | Franja alternada y fondo de fotos pendientes |
-| Roble | `#B79F82` | Solo filetes y bordes: el sello dorado se pierde encima |
-| Nogal | `#2E2521` | Secciones oscuras (llamado a cotizar, aviso, detalles de obra) |
-| Piedra | `#D9D3C8` | Bordes y divisores |
-| Gris texto | `#5A554D` | Texto secundario, pies de foto (AA sobre marfil, champagne y travertino) |
+Paleta acromática: blancos y gama de negros (decisión del cliente del 24/11/2026, referencia [Moffitt.Moffitt.](https://moffittmoffitt.com)). Reemplaza las franjas cálidas (marfil, champagne, travertino, nogal), que quedaban antiguas.
 
-- Franjas al estilo de [AYOCIN](https://ayocin.com) pero con colores sacados del dorado y la madera; nada de pasteles (durazno, amarillo), que chocan con el dorado.
-- Proporción: ~70 % fondos claros, 20 % negro o nogal, ≤10 % dorado y piedra. Regla general: ante la duda, menos.
+| Color | Token | HEX | Uso |
+| --- | --- | --- | --- |
+| Blanco | `blanco` / `background` | `#FFFFFF` | Fondo de la página y campos |
+| Humo | `humo` | `#F5F5F5` | Paneles, tarjetas y secciones alternadas |
+| Niebla | `niebla` | `#EBECEC` | Divisores finos y fondo de fotos pendientes |
+| Ceniza | `ceniza` | `#D8D8DA` | Bordes de campos |
+| Gris texto | `muted` | `#595B60` | Texto secundario (AA sobre blanco y humo) |
+| Carbón | `carbon` | `#1C1C1C` | Secciones oscuras (Cómo trabajamos, llamado a cotizar, aviso) |
+| Negro | `foreground` | `#141414` | Sello, texto principal, botón principal, franja de Instagram |
+| Hueso | `hueso` | `#FFFFFF` | Texto sobre negro |
+| Dorado mate | `dorado` | `#B8955A` | Único color: aros del sello y filetes finos. Nunca texto chico |
+
+- Nada de fondos teñidos (beige, crema, pasteles): el color lo ponen las fotos.
+- Proporción: ~70 % blancos, 20 % negros, ≤10 % dorado y grises. Regla general: ante la duda, menos.
 - Tipografías: **Cinzel** (600, +0,02 em) solo para el nombre y títulos cortos, nunca párrafos; **Instrument Sans** para todo lo demás. Etiquetas en mayúsculas con espaciado 0,18 em. Nada de letras manuscritas ni decorativas.
 - Logo = el **sello** (círculo negro, doble aro dorado). Versión principal: el **sello dorado metalizado original** (`public/marca/sello-dorado.png`, decisión del cliente del 23/11/2026; reemplaza la regla del manual de dorado mate plano). En la web va junto al nombre (`src/components/logo-horizontal.tsx`), y también es el ícono del sitio y la imagen para compartir. Es una imagen de 1240 px: para imprimir, grabar o plotear usar los SVG planos de `marca/` (completo, reducido, un color y horizontal). No estirar, rotar ni deformar.
 - Fotografía: solo obras terminadas, rectas, con luz natural, una general y al menos una de detalle. Nada de obras en proceso ni fotos torcidas u oscuras.
