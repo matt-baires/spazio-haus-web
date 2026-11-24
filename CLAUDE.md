@@ -64,6 +64,11 @@ Así sí: "Cocina en madera con mesada negra. Diseñada y fabricada a medida." �
 - Logo = el **sello** (círculo negro, doble aro dorado). Versión principal: el **sello dorado metalizado original** (`public/marca/sello-dorado.png`, decisión del cliente del 23/11/2026; reemplaza la regla del manual de dorado mate plano). En la web va junto al nombre (`src/components/logo-horizontal.tsx`), y también es el ícono del sitio y la imagen para compartir. Es una imagen de 1240 px: para imprimir, grabar o plotear usar los SVG planos de `marca/` (completo, reducido, un color y horizontal). No estirar, rotar ni deformar.
 - Fotografía: solo obras terminadas, rectas, con luz natural, una general y al menos una de detalle. Nada de obras en proceso ni fotos torcidas u oscuras.
 
+## Publicación
+
+- Etapa demo: cada cambio se commitea y se sube directo a `main` (`git push origin main`), que publica en producción. Claude hace el push (autorizado por el dueño el 23/11/2026).
+- Al salir de la demo: separar una rama de producción y otra de prueba (Vercel da una URL de vista previa por rama) y dejar de subir directo a `main`. Recordárselo al dueño.
+
 ## Pendiente
 
 - Cargar en el panel WhatsApp, email y obras reales con fotos; después destildar "contenido de ejemplo".
