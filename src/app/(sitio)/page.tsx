@@ -7,6 +7,7 @@ import { TextoGigante } from "@/components/texto-gigante";
 import { MarcasHerrajes } from "@/components/marcas-herrajes";
 import { PortadaRotativa, type Diapositiva } from "@/components/portada-rotativa";
 import { ProcesoHome } from "@/components/proceso-home";
+import { TiraZonas } from "@/components/tira-zonas";
 import { proceso } from "@/lib/proceso";
 import { CarruselPiezas } from "@/components/carrusel-piezas";
 import { fotosEjemplo, galeriaEjemploServicio } from "@/lib/fotos-ejemplo";
@@ -125,6 +126,8 @@ export default async function Home() {
           </div>
         </section>
       )}
+
+      <TiraZonas />
 
       <section data-menu="oscuro" aria-labelledby="como-trabajamos" className="cortina bg-carbon py-14 text-hueso sm:py-20">
         <div className="mx-auto mb-14 grid w-full max-w-6xl gap-6 px-6 sm:mb-20 md:grid-cols-12 md:gap-x-6">
