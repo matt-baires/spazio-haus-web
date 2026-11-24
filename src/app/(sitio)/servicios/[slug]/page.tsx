@@ -83,7 +83,7 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
         </div>
       </section>
 
-      {obrasDelTipo.length === 0 && galeria.length > 0 && (
+      {galeria.length > 0 && (
         <section className="mx-auto w-full max-w-6xl px-6 py-16">
           <div data-revelar className="mb-10 flex flex-col gap-3">
             <h2 className="titulo">

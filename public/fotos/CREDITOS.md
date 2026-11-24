@@ -37,3 +37,15 @@ Fotos de stock de [Unsplash](https://unsplash.com) bajo la [licencia de Unsplash
 | madera-aparador.jpg | https://images.unsplash.com/photo-1767963758785-b9def36c13e3 |
 | madera-estante.jpg | https://images.unsplash.com/photo-1787917142802-a7deb450ad17 |
 | madera-canto-vivo.jpg | https://images.unsplash.com/photo-1566921895456-1cee64031c33 |
+| obra-cocina-varillas-led.jpg | https://images.unsplash.com/photo-1632583824020-937ae9564495 |
+| obra-cocina-isla-barra.jpg | https://images.unsplash.com/photo-1666003449012-61951d621555 |
+| obra-cocina-negra.jpg | https://images.unsplash.com/photo-1564540586988-aa4e53c3d799 |
+| obra-rack-estantes-madera.jpg | https://images.unsplash.com/photo-1781032392300-ed3bdf78ef4c |
+| obra-rack-nogal.jpg | https://images.unsplash.com/photo-1746439324747-bdda31a83533 |
+| obra-vanitory-madera-banera.jpg | https://images.unsplash.com/photo-1771372012124-f7696f374a5a |
+| obra-vanitory-verde.jpg | https://images.unsplash.com/photo-1770987685744-630d3c2494bd |
+| obra-respaldo-listones.jpg | https://images.unsplash.com/photo-1714399518678-0d244ea921cb |
+| obra-respaldo-panel-pared.jpg | https://images.unsplash.com/photo-1766928210452-2470f91bae26 |
+| obra-placard-madera.jpg | https://images.unsplash.com/photo-1722349674028-a148f4364e43 |
+| obra-vestidor-abierto.jpg | https://images.unsplash.com/photo-1649361811423-a55616f7ab11 |
+| obra-biblioteca.jpg | https://images.unsplash.com/photo-1593430980369-68efc5a5eb34 |

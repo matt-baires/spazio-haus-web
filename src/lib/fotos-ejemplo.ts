@@ -47,6 +47,18 @@ export const fotosEjemplo = {
   maderaAparador: f("madera-aparador", "Aparador de madera con puertas de varillas", 1800, 2249),
   maderaEstante: f("madera-estante", "Estante de pared de madera con libros", 1800, 1800),
   maderaCantoVivo: f("madera-canto-vivo", "Mesa auxiliar con tapa de madera de canto vivo", 1800, 2399),
+  obraCocinaVarillasLed: f("obra-cocina-varillas-led", "Cocina con frentes de varillas grafito, columnas de roble y luz integrada", 1800, 1589),
+  obraCocinaIslaBarra: f("obra-cocina-isla-barra", "Cocina de madera con isla de mesada blanca y banquetas", 1800, 1200),
+  obraCocinaNegra: f("obra-cocina-negra", "Cocina negra mate con tiradores dorados", 1800, 1200),
+  obraRackEstantesMadera: f("obra-rack-estantes-madera", "Mueble bajo de madera clara con estantes abiertos en la pared", 1800, 1200),
+  obraRackNogal: f("obra-rack-nogal", "Rack en madera oscura con panel para TV y guardado", 1800, 1184),
+  obraVanitoryMaderaBanera: f("obra-vanitory-madera-banera", "Vanitory de madera con doble bacha y bañera exenta", 1800, 1200),
+  obraVanitoryVerde: f("obra-vanitory-verde", "Vanitory verde con grifería y espejos dorados", 1800, 1201),
+  obraRespaldoListones: f("obra-respaldo-listones", "Respaldo de listones de madera maciza detrás de la cama", 1800, 1200),
+  obraRespaldoPanelPared: f("obra-respaldo-panel-pared", "Dormitorio con panel de madera oscura detrás de la cama", 1800, 1013),
+  obraPlacardMadera: f("obra-placard-madera", "Placard de madera de piso a techo con espejos", 1800, 1200),
+  obraVestidorAbierto: f("obra-vestidor-abierto", "Vestidor abierto con barrales, cajones y estantes", 1800, 1378),
+  obraBiblioteca: f("obra-biblioteca", "Biblioteca de madera de piso a techo con libros", 1800, 1180),
 } satisfies Record<string, Foto>;
 
 const porServicio: Record<string, Foto> = {
@@ -62,7 +74,7 @@ export type Pieza = { nombre: string; detalle: string; foto: Foto };
 
 const p = (nombre: string, detalle: string, foto: Foto): Pieza => ({ nombre, detalle, foto });
 
-/** Piezas de ejemplo que se muestran en la página de un servicio que todavía no tiene obras. */
+/** Piezas de la línea que se muestran en la página del servicio, además de sus obras. */
 const galeriaPorServicio: Record<string, Pieza[]> = {
   "muebles-de-madera": [
     p("Mesa de comedor", "Tapa maciza a la medida del ambiente", fotosEjemplo.maderaComedor),
@@ -95,6 +107,21 @@ const porObra: Record<string, Foto> = {
   "respaldo-con-mesas-de-luz": fotosEjemplo.respaldoMesaDeLuz,
   "placard-con-vestidor": fotosEjemplo.placardVestidor,
   "cocina-isla-laqueada": fotosEjemplo.cocinaIsla,
+  "cocina-varillas-led": fotosEjemplo.obraCocinaVarillasLed,
+  "cocina-isla-con-barra": fotosEjemplo.obraCocinaIslaBarra,
+  "cocina-negra-tiradores-dorados": fotosEjemplo.obraCocinaNegra,
+  "rack-estantes-de-madera": fotosEjemplo.obraRackEstantesMadera,
+  "rack-nogal-con-panel": fotosEjemplo.obraRackNogal,
+  "vanitory-de-madera-doble": fotosEjemplo.obraVanitoryMaderaBanera,
+  "vanitory-verde-griferia-dorada": fotosEjemplo.obraVanitoryVerde,
+  "respaldo-de-listones": fotosEjemplo.obraRespaldoListones,
+  "respaldo-panel-de-pared": fotosEjemplo.obraRespaldoPanelPared,
+  "placard-de-madera-con-espejos": fotosEjemplo.obraPlacardMadera,
+  "vestidor-abierto": fotosEjemplo.obraVestidorAbierto,
+  "biblioteca-de-pared": fotosEjemplo.obraBiblioteca,
+  "mesa-de-tablones": fotosEjemplo.maderaMesaTablones,
+  "aparador-de-varillas": fotosEjemplo.maderaAparador,
+  "banquetas-para-barra": fotosEjemplo.maderaBanquetaAlta,
 };
 
 const porArticulo: Record<string, Foto> = {

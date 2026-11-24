@@ -9,7 +9,7 @@ import config from "../payload.config";
 import { articulos } from "../content/blog";
 import { faq } from "../content/faq";
 import { materiales } from "../content/materiales";
-import { obras } from "../content/obras";
+import { obras, obrasNuevas } from "../content/obras";
 import { servicios } from "../content/servicios";
 
 const context = { sinRevalidar: true };
@@ -95,33 +95,53 @@ async function main() {
   }
 
   // Obras de ejemplo (publicadas)
+  const crearObra = async (o: (typeof obras)[number], orden: number) => {
+    const tipo = idPorSlug.get(o.tipo);
+    if (!tipo) return false;
+    await payload.create({
+      collection: "obras",
+      context,
+      overrideAccess: true,
+      draft: false,
+      data: {
+        titulo: o.titulo,
+        slug: o.slug,
+        orden,
+        ejemplo: true,
+        destacada: Boolean(o.destacada),
+        tipo: tipo as number,
+        ambiente: o.ambiente,
+        zona: o.zona,
+        descripcion: o.descripcion,
+        detalle: o.detalle,
+        materiales: o.materiales.map((texto) => ({ texto })),
+        fotosPrevistas: o.fotos,
+        _status: "published",
+      },
+    });
+    return true;
+  };
   if (await vacia("obras")) {
-    for (const [i, o] of obras.entries()) {
-      const tipo = idPorSlug.get(o.tipo);
-      if (!tipo) continue;
-      await payload.create({
-        collection: "obras",
-        context,
-        overrideAccess: true,
-        draft: false,
-        data: {
-          titulo: o.titulo,
-          slug: o.slug,
-          orden: i,
-          ejemplo: true,
-          destacada: Boolean(o.destacada),
-          tipo: tipo as number,
-          ambiente: o.ambiente,
-          zona: o.zona,
-          descripcion: o.descripcion,
-          detalle: o.detalle,
-          materiales: o.materiales.map((texto) => ({ texto })),
-          fotosPrevistas: o.fotos,
-          _status: "published",
-        },
-      });
+    for (const [i, o] of [...obras, ...obrasNuevas].entries()) await crearObra(o, i);
+    console.log(`[seed] ${obras.length + obrasNuevas.length} obras de ejemplo`);
+  } else {
+    // Obras de ejemplo sumadas después de la carga inicial: se agregan una vez, al final.
+    const r = await payload.find({
+      collection: "obras",
+      where: { slug: { in: obrasNuevas.map((o) => o.slug) } },
+      limit: 100,
+      depth: 0,
+      overrideAccess: true,
+    });
+    const existentes = new Set(r.docs.map((d) => (d as { slug: string }).slug));
+    let orden = (await payload.count({ collection: "obras", overrideAccess: true })).totalDocs;
+    for (const o of obrasNuevas) {
+      if (existentes.has(o.slug)) continue;
+      if (await crearObra(o, orden)) {
+        orden++;
+        console.log(`[seed] obra de ejemplo nueva: ${o.titulo}`);
+      }
     }
-    console.log(`[seed] ${obras.length} obras de ejemplo`);
   }
 
   // Muestrario
