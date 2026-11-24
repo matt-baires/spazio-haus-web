@@ -6,7 +6,7 @@ export const site = {
   nombre: "Spazio Haus",
   descriptor: "Estudio de mobiliario a medida",
   bajada: "Muebles de diseño a medida",
-  tagline: "Diseño a medida, hecho en taller.",
+  tagline: "Diseño a medida, hecho en taller propio.",
   desde: 2018,
   /** PENDIENTE: dominio definitivo. */
   url: "https://spaziohaus.vercel.app",

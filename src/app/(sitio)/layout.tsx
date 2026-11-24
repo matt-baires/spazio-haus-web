@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | Spazio Haus",
   },
   description:
-    "Diseño a medida, hecho en taller. Cocinas, racks, vanitorys, respaldos y muebles para cada espacio, diseñados y fabricados en nuestro taller de Caseros desde 2018.",
+    "Diseño a medida, hecho en taller propio. Cocinas, racks, vanitorys, respaldos y muebles para cada espacio, diseñados y fabricados en nuestro taller de Caseros desde 2018.",
   openGraph: { siteName: site.nombre, locale: "es_AR", type: "website" },
 };
 

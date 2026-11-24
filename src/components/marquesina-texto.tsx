@@ -2,7 +2,7 @@
  * Texto grande en movimiento continuo entre secciones (Cinzel, frases cortas de la marca).
  * Decorativo: los lectores de pantalla lo saltean. Con "reducir movimiento" queda quieto.
  */
-const frases = ["Diseño a medida", "Hecho en taller", "Caseros, Buenos Aires", "Desde 2018"];
+const frases = ["Diseño a medida", "Hecho en taller propio", "Caseros, Buenos Aires", "Desde 2018"];
 
 function Tramo({ oculto = false }: { oculto?: boolean }) {
   return (

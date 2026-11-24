@@ -25,7 +25,7 @@ Sitio de **Spazio Haus**, estudio de mobiliario a medida con taller propio en Ca
 Fuente completa: [Manual de marca](https://claude.ai/artifact/3HdL6roE6ZJSzwuC44bnqf) · [Design system](https://claude.ai/artifact/HekLT3NuFkT7MRCkXcxV3P) · [Estrategia](https://claude.ai/artifact/HrENrt1Wzu5U8h6hqRjYYP) · [Identidad](https://claude.ai/artifact/6sJjM95bpLwMtCUhGjvwt6) · [Resumen de entregables](https://claude.ai/artifact/9o3rLuF1w7hvcT1TRdsWtK)
 
 - **Posicionamiento:** estudio de mobiliario a medida con taller propio.
-- **Tagline:** "Diseño a medida, hecho en taller."
+- **Tagline:** "Diseño a medida, hecho en taller propio."
 - **Público:** familias y profesionales que arman o renuevan su casa y quieren muebles que se vean diseñados.
 - **Pilares:** Diseño (prueba: portfolio de obras), Precisión (prueba: fotos de detalle), Acompañamiento (prueba: reseñas).
 - **Nombre:** Spazio Haus, sin cambios. No usar nunca la marca anterior "Spazio Mio" ni su ícono de casa.
