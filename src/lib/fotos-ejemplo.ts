@@ -59,6 +59,12 @@ export const fotosEjemplo = {
   obraPlacardMadera: f("obra-placard-madera", "Placard de madera de piso a techo con espejos", 1800, 1200),
   obraVestidorAbierto: f("obra-vestidor-abierto", "Vestidor abierto con barrales, cajones y estantes", 1800, 1378),
   obraBiblioteca: f("obra-biblioteca", "Biblioteca de madera de piso a techo con libros", 1800, 1180),
+  vestidorLedOscuro: f("vestidor-led-oscuro", "Vestidor oscuro en U con luz en estantes y barrales", 1800, 1799),
+  vestidorMaderaIsla: f("vestidor-madera-isla", "Vestidor de madera con barrales iluminados e isla de cajones", 1800, 1198),
+  vestidorIslaVentana: f("vestidor-isla-ventana", "Vestidor con isla central junto a una ventana", 1800, 1200),
+  vestidorVidrio: f("vestidor-vidrio", "Vestidor con puertas de vidrio y luz interior", 1800, 1013),
+  vestidorPuertasAcanaladas: f("vestidor-puertas-acanaladas", "Vestidor con puertas de vidrio acanalado", 1800, 1277),
+  vestidorEstantes: f("vestidor-estantes", "Vestidor con estantes, cajones y luz a lo largo", 1800, 1200),
 } satisfies Record<string, Foto>;
 
 const porServicio: Record<string, Foto> = {
@@ -68,6 +74,7 @@ const porServicio: Record<string, Foto> = {
   respaldos: fotosEjemplo.respaldoMadera,
   "muebles-a-medida": fotosEjemplo.vestidorLargo,
   "muebles-de-madera": fotosEjemplo.maderaComedor,
+  vestidores: fotosEjemplo.vestidorEstantes,
 };
 
 export type Pieza = { nombre: string; detalle: string; foto: Foto };
@@ -119,6 +126,11 @@ const porObra: Record<string, Foto> = {
   "placard-de-madera-con-espejos": fotosEjemplo.obraPlacardMadera,
   "vestidor-abierto": fotosEjemplo.obraVestidorAbierto,
   "biblioteca-de-pared": fotosEjemplo.obraBiblioteca,
+  "vestidor-en-u-con-luz": fotosEjemplo.vestidorLedOscuro,
+  "vestidor-de-madera-con-isla": fotosEjemplo.vestidorMaderaIsla,
+  "vestidor-con-isla-y-ventana": fotosEjemplo.vestidorIslaVentana,
+  "vestidor-con-puertas-de-vidrio": fotosEjemplo.vestidorVidrio,
+  "vestidor-con-puertas-acanaladas": fotosEjemplo.vestidorPuertasAcanaladas,
   "mesa-de-tablones": fotosEjemplo.maderaMesaTablones,
   "aparador-de-varillas": fotosEjemplo.maderaAparador,
   "banquetas-para-barra": fotosEjemplo.maderaBanquetaAlta,

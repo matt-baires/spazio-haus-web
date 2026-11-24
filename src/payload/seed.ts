@@ -71,7 +71,7 @@ async function main() {
     // Servicios que se sumaron al contenido después de la carga inicial: se agregan una vez,
     // al final, sin tocar los existentes. Solo los de esta lista, para no recrear uno que
     // se haya borrado a propósito desde el panel.
-    const nuevos = new Set(["muebles-de-madera"]);
+    const nuevos = new Set(["muebles-de-madera", "vestidores"]);
     let orden = r.docs.length;
     for (const s of servicios) {
       if (!nuevos.has(s.slug) || idPorSlug.has(s.slug)) continue;

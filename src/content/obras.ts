@@ -2,7 +2,7 @@ export type Obra = {
   slug: string;
   titulo: string;
   /** slug del servicio */
-  tipo: "cocinas" | "racks" | "vanitorys" | "respaldos" | "muebles-a-medida" | "muebles-de-madera";
+  tipo: "cocinas" | "racks" | "vanitorys" | "respaldos" | "muebles-a-medida" | "muebles-de-madera" | "vestidores";
   ambiente: string;
   zona: string;
   materiales: string[];
@@ -108,6 +108,66 @@ export const obras: Obra[] = [
  * si no existen (por slug), sin tocar las que ya están en el panel.
  */
 export const obrasNuevas: Obra[] = [
+  {
+    slug: "vestidor-en-u-con-luz",
+    titulo: "Vestidor en U con luz integrada",
+    tipo: "vestidores",
+    ambiente: "Vestidor",
+    zona: "Devoto, CABA",
+    materiales: ["Melamina grafito", "Perfiles LED", "Cajones con cierre suave"],
+    descripcion: "Vestidor en U en tonos oscuros, con luz en cada estante y barral, cajoneras y espacio para valijas arriba.",
+    detalle: "Perfil de luz embutido en el frente de cada estante.",
+    fotos: 3,
+    ejemplo: true,
+  },
+  {
+    slug: "vestidor-de-madera-con-isla",
+    titulo: "Vestidor de madera con isla",
+    tipo: "vestidores",
+    ambiente: "Vestidor en suite",
+    zona: "Villa Urquiza, CABA",
+    materiales: ["Enchapado roble", "Isla con cajones", "Barrales con luz"],
+    descripcion: "Vestidor abierto en madera, con barrales iluminados en las paredes y una isla central de cajones.",
+    detalle: "Isla con cajones a los dos lados y tapa en madera maciza.",
+    fotos: 3,
+    ejemplo: true,
+  },
+  {
+    slug: "vestidor-con-isla-y-ventana",
+    titulo: "Vestidor con isla junto a la ventana",
+    tipo: "vestidores",
+    ambiente: "Vestidor",
+    zona: "Nordelta",
+    materiales: ["Enchapado nogal", "Mesada de cuarzo", "Iluminación LED"],
+    descripcion: "Vestidor de pared a pared con isla central y mesada de cuarzo, aprovechando la luz natural de la ventana.",
+    detalle: "Isla con mesada de cuarzo para doblar y apoyar.",
+    fotos: 3,
+    ejemplo: true,
+  },
+  {
+    slug: "vestidor-con-puertas-de-vidrio",
+    titulo: "Vestidor con puertas de vidrio",
+    tipo: "vestidores",
+    ambiente: "Dormitorio principal",
+    zona: "Palermo, CABA",
+    materiales: ["Vidrio ahumado", "Perfiles de aluminio", "Iluminación interior"],
+    descripcion: "Vestidor cerrado con puertas de vidrio ahumado: protege la ropa del polvo y deja ver todo con la luz interior.",
+    detalle: "Perfiles finos de aluminio en las puertas de vidrio.",
+    fotos: 3,
+    ejemplo: true,
+  },
+  {
+    slug: "vestidor-con-puertas-acanaladas",
+    titulo: "Vestidor con puertas acanaladas",
+    tipo: "vestidores",
+    ambiente: "Dormitorio",
+    zona: "Caseros",
+    materiales: ["Vidrio acanalado", "Laqueado claro", "Tiradores largos"],
+    descripcion: "Placard vestidor con puertas de vidrio acanalado que dejan pasar la luz sin mostrar el interior.",
+    detalle: "Tiradores largos de piso a techo.",
+    fotos: 3,
+    ejemplo: true,
+  },
   {
     slug: "cocina-varillas-led",
     titulo: "Cocina con frentes de varillas y luz integrada",

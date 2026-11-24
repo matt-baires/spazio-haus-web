@@ -5,7 +5,7 @@ import { getObras, getServicios } from "@/lib/datos";
 
 export const metadata: Metadata = {
   title: "Obras",
-  description: "Cocinas, racks, vanitorys, respaldos y muebles a medida terminados, diseñados y fabricados en nuestro taller.",
+  description: "Cocinas, racks, vanitorys, respaldos, vestidores y muebles a medida terminados, diseñados y fabricados en nuestro taller.",
 };
 
 export default async function ObrasPage() {

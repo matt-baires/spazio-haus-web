@@ -70,6 +70,20 @@ export const servicios: Servicio[] = [
     materiales: ["Madera", "Laqueado", "Tapizado", "Iluminación LED"],
   },
   {
+    slug: "vestidores",
+    nombre: "Vestidores",
+    resumen: "Cada prenda con su lugar, a la vista y a mano.",
+    intro:
+      "Vestidores abiertos o con puertas, en U, en L o de pared a pared. Los pensamos según lo que guardás: largo de barrales, cajones, zapateros y espacio para valijas.",
+    queResolvemos: [
+      "Vestidores abiertos y con puertas",
+      "Barrales a dos alturas y cajoneras",
+      "Zapateros y accesorios extraíbles",
+      "Iluminación interior y espejos",
+    ],
+    materiales: ["Melamina", "Enchapado", "Vidrio", "Iluminación LED", "Herrajes de cierre suave"],
+  },
+  {
     slug: "muebles-a-medida",
     nombre: "Muebles a medida",
     resumen: "Si tu espacio lo necesita, lo diseñamos.",

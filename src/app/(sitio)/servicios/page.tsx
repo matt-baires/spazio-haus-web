@@ -6,7 +6,7 @@ import { fotoEjemploServicio } from "@/lib/fotos-ejemplo";
 
 export const metadata: Metadata = {
   title: "Servicios",
-  description: "Cocinas, racks, vanitorys, respaldos y muebles a medida, diseñados y fabricados en Caseros.",
+  description: "Cocinas, racks, vanitorys, respaldos, vestidores y muebles a medida, diseñados y fabricados en Caseros.",
 };
 
 export default async function ServiciosPage() {

@@ -49,3 +49,9 @@ Fotos de stock de [Unsplash](https://unsplash.com) bajo la [licencia de Unsplash
 | obra-placard-madera.jpg | https://images.unsplash.com/photo-1722349674028-a148f4364e43 |
 | obra-vestidor-abierto.jpg | https://images.unsplash.com/photo-1649361811423-a55616f7ab11 |
 | obra-biblioteca.jpg | https://images.unsplash.com/photo-1593430980369-68efc5a5eb34 |
+| vestidor-led-oscuro.jpg | https://images.unsplash.com/photo-1708397016786-8916880649b8 |
+| vestidor-madera-isla.jpg | https://images.unsplash.com/photo-1611048268330-53de574cae3b |
+| vestidor-isla-ventana.jpg | https://images.unsplash.com/photo-1757524625335-0b7f62089dd2 |
+| vestidor-vidrio.jpg | https://images.unsplash.com/photo-1738229115082-b5647ffb3503 |
+| vestidor-puertas-acanaladas.jpg | https://images.unsplash.com/photo-1662454419622-a41092ecd245 |
+| vestidor-estantes.jpg | https://images.unsplash.com/photo-1640357154220-9775b0f31dec |

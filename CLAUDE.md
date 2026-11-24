@@ -2,7 +2,7 @@
 
 # Spazio Haus — sitio web
 
-Sitio de **Spazio Haus**, estudio de mobiliario a medida con taller propio en Caseros, Buenos Aires (desde 2018). Hace cocinas, racks, vanitorys, respaldos y muebles a medida. El sitio muestra obras, servicios y materiales, y recibe pedidos de cotización.
+Sitio de **Spazio Haus**, estudio de mobiliario a medida con taller propio en Caseros, Buenos Aires (desde 2018). Hace cocinas, racks, vanitorys, respaldos, vestidores, muebles a medida y una línea de madera maciza. El sitio muestra obras, servicios y materiales, y recibe pedidos de cotización.
 
 - Producción: https://spaziohaus.vercel.app (panel en `/admin`)
 - Repo: `matt-baires/spazio-haus-web`, rama `main`. Cada push a `main` despliega en Vercel (proyecto `spazio-haus-web`, equipo *matt-baires' projects*).
