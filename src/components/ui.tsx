@@ -100,11 +100,16 @@ export function Encabezado({
   );
 }
 
-export function ObraCard({ obra, orden: i = 0 }: { obra: Obra; orden?: number }) {
+export function ObraCard({ obra, orden: i = 0, subcategoria }: { obra: Obra; orden?: number; subcategoria?: string }) {
   return (
     <Link href={`/obras/${obra.slug}`} className="group flex flex-col gap-3" data-revelar style={orden(i)}>
       <div className="relative">
         <FotoObra foto={obra.fotos[0] ?? fotoEjemploObra(obra.slug, obra.tipo)} etiqueta={obra.tipoNombre || "Obra"} />
+        {subcategoria && (
+          <span className="cuerpo-chico absolute left-3 top-3 rounded-full bg-background/90 px-3 py-0.5 backdrop-blur-sm">
+            {subcategoria}
+          </span>
+        )}
         {obra.ejemplo && (
           <span className="absolute right-3 top-3">
             <EtiquetaEjemplo />

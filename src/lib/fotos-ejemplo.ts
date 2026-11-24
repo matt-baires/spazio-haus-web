@@ -134,6 +134,9 @@ const porObra: Record<string, Foto> = {
   "mesa-de-tablones": fotosEjemplo.maderaMesaTablones,
   "aparador-de-varillas": fotosEjemplo.maderaAparador,
   "banquetas-para-barra": fotosEjemplo.maderaBanquetaAlta,
+  "sillas-de-comedor-rectas": fotosEjemplo.maderaSillaRecta,
+  "sillon-individual-de-esterilla": fotosEjemplo.maderaSillon,
+  "mesa-ratona-patas-de-hierro": fotosEjemplo.maderaMesaRatona,
 };
 
 const porArticulo: Record<string, Foto> = {
