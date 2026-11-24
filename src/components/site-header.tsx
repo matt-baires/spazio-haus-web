@@ -22,13 +22,14 @@ export function SiteHeader() {
     const revisar = () => {
       setBajo(window.scrollY > 8);
       const medio = (cabecera.current?.offsetHeight ?? 80) / 2;
-      const oscuras = document.querySelectorAll<HTMLElement>('[data-menu="oscuro"]');
-      setSobreOscuro(
-        [...oscuras].some((el) => {
-          const caja = el.getBoundingClientRect();
-          return caja.top <= medio && caja.bottom >= medio;
-        }),
-      );
+      // Gana el bloque más interno: una tarjeta clara (data-menu="claro") dentro de una
+      // sección oscura vuelve a poner las letras oscuras.
+      let tema: string | undefined;
+      document.querySelectorAll<HTMLElement>("[data-menu]").forEach((el) => {
+        const caja = el.getBoundingClientRect();
+        if (caja.top <= medio && caja.bottom >= medio) tema = el.dataset.menu;
+      });
+      setSobreOscuro(tema === "oscuro");
     };
     const alMover = () => {
       cancelAnimationFrame(cuadro);
