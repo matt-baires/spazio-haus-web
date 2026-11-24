@@ -6,16 +6,12 @@ import { Flecha, orden } from "@/components/flecha";
 import { Dividir } from "@/components/dividir";
 import { TextoGigante } from "@/components/texto-gigante";
 import { MarcasHerrajes } from "@/components/marcas-herrajes";
+import { ProcesoHome } from "@/components/proceso-home";
+import { proceso } from "@/lib/proceso";
 import { CarruselPiezas } from "@/components/carrusel-piezas";
 import { fotosEjemplo, galeriaEjemploServicio } from "@/lib/fotos-ejemplo";
 import { getObras, getServicios } from "@/lib/datos";
 import { site } from "@/lib/site";
-
-const pasos = [
-  { paso: "01", titulo: "Diseño", texto: "Pensamos cada pieza para tu espacio, con vos." },
-  { paso: "02", titulo: "Taller", texto: "La fabricamos en nuestro taller de Caseros." },
-  { paso: "03", titulo: "Detalle", texto: "Cuidamos cada canto, herraje y terminación." },
-];
 
 export default async function Home() {
   const [obras, servicios] = await Promise.all([getObras(), getServicios()]);
@@ -138,22 +134,20 @@ export default async function Home() {
         </section>
       )}
 
-      <section data-menu="oscuro" className="bg-carbon text-hueso">
-        <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
-          <h2 data-revelar className="titulo mb-10">
-            <Dividir texto="Cómo trabajamos" />
-          </h2>
-          <ol className="grid gap-10 sm:grid-cols-3">
-            {pasos.map((p, i) => (
-              <li key={p.paso} data-revelar className="flex flex-col gap-3" style={orden(i + 1)}>
-                <span className="etiqueta text-hueso/60">{p.paso}</span>
-                <span className="filete-crece h-px w-10 bg-dorado" aria-hidden="true" />
-                <h3 className="destacado font-semibold">{p.titulo}</h3>
-                <p className="text-hueso/75">{p.texto}</p>
-              </li>
-            ))}
-          </ol>
+      <section data-menu="oscuro" aria-labelledby="como-trabajamos" className="bg-carbon py-20 text-hueso sm:py-28">
+        <div className="mx-auto mb-14 grid w-full max-w-6xl gap-6 px-6 sm:mb-20 md:grid-cols-12 md:gap-x-6">
+          <div className="flex flex-col gap-4 md:col-span-7">
+            <span className="etiqueta text-hueso/50">Cómo trabajamos</span>
+            <h2 id="como-trabajamos" data-revelar className="frase">
+              <Dividir texto="Del primer boceto a la última bisagra." />
+            </h2>
+          </div>
+          <p data-revelar style={orden(1)} className="self-end text-hueso/75 md:col-span-4 md:col-start-9">
+            Cuatro pasos, del primer mensaje a la instalación. Diseñamos y fabricamos en el mismo lugar, así controlamos el
+            proyecto del boceto al último canto.
+          </p>
         </div>
+        <ProcesoHome pasos={proceso} />
       </section>
 
       <MarcasHerrajes />

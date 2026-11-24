@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CtaCotizar, Encabezado, FotoObra } from "@/components/ui";
 import { fotosEjemplo } from "@/lib/fotos-ejemplo";
+import { proceso } from "@/lib/proceso";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -60,22 +61,14 @@ export default function NosotrosPage() {
         <div className="flex flex-col gap-4">
           <h2 className="titulo">Cómo trabajamos</h2>
           <ol className="flex flex-col gap-6">
-            <li>
-              <p className="font-semibold">1. Nos contás qué necesitás</p>
-              <p className="text-muted">Con medidas aproximadas y fotos del espacio alcanza para empezar.</p>
-            </li>
-            <li>
-              <p className="font-semibold">2. Lo diseñamos con vos</p>
-              <p className="text-muted">Te proponemos el diseño, los materiales y el presupuesto.</p>
-            </li>
-            <li>
-              <p className="font-semibold">3. Lo fabricamos en el taller</p>
-              <p className="text-muted">Tomamos las medidas definitivas y fabricamos cada pieza.</p>
-            </li>
-            <li>
-              <p className="font-semibold">4. Lo instalamos</p>
-              <p className="text-muted">Cuidamos que cada encuentro quede como lo diseñamos.</p>
-            </li>
+            {proceso.map((p) => (
+              <li key={p.numero}>
+                <p className="font-semibold">
+                  {Number(p.numero)}. {p.titulo}
+                </p>
+                <p className="text-muted">{p.texto}</p>
+              </li>
+            ))}
           </ol>
         </div>
         <FotoObra foto={fotosEjemplo.detalleTiradores} etiqueta="Foto de detalle: cantos y herrajes" proporcion="aspect-[4/3]" paralaje />
