@@ -6,7 +6,7 @@ import { Dividir } from "@/components/dividir";
 import { MarcasHerrajes } from "@/components/marcas-herrajes";
 import { MarquesinaTexto } from "@/components/marquesina-texto";
 import { fotosEjemplo } from "@/lib/fotos-ejemplo";
-import { getObras, getPreguntas, getServicios } from "@/lib/datos";
+import { getObras, getServicios } from "@/lib/datos";
 import { site } from "@/lib/site";
 
 const pasos = [
@@ -16,10 +16,9 @@ const pasos = [
 ];
 
 export default async function Home() {
-  const [obras, servicios, preguntas] = await Promise.all([getObras(), getServicios(), getPreguntas()]);
+  const [obras, servicios] = await Promise.all([getObras(), getServicios()]);
   const destacadas = (obras.some((o) => o.destacada) ? obras.filter((o) => o.destacada) : obras).slice(0, 3);
   const portada = destacadas.find((o) => o.fotos.length > 0)?.fotos[0] ?? fotosEjemplo.cocinaMaderaMesadaNegra;
-  const faqHome = (preguntas.some((p) => p.enHome) ? preguntas.filter((p) => p.enHome) : preguntas).slice(0, 3);
 
   return (
     <>
@@ -123,27 +122,6 @@ export default async function Home() {
       </section>
 
       <MarcasHerrajes />
-
-      {faqHome.length > 0 && (
-        <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
-          <div data-revelar className="flex max-w-3xl flex-col gap-5">
-            <h2 className="titulo">
-              <Dividir texto="Preguntas frecuentes" />
-            </h2>
-            <dl className="flex flex-col divide-y divide-border border-y border-border">
-              {faqHome.map((f) => (
-                <div key={f.pregunta} className="py-4">
-                  <dt className="font-semibold">{f.pregunta}</dt>
-                  <dd className="cuerpo-chico mt-1 text-muted">{f.respuesta}</dd>
-                </div>
-              ))}
-            </dl>
-            <Link href="/preguntas-frecuentes" className="cuerpo-chico underline underline-offset-4">
-              Más preguntas
-            </Link>
-          </div>
-        </section>
-      )}
 
       <CtaCotizar />
     </>
