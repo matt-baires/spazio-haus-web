@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { AvisoEjemplo } from "@/components/aviso-ejemplo";
+import { Revelar } from "@/components/revelar";
 import { getSitio } from "@/lib/datos";
 import { site } from "@/lib/site";
 
@@ -57,6 +58,7 @@ export default function SitioLayout({ children }: LayoutProps<"/">) {
         <Suspense>
           <SiteFooter />
         </Suspense>
+        <Revelar />
       </body>
     </html>
   );

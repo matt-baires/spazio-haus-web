@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { buttonVariants } from "@heroui/react";
 import { CtaCotizar, FotoObra, ObraCard } from "@/components/ui";
+import { orden } from "@/components/flecha";
 import { getObras, getServicio, getServicios, getSitio } from "@/lib/datos";
 import { fotoEjemploServicio, galeriaEjemploServicio } from "@/lib/fotos-ejemplo";
 import { whatsappUrl } from "@/lib/site";
@@ -32,9 +33,9 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
     <>
       <section className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-16 pt-14 sm:pt-20 lg:grid-cols-2">
         <div className="flex flex-col gap-6">
-          <p className="etiqueta text-muted">Servicios</p>
-          <h1 className="titulo-grande text-[36px] leading-[44px] sm:text-[48px] sm:leading-[56px]">{s.nombre}</h1>
-          <p className="text-muted">{s.intro}</p>
+          <p className="etiqueta entrar text-muted" style={orden(0)}>Servicios</p>
+          <h1 style={orden(1)} className="titulo-grande entrar text-[36px] leading-[44px] sm:text-[48px] sm:leading-[56px]">{s.nombre}</h1>
+          <p className="entrar text-muted" style={orden(2)}>{s.intro}</p>
           <div className="flex flex-wrap gap-3">
             <Link href={`/cotizar?tipo=${s.slug}`} className={buttonVariants({ variant: "primary", size: "lg" })}>
               Cotizá tu proyecto
@@ -46,7 +47,7 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
             )}
           </div>
         </div>
-        <FotoObra foto={s.imagen ?? fotoEjemploServicio(s.slug)} etiqueta={`Foto de ${s.nombre.toLowerCase()}`} proporcion="aspect-[5/4]" prioridad sizes="(min-width: 1024px) 50vw, 100vw" />
+        <FotoObra foto={s.imagen ?? fotoEjemploServicio(s.slug)} etiqueta={`Foto de ${s.nombre.toLowerCase()}`} proporcion="aspect-[5/4]" prioridad sizes="(min-width: 1024px) 50vw, 100vw" className="entrar-foto" />
       </section>
 
       <section className="bg-champagne">
@@ -81,10 +82,14 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
 
       {obrasDelTipo.length === 0 && galeria.length > 0 && (
         <section className="mx-auto w-full max-w-6xl px-6 py-16">
-          <h2 className="titulo mb-10">Piezas de la línea</h2>
+          <h2 data-revelar className="titulo mb-10">
+            Piezas de la línea
+          </h2>
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {galeria.map((f) => (
-              <FotoObra key={f.url} foto={f} proporcion="aspect-[4/5]" sizes="(min-width: 1024px) 25vw, 50vw" />
+            {galeria.map((f, i) => (
+              <div key={f.url} data-revelar className="group" style={orden(i)}>
+                <FotoObra foto={f} proporcion="aspect-[4/5]" sizes="(min-width: 1024px) 25vw, 50vw" />
+              </div>
             ))}
           </div>
         </section>

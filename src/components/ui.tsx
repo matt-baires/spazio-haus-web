@@ -4,6 +4,7 @@ import { Chip, buttonVariants } from "@heroui/react";
 import type { ReactNode } from "react";
 import type { Foto, Obra } from "@/lib/datos";
 import { fotoEjemploObra } from "@/lib/fotos-ejemplo";
+import { Flecha, orden } from "@/components/flecha";
 
 export function EtiquetaEjemplo() {
   return (
@@ -34,7 +35,7 @@ export function FotoObra({
 }) {
   if (foto) {
     return (
-      <div className={`relative ${proporcion} w-full overflow-hidden bg-travertino ${className}`}>
+      <div className={`zoom-hover relative ${proporcion} w-full overflow-hidden bg-travertino ${className}`}>
         <Image src={foto.url} alt={foto.alt} fill sizes={sizes} priority={prioridad} className="object-cover" />
       </div>
     );
@@ -71,16 +72,26 @@ export function Encabezado({
 }) {
   return (
     <div className="flex max-w-3xl flex-col gap-4">
-      {etiqueta && <p className="etiqueta text-muted">{etiqueta}</p>}
-      <h1 className="titulo-grande text-[32px] leading-[40px] sm:text-[48px] sm:leading-[56px]">{titulo}</h1>
-      {children && <div className="max-w-2xl text-muted">{children}</div>}
+      {etiqueta && (
+        <p className="etiqueta entrar text-muted" style={orden(0)}>
+          {etiqueta}
+        </p>
+      )}
+      <h1 className="titulo-grande entrar text-[32px] leading-[40px] sm:text-[48px] sm:leading-[56px]" style={orden(1)}>
+        {titulo}
+      </h1>
+      {children && (
+        <div className="entrar max-w-2xl text-muted" style={orden(2)}>
+          {children}
+        </div>
+      )}
     </div>
   );
 }
 
-export function ObraCard({ obra }: { obra: Obra }) {
+export function ObraCard({ obra, orden: i = 0 }: { obra: Obra; orden?: number }) {
   return (
-    <Link href={`/obras/${obra.slug}`} className="group flex flex-col gap-3">
+    <Link href={`/obras/${obra.slug}`} className="group flex flex-col gap-3" data-revelar style={orden(i)}>
       <div className="relative">
         <FotoObra foto={obra.fotos[0] ?? fotoEjemploObra(obra.slug, obra.tipo)} etiqueta={obra.tipoNombre || "Obra"} />
         {obra.ejemplo && (
@@ -110,15 +121,16 @@ export function CtaCotizar({
 }) {
   return (
     <section className="bg-nogal text-crema">
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-start gap-5 px-6 py-16 sm:py-20">
-        <span className="h-px w-10 bg-dorado" aria-hidden="true" />
+      <div data-revelar className="mx-auto flex w-full max-w-6xl flex-col items-start gap-5 px-6 py-16 sm:py-20">
+        <span className="filete-crece h-px w-10 bg-dorado" aria-hidden="true" />
         <h2 className="titulo">{titulo}</h2>
         <p className="max-w-xl opacity-80">{texto}</p>
         <Link
           href={href}
-          className={buttonVariants({ variant: "secondary", size: "lg", className: "bg-crema text-foreground" })}
+          className={buttonVariants({ variant: "secondary", size: "lg", className: "flecha gap-2 bg-crema text-foreground" })}
         >
           Cotizá tu proyecto
+          <Flecha />
         </Link>
       </div>
     </section>

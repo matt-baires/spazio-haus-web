@@ -34,8 +34,8 @@ function Tira({ oculta = false }: { oculta?: boolean }) {
 export function MarcasHerrajes() {
   return (
     <section aria-labelledby="marcas-titulo" className="border-y border-border py-14 sm:py-16">
-      <div className="mx-auto mb-10 flex w-full max-w-6xl flex-col gap-3 px-6">
-        <span className="h-px w-10 bg-dorado" aria-hidden="true" />
+      <div data-revelar className="mx-auto mb-10 flex w-full max-w-6xl flex-col gap-3 px-6">
+        <span className="filete-crece h-px w-10 bg-dorado" aria-hidden="true" />
         <h2 id="marcas-titulo" className="titulo">Herrajes que usamos</h2>
         <p className="max-w-2xl text-muted">
           Bisagras, correderas, sistemas de apertura y elevables de marcas reconocidas en todo el mundo. Lo que no se

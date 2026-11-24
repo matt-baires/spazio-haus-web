@@ -112,6 +112,77 @@ body {
   text-transform: uppercase;
 }
 
+/*
+ * Movimiento. Todo vive dentro de "no-preference": con "reducir movimiento" el sitio queda quieto.
+ * - .entrar / .entrar-foto: entrada del hero al cargar (solo CSS, sin esperar a JS).
+ * - [data-revelar]: aparición al hacer scroll; la activa components/revelar.tsx agregando .animar al <html>.
+ * - --i: orden dentro de un grupo, para escalonar.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .entrar {
+    animation: entrar 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 120ms + 100ms);
+  }
+  .entrar-foto {
+    animation: entrar-foto 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.25s both;
+  }
+  .entrar-foto img {
+    animation: foto-zoom 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.25s both;
+  }
+
+  [data-revelar] {
+    transition:
+      opacity 1s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--i, 0) * 110ms);
+  }
+  .animar [data-revelar]:not(.visible) {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  .filete-crece {
+    transition: width 1.1s cubic-bezier(0.65, 0, 0.35, 1) 0.35s;
+  }
+  .animar [data-revelar]:not(.visible) .filete-crece {
+    width: 0;
+  }
+
+  /* Fotos: zoom lento al pasar el mouse por una tarjeta */
+  .zoom-hover img {
+    transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .group:hover .zoom-hover img {
+    transform: scale(1.05);
+  }
+
+  /* Flecha que avanza en los botones de acción */
+  .flecha svg {
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .flecha:hover svg {
+    transform: translateX(4px);
+  }
+}
+@keyframes entrar {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+@keyframes entrar-foto {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes foto-zoom {
+  from {
+    transform: scale(1.15);
+  }
+}
+
 /* Tira de logos en movimiento (marcas de herrajes): dos copias iguales que se desplazan media pista */
 .marquesina {
   mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
