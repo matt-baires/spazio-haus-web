@@ -65,41 +65,37 @@ export default async function MaterialesPage() {
         )}
       </section>
 
-      <section id="herrajes" className="bg-humo">
-        <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1fr_2fr]">
-          <div data-revelar className="flex flex-col gap-3">
-            <span className="filete-crece h-px w-10 bg-dorado" aria-hidden="true" />
-            <h2 className="titulo">
-              <Dividir texto="Herrajes" />
+      <section id="herrajes" className="scroll-mt-24 py-16 sm:py-20">
+        <div className="mx-auto grid w-full max-w-6xl gap-8 px-6 lg:grid-cols-[1fr_1fr] lg:items-end">
+          <div data-revelar className="flex flex-col gap-4">
+            <span className="etiqueta text-muted">Herrajes</span>
+            <h2 className="max-w-xl text-[32px] font-normal leading-[38px] tracking-[-0.01em] sm:text-[44px] sm:leading-[50px]">
+              <Dividir texto="Lo que no se ve también se elige." />
             </h2>
-            <p className="text-muted">
-              Lo que no se ve también se elige. Usamos herrajes de marcas reconocidas en todo el mundo, pensados para
-              abrirse y cerrarse todos los días.
-            </p>
-            <p className="cuerpo-chico">
-              <span className="text-muted">Ideal para: </span>
-              cocinas, placares, vanitorys y todo mueble con puertas o cajones.
-            </p>
           </div>
-          <div className="flex flex-col gap-10">
-            <ul className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
-              {herrajes.map((h, i) => (
-                <li key={h.nombre} data-revelar className="flex flex-col gap-1 border-t border-border pt-4" style={orden(i % 2)}>
-                  <span className="font-semibold">{h.nombre}</span>
-                  <span className="cuerpo-chico text-muted">{h.texto}</span>
-                </li>
-              ))}
-            </ul>
-            <div data-revelar className="flex flex-col gap-4">
-              <span className="etiqueta text-muted">Marcas</span>
-              <TiraMarcas />
-            </div>
-          </div>
+          <p data-revelar className="max-w-md text-muted lg:justify-self-end">
+            Usamos herrajes de marcas reconocidas en todo el mundo, en cocinas, placares, vanitorys y todo mueble con
+            puertas o cajones.
+          </p>
         </div>
+
+        <div className="my-12 sm:my-16">
+          <TiraMarcas />
+        </div>
+
+        <ul className="mx-auto grid w-full max-w-6xl gap-x-10 gap-y-8 px-6 sm:grid-cols-2 lg:grid-cols-3">
+          {herrajes.map((h, i) => (
+            <li key={h.nombre} data-revelar className="flex flex-col gap-2 border-t border-foreground pt-5" style={orden(i % 3)}>
+              <span className="etiqueta text-muted">{String(i + 1).padStart(2, "0")}</span>
+              <span className="text-lg font-semibold">{h.nombre}</span>
+              <span className="cuerpo-chico text-muted">{h.texto}</span>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {materiales.map((grupo, i) => (
-        <section key={grupo.slug} id={grupo.slug} className={i % 2 === 1 ? "bg-humo" : ""}>
+        <section key={grupo.slug} id={grupo.slug} className={i % 2 === 0 ? "bg-humo" : ""}>
           <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1fr_2fr]">
             <div className="flex flex-col gap-3">
               <span className="h-px w-10 bg-dorado" aria-hidden="true" />
