@@ -127,7 +127,7 @@ export function CotizarForm({ tipos }: { tipos: Opcion[] }) {
 
   if (estado === "enviado") {
     return (
-      <div role="status" className="flex flex-col items-start gap-4 border border-border bg-marfil p-8">
+      <div role="status" className="flex flex-col items-start gap-4 border border-border bg-champagne p-8">
         <span className="h-px w-10 bg-dorado" aria-hidden="true" />
         <h2 className="titulo">Recibimos tu consulta</h2>
         <p className="text-muted">
@@ -200,7 +200,7 @@ export function CotizarForm({ tipos }: { tipos: Opcion[] }) {
             multiple
             accept="image/jpeg,image/png,image/webp,image/heic,image/heif,application/pdf"
             onChange={(e) => setArchivos(Array.from(e.target.files ?? []))}
-            className="cuerpo-chico rounded border border-border bg-background p-3 file:mr-4 file:rounded file:border-0 file:bg-marfil file:px-3 file:py-1.5 file:text-foreground"
+            className="cuerpo-chico rounded border border-border bg-background p-3 file:mr-4 file:rounded file:border-0 file:bg-champagne file:px-3 file:py-1.5 file:text-foreground"
           />
           <p className="cuerpo-chico text-muted">
             Hasta 3 archivos, {MAX_MB} MB en total. JPG, PNG, WEBP, HEIC o PDF.

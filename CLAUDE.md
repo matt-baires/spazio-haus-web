@@ -49,12 +49,17 @@ Así sí: "Cocina en madera con mesada negra. Diseñada y fabricada a medida." �
 | Negro | `#141414` | Sello, texto principal |
 | Dorado mate | `#B8955A` | Solo aros del sello y filetes finos. Nunca texto chico |
 | Crema | `#F2EDE4` | Texto sobre negro |
-| Blanco | `#FFFFFF` | Fondo principal |
-| Marfil | `#F4F1EB` | Fondo de bloques |
+| Blanco | `#FFFFFF` | Campos de formulario |
+| Marfil | `#F4F1EB` | Fondo de la página |
+| Champagne | `#EFE3CB` | Franjas cálidas y tarjetas |
+| Travertino | `#E2D3BF` | Franja alternada y fondo de fotos pendientes |
+| Roble | `#B79F82` | Solo filetes y bordes: el sello dorado se pierde encima |
+| Nogal | `#2E2521` | Secciones oscuras (llamado a cotizar, aviso, detalles de obra) |
 | Piedra | `#D9D3C8` | Bordes y divisores |
-| Gris texto | `#625D55` | Texto secundario, pies de foto |
+| Gris texto | `#5A554D` | Texto secundario, pies de foto (AA sobre marfil, champagne y travertino) |
 
-- Proporción: ~70 % fondos claros, 20 % negro, ≤10 % dorado y piedra. Regla general: ante la duda, menos.
+- Franjas al estilo de [AYOCIN](https://ayocin.com) pero con colores sacados del dorado y la madera; nada de pasteles (durazno, amarillo), que chocan con el dorado.
+- Proporción: ~70 % fondos claros, 20 % negro o nogal, ≤10 % dorado y piedra. Regla general: ante la duda, menos.
 - Tipografías: **Cinzel** (600, +0,02 em) solo para el nombre y títulos cortos, nunca párrafos; **Instrument Sans** para todo lo demás. Etiquetas en mayúsculas con espaciado 0,18 em. Nada de letras manuscritas ni decorativas.
 - Logo = el **sello** (círculo negro, doble aro dorado). Versión principal: el **sello dorado metalizado original** (`public/marca/sello-dorado.png`, decisión del cliente del 23/11/2026; reemplaza la regla del manual de dorado mate plano). En la web va junto al nombre (`src/components/logo-horizontal.tsx`), y también es el ícono del sitio y la imagen para compartir. Es una imagen de 1240 px: para imprimir, grabar o plotear usar los SVG planos de `marca/` (completo, reducido, un color y horizontal). No estirar, rotar ni deformar.
 - Fotografía: solo obras terminadas, rectas, con luz natural, una general y al menos una de detalle. Nada de obras en proceso ni fotos torcidas u oscuras.

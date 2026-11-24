@@ -104,7 +104,7 @@ export default async function ObraPage(props: PageProps<"/obras/[slug]">) {
       </article>
 
       {relacionadas.length > 0 && (
-        <section className="bg-marfil">
+        <section className="bg-champagne">
           <div className="mx-auto w-full max-w-6xl px-6 py-16">
             <h2 className="titulo mb-10">Más {obra.tipoNombre.toLowerCase()}</h2>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

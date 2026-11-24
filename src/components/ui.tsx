@@ -33,7 +33,7 @@ export function FotoObra({
 }) {
   if (foto) {
     return (
-      <div className={`relative ${proporcion} w-full overflow-hidden bg-marfil ${className}`}>
+      <div className={`relative ${proporcion} w-full overflow-hidden bg-travertino ${className}`}>
         <Image src={foto.url} alt={foto.alt} fill sizes={sizes} priority={prioridad} className="object-cover" />
       </div>
     );
@@ -42,7 +42,7 @@ export function FotoObra({
     <div
       role="img"
       aria-label={etiqueta}
-      className={`relative flex ${proporcion} w-full items-end overflow-hidden border border-border bg-marfil ${className}`}
+      className={`relative flex ${proporcion} w-full items-end overflow-hidden border border-border bg-travertino ${className}`}
     >
       <svg aria-hidden="true" viewBox="0 0 400 300" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice">
         <g fill="none" stroke="var(--sh-piedra)" strokeWidth="1.5">
@@ -108,7 +108,7 @@ export function CtaCotizar({
   href?: string;
 }) {
   return (
-    <section className="bg-foreground text-crema">
+    <section className="bg-nogal text-crema">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-start gap-5 px-6 py-16 sm:py-20">
         <span className="h-px w-10 bg-dorado" aria-hidden="true" />
         <h2 className="titulo">{titulo}</h2>

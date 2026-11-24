@@ -6,27 +6,33 @@
  * Spazio Haus · tokens del design system aplicados a HeroUI.
  * Fuente: design system "Spazio Haus" (tokens.json, versión 1).
  * Fondos claros; el negro y el dorado quedan para el sello, el texto y filetes finos.
+ * Franjas cálidas sacadas del dorado y la madera (referencia: AYOCIN, sin sus pasteles):
+ * marfil de base, champagne y travertino alternados, nogal para las secciones oscuras.
  */
 :root {
   /* Paleta de marca */
   --sh-blanco: #ffffff;
-  --sh-marfil: #f4f1eb;
+  --sh-marfil: #f4f1eb; /* fondo de la página */
+  --sh-champagne: #efe3cb; /* franja cálida: luz natural sin competir con el dorado */
+  --sh-travertino: #e2d3bf; /* franja alternada y fondo de fotos pendientes */
+  --sh-roble: #b79f82; /* solo filetes y bordes; el sello se pierde encima */
+  --sh-nogal: #2e2521; /* secciones oscuras; hace brillar el dorado */
   --sh-piedra: #d9d3c8;
   --sh-dorado-mate: #b8955a; /* solo filetes de 1 px y el sello; nunca texto chico */
   --sh-negro: #141414;
   --sh-crema: #f2ede4;
-  --sh-texto-secundario: #625d55;
+  --sh-texto-secundario: #5a554d; /* AA sobre marfil, champagne y travertino */
 
   /* Mapeo a las variables de HeroUI */
-  --background: var(--sh-blanco);
+  --background: var(--sh-marfil);
   --foreground: var(--sh-negro);
-  --surface: var(--sh-marfil);
+  --surface: var(--sh-champagne);
   --surface-foreground: var(--sh-negro);
-  --surface-secondary: var(--sh-marfil);
+  --surface-secondary: var(--sh-champagne);
   --surface-tertiary: var(--sh-piedra);
   --overlay: var(--sh-blanco);
   --muted: var(--sh-texto-secundario);
-  --default: var(--sh-marfil);
+  --default: var(--sh-champagne);
   --default-foreground: var(--sh-negro);
   --accent: var(--sh-negro);
   --accent-foreground: var(--sh-crema);
@@ -53,6 +59,10 @@
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --color-marfil: var(--sh-marfil);
+  --color-champagne: var(--sh-champagne);
+  --color-travertino: var(--sh-travertino);
+  --color-roble: var(--sh-roble);
+  --color-nogal: var(--sh-nogal);
   --color-piedra: var(--sh-piedra);
   --color-dorado: var(--sh-dorado-mate);
   --color-crema: var(--sh-crema);

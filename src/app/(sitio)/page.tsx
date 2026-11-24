@@ -37,7 +37,7 @@ export default async function Home() {
         <FotoObra foto={portada} etiqueta="Foto de obra destacada" proporcion="aspect-[5/4]" prioridad sizes="(min-width: 1024px) 45vw, 100vw" />
       </section>
 
-      <section className="bg-marfil">
+      <section className="bg-champagne">
         <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <h2 className="titulo">Qué hacemos</h2>
@@ -76,7 +76,7 @@ export default async function Home() {
         </section>
       )}
 
-      <section className="bg-marfil">
+      <section className="bg-travertino">
         <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
           <h2 className="titulo mb-10">Cómo trabajamos</h2>
           <ol className="grid gap-10 sm:grid-cols-3">
