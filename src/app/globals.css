@@ -235,9 +235,13 @@ body {
   }
 }
 /*
- * Cortina entre secciones (como AYOCIN): la mueve components/revelar.tsx según el scroll
- * (corrimiento con `translate` y sombra con --sombra). Cada sección con .cortina necesita
- * fondo propio (opaco) para tapar a la anterior.
+ * Cortina entre secciones (como AYOCIN): mientras una sección sale por arriba se queda un poco
+ * atrás y se oscurece, y la siguiente sube y la tapa. Cada sección con .cortina necesita fondo
+ * propio (opaco) para tapar a la anterior.
+ * - Si el navegador tiene animation-timeline (Chrome, Safari 26+), la hace el propio navegador
+ *   en paralelo al scroll: es lo más suave, sin saltos en las fotos de fondo.
+ * - Si no, la mueve components/revelar.tsx con transform y --sombra.
+ * Activa también con "reducir movimiento" (decisión del dueño, 24/11/2026).
  */
 .cortina {
   position: relative;
@@ -250,6 +254,37 @@ body {
   pointer-events: none;
   background: #000;
   opacity: var(--sombra, 0);
+}
+@supports (animation-timeline: view()) {
+  .cortina {
+    animation: cortina-sale linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 100%;
+  }
+  .cortina::after {
+    animation: cortina-sombra linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 100%;
+  }
+}
+@supports not (animation-timeline: view()) {
+  .cortina {
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+}
+@keyframes cortina-sale {
+  to {
+    transform: translate3d(0, 45vh, 0);
+  }
+}
+@keyframes cortina-sombra {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.6;
+  }
 }
 
 /* Anillo de progreso de la portada rotativa */

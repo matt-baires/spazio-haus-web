@@ -54,11 +54,11 @@ export function Revelar() {
     };
   }, []);
 
-  // Cortina entre secciones (como AYOCIN): mientras una sección sale por arriba se corre hacia
-  // abajo y se oscurece, y la siguiente la tapa. La mueve el sitio en todos los navegadores para
-  // que Safari se vea igual que Chrome, y queda activa también con "reducir movimiento"
-  // (decisión del dueño, 24/11/2026).
+  // Cortina entre secciones para navegadores sin animation-timeline (Safari anterior a 26,
+  // Firefox). Donde hay soporte la hace el CSS (globals.css), que es más suave. Activa también
+  // con "reducir movimiento" (decisión del dueño, 24/11/2026).
   useEffect(() => {
+    if (CSS.supports("animation-timeline: view()")) return;
     let cuadro = 0;
     const mover = () => {
       const alto = window.innerHeight;
@@ -68,7 +68,7 @@ export function Revelar() {
         const avance = Math.max(0, Math.min(1, (alto - abajo) / alto));
         const y = avance * alto * 0.45;
         el.dataset.cortinaY = String(y);
-        el.style.translate = avance > 0 ? `0 ${y.toFixed(1)}px` : "";
+        el.style.transform = avance > 0 ? `translate3d(0, ${y.toFixed(1)}px, 0)` : "";
         el.style.setProperty("--sombra", (avance * 0.6).toFixed(3));
       });
     };
