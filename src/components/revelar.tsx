@@ -12,7 +12,8 @@ const sinMovimiento = () => window.matchMedia("(prefers-reduced-motion: reduce)"
  * - Scroll suave (Lenis), con la inercia de AYOCIN.
  * - Elementos con `data-revelar` que aparecen al llegar a la pantalla. Lo que ya se ve al cargar
  *   queda visible de entrada, y un salto (tecla Fin, un link al final) nunca deja secciones ocultas.
- * - Fotos con `data-paralaje` que se desplazan más lento que la página.
+ * - Fotos con `data-paralaje` que se desplazan más lento que la página (solo en navegadores sin
+ *   animation-timeline; en el resto lo hace globals.css).
  * Con "reducir movimiento" no hace nada y todo queda visible y quieto.
  */
 export function Revelar() {
@@ -22,6 +23,8 @@ export function Revelar() {
   useEffect(() => {
     if (sinMovimiento()) return;
     const lenis = new Lenis({ autoRaf: true, lerp: 0.09 });
+    // Donde hay animation-timeline el parallax lo hace el CSS (globals.css), sincronizado con la cortina.
+    if (CSS.supports("animation-timeline: view()")) return () => lenis.destroy();
 
     let cuadro = 0;
     const paralaje = () => {

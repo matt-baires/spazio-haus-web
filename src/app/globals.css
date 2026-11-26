@@ -268,6 +268,34 @@ body {
     animation-range: exit 0% exit 100%;
   }
 }
+/*
+ * Parallax de las fotos de fondo ([data-paralaje]), también en el navegador y atado al scroll de
+ * su sección, así va sincronizado con la cortina. Antes lo movía JavaScript un cuadro tarde y,
+ * al frenar el scroll, la foto se "acomodaba" de golpe. La foto se desliza mientras la sección
+ * entra y frena suave justo cuando empieza la cortina, que sigue moviéndola desde ahí.
+ * Sin animation-timeline lo hace components/revelar.tsx. Con "reducir movimiento", quieta.
+ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .cortina {
+      view-timeline: --seccion block;
+    }
+    [data-paralaje] {
+      animation: paralaje cubic-bezier(0.33, 0.67, 0.67, 1) both;
+      animation-timeline: --seccion;
+      animation-range: cover 0% exit 0%;
+    }
+  }
+}
+@keyframes paralaje {
+  from {
+    /* 8 % del alto de la sección (la foto mide 118 %). */
+    transform: translate3d(0, -6.8%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
 @supports not (animation-timeline: view()) {
   .cortina {
     will-change: transform;
