@@ -40,7 +40,6 @@ export function TiraZonas() {
         <h2 id="zonas-titulo" className="etiqueta text-muted">
           Confiaron en nosotros
         </h2>
-        <span className="etiqueta hidden text-muted sm:block">Countries, barrios y casas</span>
       </div>
       <div className="marquesina relative overflow-hidden border-y border-border py-6 sm:py-10">
         <div
