@@ -66,7 +66,8 @@ export function Revelar() {
         const corrido = parseFloat(el.dataset.cortinaY ?? "0");
         const abajo = el.getBoundingClientRect().bottom - corrido;
         const avance = Math.max(0, Math.min(1, (alto - abajo) / alto));
-        const y = avance * alto * 0.45;
+        // Curva t², igual que en globals.css: arranca suave y la foto de fondo no frena de golpe.
+        const y = avance * avance * alto * 0.45;
         el.dataset.cortinaY = String(y);
         el.style.transform = avance > 0 ? `translate3d(0, ${y.toFixed(1)}px, 0)` : "";
         el.style.setProperty("--sombra", (avance * 0.6).toFixed(3));

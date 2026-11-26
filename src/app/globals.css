@@ -257,7 +257,8 @@ body {
 }
 @supports (animation-timeline: view()) {
   .cortina {
-    animation: cortina-sale linear both;
+    /* Arranca suave (curva t²) para que la foto de fondo no frene de golpe. */
+    animation: cortina-sale cubic-bezier(0.33, 0, 0.67, 0.33) both;
     animation-timeline: view();
     animation-range: exit 0% exit 100%;
   }
@@ -273,9 +274,13 @@ body {
     backface-visibility: hidden;
   }
 }
+/*
+ * Baja 45vh, o el 45 % de su alto si la sección es más baja que la pantalla (como la tira de
+ * zonas): así nunca baja más rápido de lo que se scrollea ni destapa la foto de la sección anterior.
+ */
 @keyframes cortina-sale {
   to {
-    transform: translate3d(0, 45vh, 0);
+    transform: translate3d(0, min(45vh, 45%), 0);
   }
 }
 @keyframes cortina-sombra {
