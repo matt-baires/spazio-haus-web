@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { Encabezado, EtiquetaEjemplo, FotoObra } from "@/components/ui";
 import { getArticulos } from "@/lib/datos";
 import { fechaLarga } from "@/lib/formato";
 import { fotoEjemploArticulo } from "@/lib/fotos-ejemplo";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -11,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
+  if (!site.blogVisible) notFound();
   const articulos = await getArticulos();
   return (
     <section className="mx-auto w-full max-w-6xl px-6 pb-14 pt-8 sm:pt-12">

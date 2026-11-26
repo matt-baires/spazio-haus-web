@@ -13,12 +13,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/preguntas-frecuentes",
     "/contacto",
     "/cotizar",
-    "/blog",
+    ...(site.blogVisible ? ["/blog"] : []),
   ];
   return [
     ...fijas.map((p) => ({ url: `${site.url}${p}` })),
     ...servicios.map((s) => ({ url: `${site.url}/servicios/${s.slug}` })),
     ...obras.map((o) => ({ url: `${site.url}/obras/${o.slug}` })),
-    ...articulos.map((a) => ({ url: `${site.url}/blog/${a.slug}` })),
+    ...(site.blogVisible ? articulos : []).map((a) => ({ url: `${site.url}/blog/${a.slug}` })),
   ];
 }

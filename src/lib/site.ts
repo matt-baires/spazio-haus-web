@@ -10,6 +10,8 @@ export const site = {
   desde: 2018,
   /** PENDIENTE: dominio definitivo. */
   url: "https://spaziohaus.vercel.app",
+  /** El blog es de la Fase 2: mientras esté en false no aparece en el sitio ni en el sitemap. */
+  blogVisible: false,
 } as const;
 
 export type Direccion = { calle: string; localidad: string; provincia: string };

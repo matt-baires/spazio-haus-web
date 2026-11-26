@@ -5,6 +5,7 @@ import { RichText } from "@payloadcms/richtext-lexical/react";
 import { CtaCotizar, EtiquetaEjemplo } from "@/components/ui";
 import { getArticulo, getArticulos } from "@/lib/datos";
 import { fechaLarga } from "@/lib/formato";
+import { site } from "@/lib/site";
 
 export async function generateStaticParams() {
   const articulos = await getArticulos();
@@ -20,7 +21,7 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">): Promis
 
 export default async function ArticuloPage(props: PageProps<"/blog/[slug]">) {
   const { slug } = await props.params;
-  const a = await getArticulo(slug);
+  const a = site.blogVisible ? await getArticulo(slug) : null;
   if (!a) notFound();
 
   return (
