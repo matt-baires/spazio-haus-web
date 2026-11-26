@@ -22,7 +22,6 @@ Sitio de Spazio Haus, estudio de mobiliario a medida con taller propio en Casero
 | Servicios | Cocinas, racks, vanitorys, respaldos, vestidores, muebles a medida, madera maciza |
 | Materiales | Muestrario: grupos (melaminas, laqueados, maderas) y sus muestras |
 | Preguntas frecuentes | Preguntas y respuestas; "Mostrar en la home" elige las de la portada |
-| Blog | Artículos con editor de texto. Tienen borrador y publicación |
 | Imágenes | Biblioteca de fotos (con texto alternativo obligatorio) |
 | Configuración → Datos del sitio | WhatsApp, email, Instagram, dirección del taller y el aviso de "contenido de ejemplo" |
 | Configuración → Usuarios | Administradores y editores |

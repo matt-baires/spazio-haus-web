@@ -7,7 +7,6 @@ export const TAGS = {
   servicios: "servicios",
   materiales: "materiales",
   preguntas: "preguntas",
-  articulos: "articulos",
   sitio: "sitio",
   medios: "medios",
 } as const;

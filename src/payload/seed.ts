@@ -6,7 +6,6 @@
  */
 import { getPayload } from "payload";
 import config from "../payload.config";
-import { articulos } from "../content/blog";
 import { faq } from "../content/faq";
 import { materiales } from "../content/materiales";
 import { obras, obrasNuevas } from "../content/obras";
@@ -14,34 +13,13 @@ import { servicios } from "../content/servicios";
 
 const context = { sinRevalidar: true };
 
-const textoNodo = (text: string) => ({ type: "text", text, format: 0, detail: 0, mode: "normal", style: "", version: 1 });
-const parrafo = (text: string) => ({
-  type: "paragraph",
-  format: "",
-  indent: 0,
-  version: 1,
-  direction: "ltr",
-  textFormat: 0,
-  textStyle: "",
-  children: [textoNodo(text)],
-});
-const titulo = (text: string) => ({
-  type: "heading",
-  tag: "h2",
-  format: "",
-  indent: 0,
-  version: 1,
-  direction: "ltr",
-  children: [textoNodo(text)],
-});
-
 async function main() {
   if (!process.env.SPAZIOH_DATABASE_URL && !process.env.DATABASE_URL) {
     console.log("[seed] Sin base de datos configurada: se omite.");
     return;
   }
   const payload = await getPayload({ config });
-  const vacia = async (collection: "servicios" | "obras" | "materiales" | "preguntas" | "articulos") =>
+  const vacia = async (collection: "servicios" | "obras" | "materiales" | "preguntas") =>
     (await payload.count({ collection, overrideAccess: true })).totalDocs === 0;
 
   // Servicios
@@ -188,30 +166,6 @@ async function main() {
       });
     }
     console.log(`[seed] ${faq.length} preguntas`);
-  }
-
-  // Blog (publicado)
-  if (await vacia("articulos")) {
-    for (const a of articulos) {
-      const children = a.cuerpo.flatMap((b) => [...(b.subtitulo ? [titulo(b.subtitulo)] : []), ...b.parrafos.map(parrafo)]);
-      await payload.create({
-        collection: "articulos",
-        context,
-        overrideAccess: true,
-        draft: false,
-        data: {
-          titulo: a.titulo,
-          slug: a.slug,
-          ejemplo: true,
-          bajada: a.bajada,
-          fecha: `${a.fecha}T12:00:00.000Z`,
-          categoria: a.categoria,
-          cuerpo: { root: { type: "root", format: "", indent: 0, version: 1, direction: "ltr", children } },
-          _status: "published",
-        } as never,
-      });
-    }
-    console.log(`[seed] ${articulos.length} artículos`);
   }
 
   console.log("[seed] listo");

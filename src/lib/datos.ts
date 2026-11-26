@@ -2,7 +2,6 @@ import "server-only";
 import config from "@payload-config";
 import { cacheLife, cacheTag } from "next/cache";
 import { getPayload } from "payload";
-import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 import { TAGS } from "@/payload/revalidar";
 
 /* ---------- Tipos que usa el sitio ---------- */
@@ -47,17 +46,6 @@ export type GrupoMateriales = {
 };
 
 export type Pregunta = { pregunta: string; respuesta: string; enHome: boolean };
-
-export type Articulo = {
-  slug: string;
-  titulo: string;
-  bajada: string;
-  fecha: string;
-  categoria: string;
-  cuerpo: SerializedEditorState;
-  imagen: Foto | null;
-  ejemplo: boolean;
-};
 
 export type Sitio = {
   whatsapp: string | null;
@@ -210,32 +198,3 @@ export async function getPreguntas(): Promise<Pregunta[]> {
   });
 }
 
-export async function getArticulos(): Promise<Articulo[]> {
-  "use cache";
-  cacheTag(TAGS.articulos, TAGS.medios);
-  cacheLife("max");
-  const r = await (await payload()).find({
-    collection: "articulos",
-    where: { _status: { equals: "published" } },
-    sort: "-fecha",
-    limit: 200,
-    depth: 1,
-  });
-  return r.docs.map((raw) => {
-    const d = raw as unknown as Doc;
-    return {
-      slug: texto(d.slug),
-      titulo: texto(d.titulo),
-      bajada: texto(d.bajada),
-      fecha: texto(d.fecha).slice(0, 10),
-      categoria: texto(d.categoria),
-      cuerpo: d.cuerpo as SerializedEditorState,
-      imagen: foto(d.imagen),
-      ejemplo: d.ejemplo === true,
-    };
-  });
-}
-
-export async function getArticulo(slug: string) {
-  return (await getArticulos()).find((a) => a.slug === slug) ?? null;
-}

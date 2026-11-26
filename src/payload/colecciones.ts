@@ -255,39 +255,6 @@ export const Preguntas: CollectionConfig = {
   ],
 };
 
-export const Articulos: CollectionConfig = {
-  slug: "articulos",
-  labels: { singular: "Artículo", plural: "Blog" },
-  admin: { useAsTitle: "titulo", group: "Contenido", defaultColumns: ["titulo", "categoria", "fecha", "_status"] },
-  defaultSort: "-fecha",
-  versions: { drafts: true, maxPerDoc: 20 },
-  access: { read: publicadoOSesion, create: conSesion, update: conSesion, delete: conSesion },
-  hooks: revalidarColeccion(TAGS.articulos),
-  fields: [
-    { name: "titulo", label: "Título", type: "text", required: true },
-    slugCampo,
-    ejemploCampo,
-    { name: "bajada", label: "Bajada", type: "textarea", required: true },
-    {
-      name: "fecha",
-      label: "Fecha",
-      type: "date",
-      required: true,
-      admin: { position: "sidebar", date: { pickerAppearance: "dayOnly", displayFormat: "d/M/yyyy" } },
-    },
-    {
-      name: "categoria",
-      label: "Categoría",
-      type: "select",
-      required: true,
-      options: ["Materiales", "Cuidados", "Guías"].map((c) => ({ label: c, value: c })),
-      admin: { position: "sidebar" },
-    },
-    { name: "imagen", label: "Imagen", type: "upload", relationTo: "medios" },
-    { name: "cuerpo", label: "Texto", type: "richText", required: true },
-  ],
-};
-
 export const Consultas: CollectionConfig = {
   slug: "consultas",
   labels: { singular: "Consulta", plural: "Consultas" },

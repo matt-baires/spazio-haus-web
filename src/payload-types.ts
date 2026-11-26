@@ -72,7 +72,6 @@ export interface Config {
     servicios: Servicio;
     materiales: Materiale;
     preguntas: Pregunta;
-    articulos: Articulo;
     medios: Medio;
     usuarios: Usuario;
     'payload-kv': PayloadKv;
@@ -87,7 +86,6 @@ export interface Config {
     servicios: ServiciosSelect<false> | ServiciosSelect<true>;
     materiales: MaterialesSelect<false> | MaterialesSelect<true>;
     preguntas: PreguntasSelect<false> | PreguntasSelect<true>;
-    articulos: ArticulosSelect<false> | ArticulosSelect<true>;
     medios: MediosSelect<false> | MediosSelect<true>;
     usuarios: UsuariosSelect<false> | UsuariosSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -342,44 +340,6 @@ export interface Pregunta {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "articulos".
- */
-export interface Articulo {
-  id: number;
-  titulo: string;
-  /**
-   * Parte final de la URL, en minúsculas y con guiones. Ej.: cocina-isla-laqueada
-   */
-  slug: string;
-  /**
-   * Si está tildado, el sitio lo marca como ejemplo.
-   */
-  ejemplo?: boolean | null;
-  bajada: string;
-  fecha: string;
-  categoria: 'Materiales' | 'Cuidados' | 'Guías';
-  imagen?: (number | null) | Medio;
-  cuerpo: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "usuarios".
  */
 export interface Usuario {
@@ -452,10 +412,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'preguntas';
         value: number | Pregunta;
-      } | null)
-    | ({
-        relationTo: 'articulos';
-        value: number | Articulo;
       } | null)
     | ({
         relationTo: 'medios';
@@ -630,23 +586,6 @@ export interface PreguntasSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "articulos_select".
- */
-export interface ArticulosSelect<T extends boolean = true> {
-  titulo?: T;
-  slug?: T;
-  ejemplo?: T;
-  bajada?: T;
-  fecha?: T;
-  categoria?: T;
-  imagen?: T;
-  cuerpo?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "medios_select".
  */
 export interface MediosSelect<T extends boolean = true> {
@@ -771,9 +710,6 @@ export interface Sitio {
     provincia?: string | null;
     codigoPostal?: string | null;
   };
-  /**
-   * Destildalo cuando todo el contenido sea real.
-   */
   contenidoDeEjemplo?: boolean | null;
   updatedAt?: string | null;
   createdAt?: string | null;

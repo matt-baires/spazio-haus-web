@@ -10,7 +10,7 @@ import { fileURLToPath } from "url";
 
 import { site } from "./lib/site";
 import { blobPrivado } from "./payload/almacenamiento";
-import { Articulos, Consultas, Materiales, Medios, Obras, Preguntas, Servicios, Usuarios } from "./payload/colecciones";
+import { Consultas, Materiales, Medios, Obras, Preguntas, Servicios, Usuarios } from "./payload/colecciones";
 import { Sitio } from "./payload/globales";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -37,7 +37,7 @@ export default buildConfig({
     dateFormat: "d/M/yyyy HH:mm",
   },
   i18n: { supportedLanguages: { es }, fallbackLanguage: "es" },
-  collections: [Consultas, Obras, Servicios, Materiales, Preguntas, Articulos, Medios, Usuarios],
+  collections: [Consultas, Obras, Servicios, Materiales, Preguntas, Medios, Usuarios],
   globals: [Sitio],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",

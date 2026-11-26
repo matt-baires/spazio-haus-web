@@ -184,11 +184,6 @@ const porObra: Record<string, Foto> = {
   "rack-arena-con-biblioteca": fotosEjemplo.colorRackArenaBiblioteca,
 };
 
-const porArticulo: Record<string, Foto> = {
-  "melamina-o-laqueado": fotosEjemplo.muestrasMadera,
-  "como-cuidar-tus-muebles": fotosEjemplo.muebleMadera,
-};
-
 /** Foto de ejemplo para un servicio (por su slug). */
 export const fotoEjemploServicio = (slug: string): Foto =>
   porServicio[slug] ?? fotosEjemplo.muebleMadera;
@@ -196,7 +191,3 @@ export const fotoEjemploServicio = (slug: string): Foto =>
 /** Foto de ejemplo para una obra: por su slug, si no por su tipo. */
 export const fotoEjemploObra = (slug: string, tipo: string): Foto =>
   porObra[slug] ?? fotoEjemploServicio(tipo);
-
-/** Foto de ejemplo para un artículo del blog. */
-export const fotoEjemploArticulo = (slug: string): Foto =>
-  porArticulo[slug] ?? fotosEjemplo.muestrasMadera;

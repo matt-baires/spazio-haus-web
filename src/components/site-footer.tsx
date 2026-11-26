@@ -79,7 +79,7 @@ export async function SiteFooter() {
           <Columna titulo="Sitio" className="md:col-span-2">
             <nav aria-label="Pie de página">
               <ul className="cuerpo-chico flex flex-col gap-3">
-                {[...navegacion, { href: "/materiales", label: "Materiales" }, ...(site.blogVisible ? [{ href: "/blog", label: "Blog" }] : [])].map((item) => (
+                {[...navegacion, { href: "/materiales", label: "Materiales" }].map((item) => (
                   <li key={item.href}>
                     <Link href={item.href} className={enlace}>
                       {item.label}
